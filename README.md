@@ -394,9 +394,7 @@ More: [CONTRIBUTING.md](CONTRIBUTING.md), [docs/ARCHITECTURE.md](docs/ARCHITECTU
 
 Each credit is for what actually came from where. The full record, with commits and license texts, is in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-- **[lool ventures](https://lool.vc), [founder-skills](https://github.com/lool-ventures/founder-skills)** (Apache-2.0). The pattern this rebuild follows: the model supplies the facts, a script decides, and the output says what was not checked. The integrity seal is adapted from their `script_hashes.py`, and this page follows the structure of their README.
 - **[Yaniv Golan](https://github.com/yaniv-golan)** of lool ventures, who writes founder-skills. His [proof-engine](https://github.com/yaniv-golan/proof-engine) (MIT) is where the layout of the citation file comes from.
-- **[Anthropic](https://github.com/anthropics/skills), skill-creator** (Apache-2.0), and the [Agent Skills specification](https://agentskills.io/specification). The skill format, the `.skill` package convention and the eval case layout.
 - **[Skills IL](https://github.com/skills-il)** (MIT). The Hebrew companion file, the `metadata.json` layout, and the validator rules that the tests write again in Python.
 - **[Garry Tan](https://github.com/garrytan/gstack), gstack** (MIT). The format of the third-party notices, and the rule that rewriting is not an exemption from credit.
 - **[Cisco AI Defense](https://github.com/cisco-ai-defense/skill-scanner), skill-scanner** (Apache-2.0). Scanned the skill before release. The result is in [SECURITY.md](SECURITY.md). It is not bundled.

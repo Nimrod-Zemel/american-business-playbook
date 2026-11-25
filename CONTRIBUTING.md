@@ -95,7 +95,7 @@ Rewriting is not an exemption. If a change adapts code, a format or a convention
 1. A line at the top of the file: a comment that starts with `THIRD-PARTY:`, then the source's short name, then what was taken and what was changed.
 2. The source's entry in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md): holder, license, link, the full commit, and the file with what was kept and what was changed. An idea with no text taken goes under "Ideas, not text".
 3. The source's license text, unmodified, in `licenses/`.
-4. A line in the README under Acknowledgments, for what the source actually gave. Credit that is larger than the debt reads as name-dropping.
+4. A line in the README under Acknowledgments is the maintainer's call. When there is one, it appears in both languages and says what the source actually gave. Credit that is larger than the debt reads as name-dropping.
 5. A link to the source in the commit message.
 
 Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/): `feat(interview): ask a recap what was agreed`, `fix(data): "circle back" also matches "get back to you"`, `docs: ...`. The scope is the part a reader would look for: `engine`, `data`, `interview`, `guide`, `docs`, `ci`.

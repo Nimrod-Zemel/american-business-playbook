@@ -622,22 +622,28 @@ class RepositoryHygieneTest(unittest.TestCase):
             self.assertEqual(sizes[name + ".png"], sizes[name + "-light.png"], name)
             self.assertEqual(sizes[name + ".png"], sizes["email-doctor.png"], name)
 
-    def test_acknowledgments_name_every_source_with_a_link(self):
-        """The credits policy: the README names every source, for what it gave, with a link."""
+    def test_acknowledgments_thank_the_same_sources_in_both_languages(self):
+        """The credits policy: the README thanks, by name and with a link, the sources its author chose.
+
+        Both languages thank the same ones. The complete record of what came from
+        where is THIRD_PARTY_NOTICES.md, which tools/notices.py checks.
+        """
         readme = _util.read("README.md")
         section = readme.split("\n## Acknowledgments\n")[1].split("\n## ")[0]
-        for name in ("lool ventures", "Yaniv Golan", "Cisco", "Anthropic", "Skills IL", "Garry Tan", "Dan Launchpad"):
-            self.assertIn(name, section)
+        hebrew = readme.split("\n### תודות\n")[1].split("\n### ")[0]
+        thanked = re.compile(r"^- \*\*\[([^\]]+)\]\((https?://[^)\s]+)\)", re.M)
+        english_credits = sorted(thanked.findall(section))
+        self.assertGreaterEqual(len(english_credits), 1)
+        self.assertEqual(
+            english_credits,
+            sorted(thanked.findall(hebrew)),
+            "the Hebrew credits do not thank the same sources as the English ones",
+        )
+        for text in (section, hebrew):
+            self.assertIn("(THIRD_PARTY_NOTICES.md)", text)
         notices = _util.read("THIRD_PARTY_NOTICES.md")
         sources = re.findall(r"^- Source: (https://github\.com/[\w.-]+/[\w.-]+)", notices, re.M)
         self.assertGreaterEqual(len(sources), 5)
-        for link in sources:
-            owner = link.split("/")[3]
-            self.assertIn("https://github.com/%s" % owner, section, "the README does not link %s" % link)
-        self.assertIn("(THIRD_PARTY_NOTICES.md)", section)
-        hebrew = readme.split("\n### תודות\n")[1].split("\n### ")[0]
-        for name in ("lool ventures", "Yaniv Golan", "Cisco", "Anthropic", "Skills IL", "Garry Tan"):
-            self.assertIn(name, hebrew)
 
 
 class ManifestTest(unittest.TestCase):
