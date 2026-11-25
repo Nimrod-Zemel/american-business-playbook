@@ -1,0 +1,17 @@
+{
+  "name": "venture-engineer",
+  "description": "Skills by Nimrod Zemel for Israeli founders going global. Rules live in data, code does the judging.",
+  "owner": {
+    "name": "Nimrod Zemel",
+    "url": "https://github.com/Nimrod-Zemel"
+  },
+  "plugins": [
+    {
+      "name": "american-business-playbook",
+      "source": "./",
+      "description": "American business communication coach for Israeli founders: email linting and timing, meeting decoding with a traffic-light verdict, prep and simulation. Deterministic engine, no network.",
+      "category": "communication",
+      "tags": ["israel", "founders", "us-market", "email", "sales", "fundraising"]
+    }
+  ]
+}

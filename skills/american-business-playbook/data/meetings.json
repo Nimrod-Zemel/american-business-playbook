@@ -1,0 +1,464 @@
+{
+  "_about": "Meeting prep, guard rules, simulation characters and the debrief rubric. Source of truth for `playbook.py prep`, `guard`, `scene` and `debrief`, and for the generated references/meeting-prep-modes.md. The classification step is mandatory: each meeting type demands a different mindset, and mixing them is the costliest founder error this skill prevents.",
+  "types": {
+    "sales": {
+      "label": {"en": "Sales, customer, partner", "he": "מכירה, לקוח, שותף"},
+      "mindset": {"en": "Qualify and advance. The founder is allowed and expected to qualify the other side.", "he": "לקוולף ולקדם. מותר ומצופה מהיזם לקוולף את הצד השני."},
+      "framework": {"en": "BANT adapted to the meeting, plus traffic light and commitment currencies", "he": "BANT מותאם לשיחה, בתוספת רמזור ומטבעות מחויבות"},
+      "bant": "on",
+      "character": "michael"
+    },
+    "investor": {
+      "label": {"en": "Investor (VC or angel)", "he": "משקיע (קרן או אנג'ל)"},
+      "mindset": {"en": "Be qualified; demonstrate. In this room the founder is the one being qualified.", "he": "להיות מקוולף, להדגים. בחדר הזה היזם הוא זה שמקוולפים אותו."},
+      "framework": {"en": "NO BANT. Investor-speak decoding, narrative, honest traction", "he": "בלי BANT. פענוח Investor-Speak, נרטיב, traction כנה"},
+      "bant": "off",
+      "character": "jennifer"
+    },
+    "kol": {
+      "label": {"en": "KOL or domain expert", "he": "KOL או מומחה תוכן"},
+      "mindset": {"en": "Extract truth; zero selling. Negative feedback is the fuel at pre-seed and seed.", "he": "לחלץ אמת, אפס מכירה. פידבק שלילי הוא הדלק ב-pre-seed וב-seed."},
+      "framework": {"en": "Mom Test, extraction question bank, the 5-second silence", "he": "Mom Test, בנק שאלות חילוץ, חמש שניות שתיקה"},
+      "bant": "off",
+      "character": "alan"
+    }
+  },
+  "hard_rule": {
+    "en": "Never run BANT on an investor. Asking a VC about their \"budget\" or \"authority\" reads as tone-deaf and burns the meeting. In an investor meeting the founder is the one being qualified; prepare to demonstrate, to decode investor-speak, and to ask process questions instead.",
+    "he": "לעולם לא מריצים BANT על משקיע. יזם ששואל שותף בקרן על \"תקציב\" או \"סמכות\" נשמע מנותק ושורף את הפגישה. בחדר של משקיע היזם הוא זה שמקוולפים אותו: מתכוננים להדגים, לפענח Investor-Speak, ולשאול שאלות תהליך במקום."
+  },
+  "goal_rule": {
+    "en": "Define the meeting goal as a commitment currency: calendar time, data access, an intro, a signature, or money.",
+    "he": "מגדירים את מטרת הפגישה כמטבע מחויבות: זמן ביומן, גישה לדאטה, אינטרו, חתימה או כסף."
+  },
+  "sales": {
+    "bant": [
+      {"letter": "Budget", "learn": "Is there money, and whose", "phrasing": "\"How do initiatives like this usually get funded on your side?\" or the wrapper-buster: \"If budget weren't an issue, would this be a priority?\""},
+      {"letter": "Authority", "learn": "Who signs, who influences", "phrasing": "\"Who else would want to weigh in on something like this?\" Multi-thread transparently; never behind the champion's back"},
+      {"letter": "Need", "learn": "The pain in their words, with a number", "phrasing": "\"Walk me through the last time you dealt with this. What did it cost you?\""},
+      {"letter": "Timeline", "learn": "Real urgency vs politeness", "phrasing": "\"Is this a this-quarter problem or a someday problem?\""}
+    ],
+    "bant_note": "Weave BANT into conversation across the meeting; a checklist read aloud kills rapport. Pair every answer with the traffic-light lens.",
+    "mechanics": [
+      "Open with frame + hard stop: \"I know we have {minutes} minutes. I'd love to spend most of it understanding your workflow.\" End a {minutes}-minute meeting at {end_at}.",
+      "Small talk IS the meeting: the first 3-5 minutes decide whether you are pleasant to work with.",
+      "Do not interrupt. In Israel interrupting means engagement; in America it reads as rude. Write the point down and wait. On Zoom, doubly so.",
+      "The enthusiasm gap runs both ways: Israeli dryness reads as disinterest. When something is good, say \"great\" out loud.",
+      "Never trash competitors. Say: \"They're strong on X for enterprise; we focus on Y for mid-market.\"",
+      "No meeting ends without a concrete step plus a date. What is not in the recap did not happen."
+    ]
+  },
+  "investor": {
+    "demonstrate": [
+      "A sharp narrative: problem, wedge, why now, why this team.",
+      "Honest traction only. Pipeline built from sugar-coated yeses collapses at the first reference call, and with it the raise. Green-light signals only.",
+      "Speed and coachability: answer crisply, take notes on pushback, never argue with feedback in the room. The only response to hard feedback: \"That's really helpful. Say more?\""
+    ],
+    "may_ask": [
+      {"q": "What does your process look like from here?"},
+      {"q": "What would you need to see for this to be a strong yes?"},
+      {"q": "Do you lead at this stage, and what's your typical check size?", "note": "Fund-fit, not interrogation: it tells the founder whether this fund can anchor the round or only follow"},
+      {"q": "How do you typically work with companies post-investment?"},
+      {"q": "Would it make sense to reconnect when we hit [milestone]?"}
+    ],
+    "pass_is_relationship": "Every investor no gets the graceful exit: thank, ask the 6-months question, add to quarterly nurture. Funds talk to each other; a founder who exits with class gets a second look next round.",
+    "advanced": {
+      "process_signals": {
+        "title": "Process-signal reading",
+        "when": "always",
+        "text": "Classify every fund by process motion, not tone. Green: a second meeting scheduled before the first ends; more partners joining; data room, reference, or cohort requests; unprompted talk of check size, ownership, or timeline. Yellow: warm replies with no next date; weeks at associate level with no partner exposure. Red: questions stop and only compliments remain; meetings rescheduled by them without alternatives. Pipeline hygiene rule: a fund is \"in process\" only if there is a scheduled next interaction or an open diligence request; everything else is nurture and is reported as nurture."
+      },
+      "update_anatomy": {
+        "title": "The monthly update anatomy",
+        "when": "live_thread",
+        "text": "Subject shows slope: \"[Startup] update - [Month]: [headline metric]\". Five short sections: Shipped / Sold / Learned / Team (only when news) / Ask. Under 250 words. Same 2-3 KPIs every month; never swap in vanity metrics when the real ones dip. One honest setback when real buys credibility that pure good news never does. Exactly one specific ask per update. Consistency itself signals operational discipline."
+      },
+      "momentum": {
+        "title": "Momentum engineering (honest only)",
+        "when": "live_thread",
+        "text": "Batch first meetings into a tight 2-3 week window so genuine parallelism exists. Use process language that is true: \"we're mid-process with several funds\", \"targeting a first close around [date]\". Never invent competing offers or name funds without permission; one reference call unravels it and the ecosystem is small. When a real term sheet lands, inform every engaged fund the same day with a real decision date; this is the one moment sugar-coating disappears from investor communication. Scarcity without arrogance: \"we'd love to have you in this round\" beats \"we're oversubscribed\" unless literally true."
+      },
+      "associate": {
+        "title": "Associate dynamics",
+        "when": "associate",
+        "text": "Associates screen deal flow; partners have conviction and check-writing power. An associate meeting is the front door of the process, not an insult: they write the memo the partnership reads, and they kill or champion in rooms the founder never sees. Give them ammunition: crisp numbers, a clean narrative, memo-ready answers. Closing ask: \"What would be most useful for you to bring this to the partnership?\" If weeks pass with no partner exposure, ask plainly: \"What would it take to get a read from a partner on this?\""
+      },
+      "second_meeting": {
+        "title": "Second-meeting reads",
+        "when": "second_meeting",
+        "text": "Who joins is the message: another partner means escalating conviction; the same person alone means still screening; an associate replacing the partner means de-escalation (address it with the momentum tools above). Repeated first-meeting questions mean the memo did not land; re-anchor early: \"Last time we covered X and Y - most useful today is probably Z?\" Second meetings are where real objections surface: deploy the extraction bank question \"What would make this a clear no for the partnership?\", then five seconds of silence."
+      }
+    }
+  },
+  "kol": {
+    "premise": "An American will never volunteer criticism; \"It's great!\" is a social default, not a professional assessment.",
+    "opening": "I'd rather hear the hard stuff now than after a year of building. You won't hurt my feelings.",
+    "extraction_bank": [
+      "What's the weakest part of what I just showed you?",
+      "If you had to bet on why this fails, what would you bet on?",
+      "What would make this a clear no for you?",
+      "Who should NOT buy this product?",
+      "On a scale of 1 to 10, how useful is this to your team today? What would make it a 9?",
+      "What am I not asking that I should be asking?"
+    ],
+    "mom_test": {
+      "title": "Behavior over opinions (The Mom Test, Rob Fitzpatrick)",
+      "ask": [
+        "Walk me through the last time you dealt with this problem.",
+        "What did it cost you? What did you try? Why didn't that stick?"
+      ],
+      "never": "Never ask \"Do you like it?\" or \"Would you use it?\": hypotheticals produce politeness, not truth."
+    },
+    "techniques": [
+      "Five seconds of silence after a hard question. Americans will fill it.",
+      "Never defend. The only response to criticism: \"That's really helpful. Say more?\"",
+      "Take notes in real time: \"Do you mind if I take notes?\"",
+      "Calibrate: subtract two enthusiasm levels from every compliment received."
+    ]
+  },
+  "small_talk": {
+    "why": "Small talk IS the meeting: the first 3-5 minutes decide whether you are pleasant to work with.",
+    "safe": ["sports", "food", "travel", "weather", "their city", "career"],
+    "forbidden": ["politics", "religion", "salary", "age", "family status", "the situation in Israel, unless they asked first"],
+    "safe_he": ["ספורט", "אוכל", "נסיעות", "מזג אוויר", "העיר שלהם", "קריירה"],
+    "forbidden_he": ["פוליטיקה", "דת", "שכר", "גיל", "מצב משפחתי", "הסיטואציה בישראל, אלא אם הם שאלו ראשונים"],
+    "bridge": {
+      "rule": {"en": "Prepare two or three bridge topics ahead: their city, sports, trips, food, the weekend.", "he": "להכין שניים-שלושה נושאי גשר מראש: העיר שלהם, ספורט, טיולים, אוכל, סוף השבוע."},
+      "line": "First time in Austin - any recommendations?"
+    },
+    "how_are_you": {
+      "rule": {"en": "\"How are you?\" is a verbal handshake, not a question. Do not answer for real.", "he": "\"How are you?\" היא לחיצת יד מילולית, לא שאלה. לא עונים באמת."},
+      "answer": "Great, thanks! How about you?"
+    }
+  },
+  "conduct": {
+    "_about": "Module 5 of the guide: how the meeting itself runs. The frame line is a template; said is the guide's own wording for a 30-minute meeting.",
+    "frame": {
+      "said": "I know we have 30 minutes - I'd love to spend most of it understanding your workflow.",
+      "template": "I know we have {minutes} minutes - I'd love to spend most of it understanding your workflow.",
+      "why": {"en": "Open with a frame that shows you guard their time.", "he": "פותחים במסגרת שממצבת אתכם כמקצוענים ששומרים על הזמן של הצד השני."}
+    },
+    "hard_stop": {
+      "said": "I want to be respectful of your time - happy to continue over email or book a follow-up.",
+      "rule": {"en": "A 30-minute meeting ends at minute 28. Running over reads as disrespect.", "he": "פגישה של 30 דקות נגמרת בדקה ה-28. חריגה מהזמן = חוסר כבוד."}
+    },
+    "turn_taking": {"en": "Do not interrupt. Let the sentence end, count half a second, then speak. Write your point down and wait your turn. On Zoom it matters twice as much: no body language will save you.", "he": "לא מתפרצים. נותנים למשפט להיגמר, סופרים חצי שנייה, ואז מדברים. רושמים את ההערה בצד ומחכים לתור. בזום זה קריטי כפליים: אין שפת גוף שתציל אתכם."},
+    "enthusiasm": {"en": "Israeli dryness reads as lack of interest. When something is good, say it is great, out loud. Listening: take two levels off. Speaking: add two.", "he": "היובש הישראלי נקרא כחוסר עניין. כשמשהו טוב, אומרים שהוא great בקול וברור. כשמקשיבים מורידים שתי דרגות, כשמדברים מעלים שתיים."},
+    "never": {
+      "en": ["Trashing a competitor: it reads as insecurity", "Sarcasm and Israeli cynicism: they do not survive translation (self-deprecating humor does)", "Bluntly correcting the other side in front of their team"],
+      "he": ["לקטול מתחרים: נקרא כחוסר ביטחון", "סרקזם וציניות ישראלית: לא שורדים תרגום (הומור עצמי דווקא כן)", "תיקון בוטה של הצד השני מול הצוות שלו"]
+    },
+    "origin": "playbook"
+  },
+  "politics": {
+    "_about": "Module 6 of the guide. The lines an American says are decoder rows (table: politics). This block holds the rules, the neutral lines and what a simulation injects.",
+    "premise": {"en": "In US business, politics is a mapped minefield. A mistake will not sound like an argument. It looks like polite quiet, and a follow-up meeting that never gets booked. A foreign founder has no vote, and people have a long memory of him.", "he": "בעסקים בארה\"ב פוליטיקה היא שדה מוקשים ממופה. טעות לא תישמע כוויכוח. היא תיראה כשקט מנומס, ופגישת המשך שפשוט לא נקבעת. ליזם זר אין זכות הצבעה, אבל יש עליו זיכרון ארוך."},
+    "iron_rule": {"en": "Do not initiate, do not join, do not correct the facts, even when you are right. Quiet agreement (\"totally\") is a position. Personal empathy yes (\"Sounds stressful\"), a party position no. Always.", "he": "לא יוזמים, לא מצטרפים, לא מתקנים עובדתית, גם כשאתם צודקים. הסכמה שקטה (\"totally\") היא עמדה. אמפתיה אישית כן (\"Sounds stressful\"), עמדה מפלגתית לא. תמיד."},
+    "move": {"en": "Acknowledge without joining: recognize the feeling, not the position, and bridge to business at once.", "he": "Acknowledge Without Joining: מכירים ברגש, לא בעמדה, ומגשרים מיד לביזנס."},
+    "acknowledge": ["Sounds like a lot going on over here.", "It's definitely an interesting time."],
+    "bridge": "How is it playing out for your industry, by the way? Is it part of what's driving this project?",
+    "short_form": "Interesting times",
+    "why_not_agree": {"en": "You do not know who else is in the room or on the thread, or how your champion votes. Warm agreement makes you a side, and the story about you travels ahead of you.", "he": "אתם לא יודעים מי עוד בחדר או בת'רד, ומה מצביע האלוף שלכם. הסכמה נלהבת הופכת אתכם לצד, והסיפור עליכם עובר לפניכם."},
+    "election_season": {"en": "September to November of an election year, and to a lesser degree every two years: all small talk is mined. No \"big week\" mentions, no candidate names, no jokes, even if they started. A light laugh at their joke is fine. Adding one of your own is not.", "he": "ספטמבר עד נובמבר של שנת בחירות, וכל שנתיים במידה פחותה: הסמול-טוק כולו ממוקש. בלי אזכורי \"השבוע הגדול\", בלי שמות מועמדים, בלי בדיחות, גם אם הם פתחו. צחוק קל כשמישהו אחר מתבדח: בסדר. להוסיף בדיחה משלכם: לא."},
+    "asides": {"sales": "administration_complaint", "investor": "election_take", "kol": "administration_complaint"},
+    "joining": {
+      "_about": "What joining sounds like in the reply that follows a political line. Extension: the guide names quiet agreement (totally) and warm agreement; the other markers are ours.",
+      "patterns": ["totally", "exactly", "i agree", "so true", "you're right", "you are right", "couldn't agree more", "tell me about it", "same in israel", "worse in israel", "i think the president|government|administration", "the president|government|administration is|should"],
+      "message": {"en": "You joined a political remark: \"{hits}\". Agreement is a position. Acknowledge the feeling and bridge: \"Sounds like a real headache for the industry. Is that part of what's driving this project?\"", "he": "הצטרפת לאמירה פוליטית: \"{hits}\". הסכמה היא עמדה. מכירים ברגש ומגשרים: \"Sounds like a real headache for the industry. Is that part of what's driving this project?\""},
+      "origin": "extension"
+    },
+    "labels": {
+      "raised": {"en": "Politics came up", "he": "פוליטיקה עלתה"},
+      "bridged": {"en": "you bridged back to business", "he": "גישרת חזרה לביזנס"},
+      "stayed_out": {"en": "you stayed out of it", "he": "נשארת בחוץ"},
+      "joined": {"en": "you joined", "he": "הצטרפת"}
+    },
+    "origin": "playbook"
+  },
+  "rapid_fire": {
+    "_about": "Module 8 of the guide: the short rules around a meeting. The geography rule lives in regions.",
+    "rules": [
+      {"id": "punctuality", "en": "Be in the Zoom two or three minutes early. There is no academic quarter-hour. Five minutes late with no warning is real damage.", "he": "נכנסים לזום שתיים-שלוש דקות לפני. \"רבע שעה אקדמית\" לא קיימת. איחור של חמש דקות בלי הודעה מראש הוא נזק אמיתי."},
+      {"id": "schedule_ahead", "en": "One to two weeks ahead is normal. Send a scheduling link or three slots in their time zone. Do not offer tomorrow.", "he": "שבוע-שבועיים קדימה זה הנורמלי. שולחים קישור תיאום או שלושה סלוטים בשעון שלהם. לא מציעים \"מחר\"."},
+      {"id": "legal_formality", "en": "NDA, MSA, procurement and security review are real stages with timelines of their own. \"It will be fine\" moves nothing there.", "he": "NDA, MSA, Procurement ו-Security Review הם שלבים אמיתיים עם לוחות זמנים משלהם. \"יהיה בסדר\" לא מזיז שם כלום."},
+      {"id": "hierarchy", "en": "Go over someone's head only carefully and in the open. Multi-thread, and never behind your champion's back.", "he": "עוקפים ראש של מישהו בזהירות ובשקיפות בלבד. עושים Multi-Threading, אבל לעולם לא מאחורי הגב של האלוף שלכם."}
+    ],
+    "origin": "playbook"
+  },
+  "regions": {
+    "new_york": {
+      "label": {"en": "New York", "he": "ניו יורק"},
+      "modifier": {"en": "Faster, relatively direct, tighter meetings. Shorten small talk slightly.", "he": "מהיר יותר, ישיר יחסית, פגישות הדוקות. לקצר מעט את הסמול-טוק."},
+      "aliases": ["ny", "nyc", "new york", "manhattan", "brooklyn"]
+    },
+    "west_coast": {
+      "label": {"en": "West Coast", "he": "החוף המערבי"},
+      "modifier": {"en": "Maximum positivity, slowest cycles, peak sugar-coating. Calibrate compliments down hard.", "he": "מקסימום חיוביות, המחזורים האיטיים ביותר, שיא ה-sugar-coating. לכייל מחמאות חזק כלפי מטה."},
+      "aliases": ["west coast", "california", "sf", "san francisco", "bay area", "silicon valley", "palo alto", "la", "los angeles", "seattle", "san diego", "portland"]
+    },
+    "midwest_south": {
+      "label": {"en": "Midwest and the South", "he": "המידווסט והדרום"},
+      "modifier": {"en": "Extra polite, relationship-before-business. Extend small talk; do not rush the ask.", "he": "מנומס במיוחד, קודם יחסים ואחר כך עסקים. להאריך את הסמול-טוק, לא למהר לבקשה."},
+      "aliases": ["midwest", "south", "chicago", "texas", "austin", "dallas", "houston", "atlanta", "nashville", "minneapolis", "st louis", "kansas city", "ohio", "columbus", "detroit", "charlotte", "miami"]
+    },
+    "other": {
+      "label": {"en": "Elsewhere in the US", "he": "מקום אחר בארה\"ב"},
+      "modifier": {"en": "No regional modifier applied. Default to warm-professional and let them set the pace of small talk.", "he": "לא הוחל מודיפיקטור אזורי. ברירת מחדל: warm-professional, ולתת להם לקבוע את קצב הסמול-טוק."},
+      "aliases": []
+    }
+  },
+  "guards": {
+    "bant_on_investor": {
+      "audience": ["investor"],
+      "level": "error",
+      "patterns": [
+        "your budget",
+        "what budget",
+        "do you have ?a|the|any budget",
+        "is there ?a|any budget",
+        "budget for this|us|it",
+        "decision maker|makers",
+        "who signs",
+        "who is|are the signer|signers",
+        "who approves",
+        "who has ?the ?final authority|say",
+        "do you have ?the ?final authority",
+        "are you the one who decides",
+        "can you sign"
+      ],
+      "message": {"en": "BANT on an investor: {hits}. This reads as tone-deaf and burns the meeting. Ask a process question instead: \"What does your process look like from here?\"", "he": "BANT על משקיע: {hits}. נשמע מנותק ושורף את הפגישה. לשאול שאלת תהליך במקום: \"What does your process look like from here?\""},
+      "origin": "playbook",
+      "patterns_origin": "extension"
+    },
+    "forbidden_topics": {
+      "audience": ["sales", "investor", "kol"],
+      "level": "error",
+      "patterns": [
+        "who did you vote",
+        "vote|voted|voting for",
+        "democrat|democrats|republican|republicans",
+        "your politics",
+        "what do you think about|of the election|president|government",
+        "are you religious",
+        "what religion",
+        "do you go to church|synagogue|mosque",
+        "how much do you make|earn",
+        "what is your salary",
+        "what's your salary",
+        "your salary",
+        "how old are you",
+        "what is your age",
+        "what's your age",
+        "are you married",
+        "do you have kids|children",
+        "your wife|husband"
+      ],
+      "message": {"en": "Forbidden small-talk topic: {hits}. Safe topics: sports, food, travel, weather, their city.", "he": "נושא סמול-טוק אסור: {hits}. נושאים בטוחים: ספורט, אוכל, נסיעות, מזג אוויר, העיר שלהם."},
+      "origin": "playbook",
+      "patterns_origin": "extension"
+    },
+    "competitor_trashing": {
+      "audience": ["sales", "investor", "kol"],
+      "level": "warn",
+      "patterns": [
+        "they|competitor|competitors|it suck|sucks",
+        "they|their|competitor|competitors ... terrible|garbage|crap|useless|joke|dinosaur|dinosaurs|awful|horrible",
+        "worse than us",
+        "they have no idea",
+        "nobody uses them"
+      ],
+      "message": {"en": "Possible competitor trashing: {hits}. Say: \"They're strong on X for enterprise; we focus on Y for mid-market.\"", "he": "ייתכן שמשמיצים מתחרה: {hits}. לומר: \"They're strong on X for enterprise; we focus on Y for mid-market.\""},
+      "origin": "playbook",
+      "patterns_origin": "extension"
+    },
+    "hypotheticals": {
+      "audience": ["kol"],
+      "level": "error",
+      "patterns": [
+        "do you like it|this|the",
+        "would you use it|this",
+        "would you buy it|this",
+        "would you pay for it|this",
+        "what do you think of|about it|this"
+      ],
+      "message": {"en": "Hypothetical question: {hits}. Hypotheticals produce politeness, not truth. Ask about behavior: \"Walk me through the last time you dealt with this problem.\"", "he": "שאלה היפותטית: {hits}. היפותטיות מייצרות נימוס, לא אמת. לשאול על התנהגות: \"Walk me through the last time you dealt with this problem.\""},
+      "origin": "playbook",
+      "patterns_origin": "extension"
+    },
+    "defending": {
+      "audience": ["kol", "investor"],
+      "level": "warn",
+      "patterns": [
+        "you don't understand",
+        "you do not understand",
+        "that's not true|right|correct|accurate",
+        "that is not true|right|correct|accurate",
+        "you're wrong",
+        "you are wrong",
+        "no but",
+        "yes but",
+        "i disagree",
+        "i don't agree",
+        "let me explain why you"
+      ],
+      "message": {"en": "Defending against feedback: {hits}. The only response to criticism: \"That's really helpful. Say more?\"", "he": "התגוננות מול פידבק: {hits}. התגובה היחידה לביקורת: \"That's really helpful. Say more?\""},
+      "origin": "playbook",
+      "patterns_origin": "extension"
+    },
+    "false_scarcity": {
+      "audience": ["investor"],
+      "level": "warn",
+      "patterns": [
+        "oversubscribed",
+        "everyone wants in",
+        "term sheet|sheets from",
+        "about to sign with"
+      ],
+      "message": {"en": "Scarcity claim: {hits}. Use it only if literally true. \"We'd love to have you in this round\" beats \"we're oversubscribed\"; one reference call unravels an invented offer.", "he": "טענת מחסור: {hits}. רק אם זה נכון מילולית. \"We'd love to have you in this round\" עדיף על \"we're oversubscribed\". שיחת רפרנס אחת מפרקת הצעה מומצאת."},
+      "origin": "playbook",
+      "patterns_origin": "extension"
+    }
+  },
+  "israelisms": {
+    "_about": "Founder wordings that land as blunt in American business English, with the American phrasing beside each. Used by `debrief` and `guard`.",
+    "items": [
+      {"id": "send_me", "patterns": ["send me"], "start_only": true, "american": "Would you be open to sharing...?", "origin": "playbook"},
+      {"id": "give_me", "patterns": ["give me"], "start_only": true, "american": "Would it be possible to get...?", "origin": "playbook"},
+      {"id": "tell_me", "patterns": ["tell me"], "start_only": true, "except": ["tell me more"], "american": "Could you walk me through...?", "origin": "playbook"},
+      {"id": "call_me", "patterns": ["call me"], "start_only": true, "american": "Would Tuesday or Thursday work for a quick call?", "origin": "playbook"},
+      {"id": "availability", "patterns": ["let me know your availability", "send me your availability"], "american": "Would Tuesday or Thursday work for a 20-minute call?", "origin": "playbook"},
+      {"id": "i_need_you", "patterns": ["i need you to"], "american": "It would really help if...", "origin": "playbook"},
+      {"id": "asap", "patterns": ["asap", "as soon as possible", "urgent", "immediately"], "american": "Give the reason and a date: \"We're scoping pilots this month - would Thursday work?\"", "origin": "playbook"},
+      {"id": "kindly", "patterns": ["kindly", "please advise", "revert back", "do the needful"], "american": "Plain American English: \"Could you let me know...?\"", "origin": "playbook"},
+      {"id": "just_checking_in", "patterns": ["just checking in", "checking in"], "american": "Lead with a fresh reason: an article, a metric, a customer, the feature they asked about", "origin": "playbook"},
+      {"id": "i_want", "patterns": ["i want you to", "i want a|an|the|your|it"], "american": "I'd love to...", "origin": "extension"},
+      {"id": "you_need_to", "patterns": ["re:(?<!would )(?<!do )(?<!did )(?<!will )(?<!what )(?<!if )\\byou need to\\b", "you must", "you have to"], "american": "One option could be...", "origin": "extension"},
+      {"id": "you_are_wrong", "patterns": ["you're wrong", "you are wrong", "that's not true|right|correct", "that is not true|right|correct"], "american": "That's a fair point. The way we see it...", "origin": "extension"},
+      {"id": "listen", "patterns": ["listen", "look"], "start_only": true, "american": "Drop the opener and make the point.", "origin": "extension"},
+      {"id": "as_i_said", "patterns": ["as i said", "like i said", "as i told you", "like i told you", "i already said"], "american": "To recap...", "origin": "extension"},
+      {"id": "whats_the_problem", "patterns": ["what's the problem", "what is the problem"], "american": "What's holding this back on your side?", "origin": "extension"},
+      {"id": "yes_or_no", "patterns": ["yes or no", "just tell me"], "american": "Should I close this out on my end, or would it make sense to reconnect in Q2?", "origin": "extension"},
+      {"id": "its_simple", "patterns": ["it's very simple", "it is very simple", "it's simple", "it is simple", "obviously"], "american": "The short version is...", "origin": "extension"},
+      {"id": "believe_me", "patterns": ["believe me", "trust me"], "american": "Replace with a proof point: a number, a customer, a result.", "origin": "extension"},
+      {"id": "why_not", "patterns": ["why not"], "american": "Help me understand what's behind that?", "origin": "extension"},
+      {"id": "you_dont_understand", "patterns": ["you don't understand", "you do not understand"], "american": "Let me try that a different way.", "origin": "extension"},
+      {"id": "wait", "patterns": ["wait", "hold on", "one second", "let me finish"], "start_only": true, "american": "Do not interrupt. Write the point down and wait.", "origin": "extension"}
+    ]
+  },
+  "characters": {
+    "michael": {
+      "name": "Michael",
+      "role": "VP Operations, mid-market US company",
+      "use": "sales simulations",
+      "sheet": "Polite to a fault. Opens with small talk about weekend plans or local sports. Says \"This is really interesting!\" and \"Love it\" easily. Never says no directly; deflects with \"Send me a deck\", \"Let me loop in my colleague\" (no name, no date), and \"We don't have budget this quarter.\" If the founder pushes rudely, goes quiet and wraps up early. Rewards founders who propose a concrete small next step with a date, and who give him explicit permission to say no.",
+      "opener": "Small talk about weekend plans or local sports.",
+      "sugar": ["really_interesting", "keep_in_touch"],
+      "deferral": ["send_deck", "loop_in_unnamed", "no_budget"],
+      "rewards": ["A concrete small next step with a date", "Explicit permission to say no"],
+      "punishes": "If the founder pushes rudely, he goes quiet and wraps up early."
+    },
+    "jennifer": {
+      "name": "Jennifer",
+      "role": "Partner at a US seed fund",
+      "use": "investor simulations",
+      "sheet": "Warm, fast, fluent in investor-speak. Uses \"It's a bit early for us\", \"Come back with more traction\", \"Let me discuss with my partners\", and \"Who else are you talking to?\". Probes traction claims; if the founder presents polite enthusiasm as pipeline, she asks for a reference call and the simulation should let that collapse. Rewards crisp narrative, honest numbers, coachability, and the strong-yes question.",
+      "opener": "Warm and fast: one line of small talk, then \"So, tell me what you're building.\"",
+      "sugar": ["too_early", "more_traction"],
+      "deferral": ["discuss_partners", "dont_lead"],
+      "probes": ["who_else"],
+      "rewards": ["A crisp narrative", "Honest numbers", "Coachability", "The strong-yes question"],
+      "punishes": "If the founder presents polite enthusiasm as pipeline, she asks for a reference call. Let that collapse."
+    },
+    "alan": {
+      "name": "Dr. Alan Park",
+      "role": "Domain expert / KOL",
+      "use": "extraction simulations",
+      "sheet": "Friendly, encouraging, says \"It's great!\" by default. Only reveals real objections if the founder uses extraction-bank questions and then holds five seconds of silence. If the founder defends or argues, he retreats to compliments permanently.",
+      "opener": "Friendly and encouraging from the first line.",
+      "sugar": ["its_great"],
+      "deferral": ["send_deck", "talk_to_someone"],
+      "rewards": ["An extraction-bank question followed by five seconds of silence"],
+      "punishes": "If the founder defends or argues, he retreats to compliments permanently."
+    }
+  },
+  "extra_lines": {
+    "its_great": {
+      "said": "It's great!",
+      "patterns": ["it's|that's|this|looks|sounds great", "this is great", "it's|that's amazing|awesome", "really great", "great work|stuff|job"],
+      "means": {"en": "A social default, not a professional assessment", "he": "ברירת מחדל חברתית, לא הערכה מקצועית"},
+      "move": {"en": "Use an extraction-bank question, then hold five seconds of silence", "he": "לשאול שאלה מבנק החילוץ, ואז להחזיק חמש שניות שתיקה"},
+      "counter": ["weakest part", "bet on why this fails", "clear no", "should not buy", "scale of 1 to 10", "what am i not asking", "walk me through the last time", "what did it cost you", "hard stuff"]
+    }
+  },
+  "simulation_rules": {
+    "en": [
+      "Play the American side in English only. Stay in character.",
+      "Never give a direct no and never volunteer criticism. Stay realistically indirect until the founder extracts truth with proper technique, even if the exchange feels stuck; that IS the lesson.",
+      "Use each injected line once, verbatim, at a natural moment.",
+      "Keep the coaching voice out of the roleplay: coaching happens before and after, never inside it.",
+      "If the founder answers in Hebrew, pause, remind them the American side runs in English only, and restart that exchange.",
+      "The founder can stop at any time by writing STOP."
+    ],
+    "start_exception": {
+      "en": "When the founder says to start the simulation now, do not hold it hostage to intake: one line of setup (rules + how to stop), at most one quick question if a critical fact is missing, then open in character with stated assumptions and refine mid-simulation.",
+      "he": "כשהיזם אומר להתחיל את הסימולציה עכשיו, לא מחזיקים אותה כבת ערובה של אינטייק: שורת סטאפ אחת (חוקים ואיך עוצרים), לכל היותר שאלה מהירה אחת אם חסרה עובדה קריטית, ואז נכנסים לדמות עם הנחות מוצהרות ומחדדים תוך כדי."
+    },
+    "setup_line": {
+      "en": "Simulation: I play {name}, {role}. English only. Write STOP to end and get your debrief.",
+      "he": "סימולציה: אני משחק את {name}, {role}. רק אנגלית. כותבים STOP כדי לסיים ולקבל דיבריף."
+    }
+  },
+  "debrief": {
+    "rubric": [
+      "Signals missed: which sugar-coated lines went undecoded.",
+      "Calibration score, 1-10: did the founder convert vagueness into a concrete step or a clean no.",
+      "Whether a dated next step was landed.",
+      "The founder's Israeli-isms quoted verbatim, with the American phrasing beside each.",
+      "One drill to repeat before the real meeting."
+    ],
+    "weights": {
+      "_origin": "extension",
+      "decoded": 3.0,
+      "outcome": 3.0,
+      "clarity_tool": 1.0,
+      "discipline": 2.0,
+      "register": 1.0
+    },
+    "dimension_labels": {
+      "decoded": {"en": "Decoded the sugar-coated lines", "he": "פענוח השורות העטופות בסוכר"},
+      "outcome": {"en": "Converted vagueness into a dated step or a clean no", "he": "המרת עמימות לצעד עם תאריך או ללא נקי"},
+      "clarity_tool": {"en": "Used a clarity tool (permission to say no, or the strong-yes question)", "he": "שימוש בכלי בהירות (רשות להגיד לא, או שאלת ה-strong yes)"},
+      "discipline": {"en": "Discipline: no BANT on investors, no forbidden topics, no defending, English only", "he": "משמעת: בלי BANT על משקיע, בלי נושאים אסורים, בלי התגוננות, רק אנגלית"},
+      "register": {"en": "American register: no Israeli-isms", "he": "רגיסטר אמריקאי: בלי ישראליזמים"}
+    },
+    "drills": {
+      "decoded": {"en": "Read the decoder table aloud once, then answer each injected line with the table's move, out loud, twice.", "he": "לקרוא פעם אחת בקול את טבלת הפענוח, ואז לענות על כל שורה שהוזרקה עם המהלך מהטבלה, בקול, פעמיים."},
+      "outcome": {"en": "End three practice exchanges with \"Would Tuesday or Thursday work for a 20-minute follow-up?\" until it comes out without thinking.", "he": "לסיים שלושה חילופי תרגול ב-\"Would Tuesday or Thursday work for a 20-minute follow-up?\" עד שזה יוצא בלי לחשוב."},
+      "clarity_tool": {"en": "Deliver the permission-to-say-no line twice, out loud.", "he": "לומר את שורת מתן הרשות להגיד לא פעמיים, בקול."},
+      "discipline": {"en": "Write down the one line you must not say in this meeting, and the replacement question, and read both before you dial in.", "he": "לכתוב את המשפט האחד שאסור להגיד בפגישה הזו ואת השאלה שמחליפה אותו, ולקרוא את שניהם לפני שנכנסים."},
+      "register": {"en": "Rewrite each Israeli-ism below with its American phrasing and say the new version aloud.", "he": "לנסח מחדש כל ישראליזם ברשימה עם הגרסה האמריקאית שלו, ולומר את הגרסה החדשה בקול."}
+    },
+    "labels": {
+      "score": {"en": "Calibration score", "he": "ציון כיול"},
+      "missed": {"en": "Signals missed", "he": "סיגנלים שפוספסו"},
+      "caught": {"en": "Signals decoded", "he": "סיגנלים שפוענחו"},
+      "dated": {"en": "Dated next step", "he": "צעד הבא עם תאריך"},
+      "israelisms": {"en": "Israeli-isms, with the American phrasing", "he": "ישראליזמים, עם הניסוח האמריקאי"},
+      "drill": {"en": "One drill before the real meeting", "he": "תרגול אחד לפני הפגישה האמיתית"},
+      "hebrew_slips": {"en": "Slipped into Hebrew", "he": "גלישות לעברית"},
+      "none": {"en": "none", "he": "אין"},
+      "yes": {"en": "yes", "he": "כן"},
+      "no": {"en": "no", "he": "לא"}
+    }
+  },
+  "prep_intake": {
+    "max_questions_per_turn": 3,
+    "questions": [
+      {"id": "type", "field": "type", "required": true, "voice_ok": false, "en": "Who is this meeting with: a customer or partner, an investor, or a domain expert?", "he": "עם מי הפגישה: לקוח או שותף, משקיע, או מומחה תוכן?"},
+      {"id": "goal_currency", "field": "goal_currency", "required": true, "voice_ok": false, "en": "What do you want to walk out with: calendar time, data access, an intro, a signature, or money?", "he": "עם מה אתה רוצה לצאת מהפגישה: זמן ביומן, גישה לדאטה, אינטרו, חתימה או כסף?"},
+      {"id": "the_ask", "field": "the_ask", "required": true, "voice_ok": false, "en": "What is the one ask you will make before the meeting ends?", "he": "מה הבקשה האחת שתבקש לפני שהפגישה נגמרת?"},
+      {"id": "where", "field": "city", "required": false, "voice_ok": false, "en": "Where are they based? It sets the timezone and the small-talk style.", "he": "איפה הם יושבים? זה קובע אזור זמן וסגנון סמול-טוק."},
+      {"id": "background", "field": "background", "required": false, "voice_ok": true, "en": "Give me the relationship history and what they already know about you.", "he": "ספר לי את היסטוריית הקשר ומה הם כבר יודעים עליך."}
+    ]
+  }
+}

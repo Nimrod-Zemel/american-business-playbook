@@ -1,0 +1,599 @@
+{
+  "_about": "Decoder tables: what Americans say, what it probably means, and the founder's move. Source of truth for `playbook.py decode`, for simulation scenes, and for the generated references/decoder-tables.md. Patterns use the phrase syntax documented in CONTRIBUTING.md. origin=playbook means the row comes from the Dan Launchpad American Playbook guide; origin=extension means it was added so the code can recognize more wordings and should be reviewed by the guide's author.",
+  "premise": "Americans give positive feedback loudly and negative feedback quietly or not at all. Israelis do the opposite. An American almost never says \"no\" to your face and almost never explains why. Rejection arrives sugar-coated or as ghosting. This is not hypocrisy; it is a \"never burn bridges\" norm. The vague no is their way of being respectful. The founder's job is to translate.",
+  "iron_rule": {
+    "en": "Words are free. Commitment is measured only in currencies that cost something: calendar time, data access, an intro, a signature, or money. Everything else is atmosphere.",
+    "he": "מילים הן חינם. מחויבות נמדדת רק במטבעות שעולים משהו: זמן ביומן, גישה לדאטה, אינטרו, חתימה או כסף. כל השאר אווירה."
+  },
+  "currencies": [
+    {"id": "calendar_time", "en": "calendar time", "he": "זמן ביומן"},
+    {"id": "data_access", "en": "data access", "he": "גישה לדאטה"},
+    {"id": "intro", "en": "an intro", "he": "אינטרו"},
+    {"id": "signature", "en": "a signature", "he": "חתימה"},
+    {"id": "money", "en": "money", "he": "כסף"}
+  ],
+  "rows": [
+    {
+      "id": "really_interesting",
+      "table": "sugar_coated_no",
+      "contexts": ["sales", "investor", "kol"],
+      "said": "This is really interesting!",
+      "patterns": [
+        "really|very|super|so|quite|pretty|incredibly|genuinely interesting",
+        "this|that|it is ?really|very|super|so|quite|pretty interesting",
+        "it's|that's ?really|very|super|so|quite|pretty interesting",
+        "sounds|looks|seems ?really|very|super|so|quite|pretty interesting",
+        "interesting stuff|idea|approach|concept|space|work|product"
+      ],
+      "examples": ["This is really interesting!", "That's super interesting", "Sounds interesting, thanks for sharing"],
+      "means": {"en": "Polite curiosity. Interest is not intent", "he": "סקרנות מנומסת. עניין אינו כוונה"},
+      "move": {"en": "Do not log as a warm lead. Propose a concrete step with a date", "he": "לא לרשום כליד חם. להציע צעד קונקרטי עם תאריך"},
+      "lean": "yellow",
+      "soft_no": false,
+      "counter": ["dated_proposal"],
+      "origin": "playbook"
+    },
+    {
+      "id": "keep_in_touch",
+      "table": "sugar_coated_no",
+      "contexts": ["sales", "investor", "kol"],
+      "said": "Love it! Let's keep in touch.",
+      "patterns": [
+        "keep|stay in touch",
+        "stay connected",
+        "we'll be in touch",
+        "we will be in touch",
+        "keep the conversation going"
+      ],
+      "examples": ["Love it! Let's keep in touch.", "We'll be in touch", "Let's stay connected"],
+      "means": {"en": "A soft no. No step means no deal", "he": "לא רך. בלי צעד אין עסקה"},
+      "move": {"en": "Ask: \"What would need to change for this to become relevant?\"", "he": "לשאול: \"What would need to change for this to become relevant?\""},
+      "lean": "yellow",
+      "soft_no": true,
+      "counter": ["what would need to change", "become relevant", "permission_to_say_no", "dated_proposal"],
+      "origin": "playbook"
+    },
+    {
+      "id": "send_deck",
+      "table": "sugar_coated_no",
+      "contexts": ["sales", "investor", "kol"],
+      "said": "Send me a deck and I'll take a look.",
+      "patterns": [
+        "send|shoot|email|forward|drop me|us|over ... deck|presentation|slides|materials|material|info|information|something|details|overview|pdf",
+        "send|share ... deck|presentation|slides",
+        "send it|that|them over",
+        "i'll|we'll take a look",
+        "i|we will take a look"
+      ],
+      "examples": ["Send me a deck and I'll take a look.", "Shoot me over some materials", "Just send me something"],
+      "means": {"en": "Usually a polite exit; sometimes real interest", "he": "בדרך כלל יציאה מנומסת, לפעמים עניין אמיתי"},
+      "move": {"en": "Send a one-pager (not a 30-slide deck) plus a calendar slot offer in the same email. The response is the answer", "he": "לשלוח one-pager (לא דק של 30 שקפים) והצעת סלוט ביומן באותו מייל. התגובה היא התשובה"},
+      "lean": "yellow",
+      "soft_no": false,
+      "counter": ["one pager", "dated_proposal"],
+      "origin": "playbook"
+    },
+    {
+      "id": "talk_to_someone",
+      "table": "sugar_coated_no",
+      "contexts": ["sales", "investor", "kol"],
+      "said": "You should definitely talk to [someone else].",
+      "scene_line": "You should definitely talk to our innovation team.",
+      "patterns": [
+        "you should ?definitely|really|totally|probably|also talk|speak|chat|connect|meet to|with",
+        "you should ?definitely|really|totally|probably reach out to",
+        "you might want to talk|speak|chat|connect to|with",
+        "have you talked|spoken|chatted|connected to|with",
+        "not the right person",
+        "the right|best|better person ... is",
+        "the right|best|better person ... would be"
+      ],
+      "examples": ["You should definitely talk to our innovation team.", "I'm not the right person for this"],
+      "means": {"en": "A real referral, or passing a hot potato", "he": "הפניה אמיתית, או העברת תפוח אדמה לוהט"},
+      "move": {"en": "Ask: \"Would you be open to making a quick intro?\" No intro means it was a no", "he": "לשאול: \"Would you be open to making a quick intro?\" בלי אינטרו, זה היה לא"},
+      "lean": "yellow",
+      "soft_no": false,
+      "counter": ["quick intro", "make|making an|the intro|introduction", "introduce me", "intro to", "connect me"],
+      "origin": "playbook"
+    },
+    {
+      "id": "no_budget",
+      "table": "sugar_coated_no",
+      "contexts": ["sales", "kol"],
+      "said": "We don't have budget this quarter.",
+      "patterns": [
+        "no|without budget",
+        "don't|doesn't|didn't have ?the|any|a budget",
+        "do not have ?the|any|a budget",
+        "budget is|isn't ?very|really|pretty tight|frozen|locked|spent|allocated|gone|there",
+        "not in the|our|this budget",
+        "budget freeze|freezes|cut|cuts",
+        "budgets are ?already set|locked|frozen|tight",
+        "out of budget"
+      ],
+      "examples": ["We don't have budget this quarter.", "Budget is frozen until Q2"],
+      "means": {"en": "Sometimes true, sometimes a wrapper", "he": "לפעמים נכון, לפעמים עטיפה"},
+      "move": {"en": "Ask: \"If budget weren't an issue, would this be a priority?\"", "he": "לשאול: \"If budget weren't an issue, would this be a priority?\""},
+      "lean": "yellow",
+      "soft_no": false,
+      "counter": ["if budget weren't|wasn't an issue", "if budget were|was not an issue", "would this be a priority"],
+      "origin": "playbook"
+    },
+    {
+      "id": "keep_posted",
+      "table": "sugar_coated_no",
+      "contexts": ["sales", "investor", "kol"],
+      "shadowed_by": ["too_early"],
+      "said": "It's a bit early for us. Keep us posted!",
+      "patterns": [
+        "keep us|me posted|updated|informed",
+        "keep us|me in the loop",
+        "keep us|me up to date"
+      ],
+      "examples": ["It's a bit early for us. Keep us posted!", "Keep me in the loop"],
+      "means": {"en": "A present-tense no. They will not volunteer what is missing", "he": "לא בזמן הווה. הם לא יתנדבו לומר מה חסר"},
+      "move": {"en": "Ask: \"What would you need to see in 6 months for this to be a strong yes?\"", "he": "לשאול: \"What would you need to see in 6 months for this to be a strong yes?\""},
+      "move_by_context": {
+        "sales": {"en": "Ask: \"What would need to change for this to become relevant?\"", "he": "לשאול: \"What would need to change for this to become relevant?\"", "origin": "extension"}
+      },
+      "lean": "yellow",
+      "soft_no": true,
+      "counter": ["what would you need to see", "strong yes", "what would need to change", "become relevant"],
+      "origin": "playbook"
+    },
+    {
+      "id": "yes_and_features",
+      "table": "sugar_coated_no",
+      "contexts": ["sales", "kol"],
+      "said": "Yes! And maybe you could also add X and Y.",
+      "patterns": [
+        "you|it could|should|might ?also|even add|build|support|include|integrate",
+        "it would be great|nice|cool|awesome|amazing|helpful if",
+        "it'd be great|nice|cool|awesome|amazing|helpful if",
+        "what if it|you ?also|could",
+        "have you thought about adding|building|supporting",
+        "would be great|nice|cool to have|see"
+      ],
+      "examples": ["Yes! And maybe you could also add X and Y.", "It would be great if it supported Slack"],
+      "means": {"en": "Enthusiasm plus feature ideas does not equal buying", "he": "התלהבות ורעיונות לפיצ'רים אינם קנייה"},
+      "move": {"en": "Convert enthusiasm into measurable commitment: pilot, data, time, money", "he": "להמיר התלהבות למחויבות מדידה: פיילוט, דאטה, זמן, כסף"},
+      "lean": "yellow",
+      "soft_no": false,
+      "counter": ["pilot", "dated_proposal", "share ... data", "access to ... data"],
+      "origin": "playbook"
+    },
+    {
+      "id": "total_silence",
+      "table": "sugar_coated_no",
+      "contexts": ["sales", "investor", "kol"],
+      "said": "Total silence after a \"great\" meeting",
+      "patterns": [],
+      "examples": [],
+      "means": {"en": "That IS the answer. Ghosting is the most common American no", "he": "זו התשובה. גוסטינג הוא ה-לא האמריקאי הנפוץ ביותר"},
+      "move": {"en": "Run the full follow-up sequence, send the breakup email, and move on", "he": "להריץ את רצף הפולואפ המלא, לשלוח מייל פרידה, ולהתקדם"},
+      "lean": "red",
+      "soft_no": true,
+      "counter": [],
+      "origin": "playbook"
+    },
+    {
+      "id": "too_early",
+      "table": "investor_speak",
+      "contexts": ["investor"],
+      "said": "It's a bit early for us. Keep us posted!",
+      "patterns": [
+        "early for us|me|our",
+        "too early",
+        "bit|little early",
+        "early stage for us",
+        "not there yet",
+        "not quite there"
+      ],
+      "examples": ["It's a bit early for us.", "It's too early", "You're not quite there yet"],
+      "means": {"en": "A present-tense pass. They will not volunteer what is missing", "he": "פס בזמן הווה. הם לא יתנדבו לומר מה חסר"},
+      "move": {"en": "Ask: \"What would you need to see in 6 months for this to be a strong yes?\"", "he": "לשאול: \"What would you need to see in 6 months for this to be a strong yes?\""},
+      "lean": "yellow",
+      "soft_no": true,
+      "counter": ["what would you need to see", "strong yes"],
+      "origin": "playbook"
+    },
+    {
+      "id": "more_traction",
+      "table": "investor_speak",
+      "contexts": ["investor"],
+      "said": "Come back when you have more traction.",
+      "patterns": [
+        "come|circle|get back when|once|after|with",
+        "come|circle|get back to us|me when|once|after|with",
+        "more|some|additional|further traction|progress|proof|revenue|customers|validation",
+        "love|like to see more"
+      ],
+      "examples": ["Come back when you have more traction.", "We'd love to see more traction"],
+      "means": {"en": "A pass, but possibly a real milestone", "he": "פס, אבל אולי יש אבן דרך אמיתית"},
+      "move": {"en": "Ask: \"Is there a specific number that would make this interesting: revenue, users, pilots?\"", "he": "לשאול: \"Is there a specific number that would make this interesting: revenue, users, pilots?\""},
+      "lean": "yellow",
+      "soft_no": true,
+      "counter": ["specific number", "what number", "which milestone", "what milestone", "what would you need to see"],
+      "origin": "playbook"
+    },
+    {
+      "id": "dont_lead",
+      "table": "investor_speak",
+      "contexts": ["investor"],
+      "said": "We don't usually lead rounds at this stage.",
+      "patterns": [
+        "don't|rarely|never|won't ?usually|typically|generally|really|normally lead",
+        "do not ?usually|typically|generally|really|normally lead",
+        "not a|the lead",
+        "not leading",
+        "we ?only|usually|typically follow",
+        "if you find|get|have|land a lead"
+      ],
+      "examples": ["We don't usually lead rounds at this stage.", "We typically follow"],
+      "means": {"en": "Soft pass, or fishing for who else is in", "he": "פס רך, או גישוש מי עוד בפנים"},
+      "move": {"en": "Ask: \"If a strong lead came in, would you consider following?\"", "he": "לשאול: \"If a strong lead came in, would you consider following?\""},
+      "lean": "yellow",
+      "soft_no": true,
+      "counter": ["if a ?strong lead came in", "would you consider following", "consider following"],
+      "origin": "playbook"
+    },
+    {
+      "id": "discuss_partners",
+      "table": "investor_speak",
+      "contexts": ["investor"],
+      "said": "Let me discuss with my partners.",
+      "patterns": [
+        "discuss|talk|chat|check|sync|socialize ... with|to my|the|our partners|partner|partnership",
+        "run|take|bring it|this ... my|the|our partners|partner|partnership|committee",
+        "investment committee",
+        "talk|speak to|with my|the|our partners"
+      ],
+      "examples": ["Let me discuss with my partners.", "I'll run it by the partnership"],
+      "means": {"en": "Could be real process, could be a polite exit", "he": "יכול להיות תהליך אמיתי, יכול להיות יציאה מנומסת"},
+      "move": {"en": "Ask: \"What's your process from here, and what's a realistic timeline?\"", "he": "לשאול: \"What's your process from here, and what's a realistic timeline?\""},
+      "lean": "yellow",
+      "soft_no": false,
+      "counter": ["your process", "process from here", "realistic timeline", "most useful ... partnership"],
+      "origin": "playbook"
+    },
+    {
+      "id": "who_else",
+      "table": "investor_speak",
+      "contexts": ["investor"],
+      "said": "Who else are you talking to?",
+      "patterns": [
+        "who else are|is|have",
+        "who's|whos else|in|leading|committed",
+        "who is|are in|leading|committed",
+        "anyone|anybody else in|committed|circling|interested|looking",
+        "other funds|investors|firms ... in|looking|talking|involved|committed",
+        "how's the round coming|shaping|going|looking",
+        "how is the round coming|shaping|going|looking"
+      ],
+      "examples": ["Who else are you talking to?", "Who's leading the round?"],
+      "means": {"en": "Momentum check; FOMO probe", "he": "בדיקת מומנטום. גישוש FOMO"},
+      "move": {"en": "Name the truth confidently; scarcity is manufactured by real parallel processes, never by lying", "he": "לומר את האמת בביטחון. מחסור מייצרים בתהליכים מקבילים אמיתיים, אף פעם לא בשקר"},
+      "lean": "neutral",
+      "soft_no": false,
+      "counter": [],
+      "origin": "playbook"
+    },
+    {
+      "id": "offers_intro",
+      "table": "investor_speak",
+      "contexts": ["investor"],
+      "said": "Intro to a portfolio founder or another fund",
+      "patterns": [
+        "i'll|we'll intro|introduce|connect you",
+        "let me intro|introduce|connect you",
+        "i can|will intro|introduce|connect you",
+        "happy|love|want to intro|introduce|connect you",
+        "make|making an|the intro|introduction"
+      ],
+      "examples": ["Let me introduce you to one of our portfolio founders.", "I'll connect you with a fund that leads at this stage"],
+      "means": {"en": "Often a genuine positive signal", "he": "לרוב סיגנל חיובי אמיתי"},
+      "move": {"en": "Respond within hours; close the loop after the call", "he": "לענות תוך שעות. לסגור לופ אחרי השיחה"},
+      "lean": "green",
+      "soft_no": false,
+      "suggests_signal": "intro_to_portfolio_or_fund",
+      "counter": [],
+      "origin": "playbook"
+    },
+    {
+      "id": "circle_back",
+      "table": "traffic_light_phrase",
+      "contexts": ["sales", "investor", "kol"],
+      "said": "Let me circle back",
+      "patterns": [
+        "let me|us circle|get back",
+        "i'll|we'll circle|get back",
+        "circle back"
+      ],
+      "examples": ["Let me circle back.", "I'll get back to you on that"],
+      "means": {"en": "Yellow: verify, do not count as traction", "he": "צהוב: לאמת, לא לספור כ-traction"},
+      "move": {"en": "Give permission to say no: \"Should I close this out on my end, or would it make sense to reconnect in Q2?\"", "he": "לתת רשות להגיד לא: \"Should I close this out on my end, or would it make sense to reconnect in Q2?\"", "origin": "extension"},
+      "lean": "yellow",
+      "soft_no": false,
+      "suggests_signal": "circle_back",
+      "counter": ["permission_to_say_no", "dated_proposal"],
+      "origin": "playbook"
+    },
+    {
+      "id": "loop_in_unnamed",
+      "table": "traffic_light_phrase",
+      "contexts": ["sales", "investor", "kol"],
+      "said": "I'll loop in my colleague",
+      "scene_line": "Let me loop in my colleague.",
+      "patterns": [
+        "loop|bring|pull|rope in my|a|our|the|some colleague|colleagues|team|boss|manager|folks|people",
+        "i'll|we'll loop|bring|pull in",
+        "let me loop|bring|pull in",
+        "loop in"
+      ],
+      "examples": ["I'll loop in my colleague.", "Let me bring in the team"],
+      "means": {"en": "Yellow while there is no name and no date", "he": "צהוב כל עוד אין שם ואין תאריך"},
+      "move": {"en": "Ask for the name and a date: \"Who should I include, and would Tuesday or Thursday work for a quick call with them?\"", "he": "לבקש שם ותאריך: \"Who should I include, and would Tuesday or Thursday work for a quick call with them?\"", "origin": "extension"},
+      "lean": "yellow",
+      "soft_no": false,
+      "suggests_signal": "loop_in_unnamed",
+      "counter": ["who should i", "who would", "which colleague", "their name", "dated_proposal"],
+      "origin": "playbook"
+    },
+    {
+      "id": "reach_out_anytime",
+      "table": "traffic_light_phrase",
+      "contexts": ["sales", "investor", "kol"],
+      "said": "Feel free to reach out anytime",
+      "patterns": [
+        "reach out anytime|whenever",
+        "reach out any time",
+        "feel free to reach out|ping|call|email",
+        "don't hesitate to reach out|contact|ping|call|email",
+        "ping me anytime|whenever"
+      ],
+      "examples": ["Feel free to reach out anytime.", "Don't hesitate to reach out"],
+      "means": {"en": "Red: move on", "he": "אדום: להתקדם הלאה"},
+      "move": {"en": "Send the breakup email, then one value touch per quarter", "he": "לשלוח מייל פרידה, ואז נגיעת ערך אחת ברבעון", "origin": "extension"},
+      "lean": "red",
+      "soft_no": true,
+      "suggests_signal": "reach_out_anytime",
+      "counter": [],
+      "origin": "playbook"
+    },
+    {
+      "id": "coffee_sometime",
+      "table": "social_default",
+      "contexts": ["sales", "investor", "kol"],
+      "said": "Let's grab coffee sometime",
+      "patterns": [
+        "grab|get|do|have coffee|lunch|drinks|dinner sometime",
+        "coffee|lunch|drinks|dinner sometime",
+        "grab|get|do|have coffee|lunch|drinks|dinner some time",
+        "catch up sometime"
+      ],
+      "examples": ["Let's grab coffee sometime!", "We should get lunch sometime."],
+      "means": {"en": "Friendliness, not an invitation", "he": "חביבות, לא הזמנה"},
+      "move": {"en": "Do not pull out a calendar. If you want it to happen, make it concrete yourself later, by email", "he": "לא לשלוף יומן. אם רוצים שזה יקרה, להפוך את זה לקונקרטי בהמשך, במייל"},
+      "lean": "neutral",
+      "soft_no": false,
+      "counter": [],
+      "origin": "playbook"
+    },
+    {
+      "id": "election_take",
+      "table": "politics",
+      "contexts": ["sales", "investor", "kol"],
+      "said": "What's your take on the election?",
+      "patterns": [
+        "your take on the election|elections|primaries|president|administration|debate",
+        "what do you think about|of the election|elections|president|administration",
+        "who are you rooting for",
+        "did you watch|see the debate"
+      ],
+      "examples": ["What's your take on the election?", "So what do you think of the election?"],
+      "means": {"en": "A direct political question. No answer is safe, including agreement", "he": "שאלה פוליטית ישירה. אין תשובה בטוחה, גם לא הסכמה"},
+      "move": {"en": "The foreigner card, then a bridge: \"Like baseball - with interest, no team. What does it mean for your budget season, though?\"", "he": "הקלף הזר ואז גשר: \"Like baseball - with interest, no team. What does it mean for your budget season, though?\""},
+      "lean": "neutral",
+      "soft_no": false,
+      "counter": ["like baseball", "no team", "budget season"],
+      "origin": "playbook",
+      "patterns_origin": "extension"
+    },
+    {
+      "id": "administration_complaint",
+      "table": "politics",
+      "contexts": ["sales", "investor", "kol"],
+      "said": "This administration is killing us with regulation.",
+      "patterns": [
+        "this administration",
+        "administration is killing|hurting|crushing|ruining",
+        "killing us with regulation|regulations|tariffs|taxes",
+        "politicians in washington"
+      ],
+      "examples": ["This administration is killing us with regulation.", "Honestly, this administration has been rough on our industry."],
+      "means": {"en": "Thinking out loud. It is not an invitation to join, and a mistake gets you labeled, not argued with", "he": "חושבים בקול. זו לא הזמנה להצטרף, וטעות מייצרת תיוג, לא ויכוח"},
+      "move": {"en": "Business empathy, no side: \"Sounds like a real headache for the industry. Is that part of what's driving this project?\"", "he": "אמפתיה עסקית, בלי צד: \"Sounds like a real headache for the industry. Is that part of what's driving this project?\""},
+      "lean": "neutral",
+      "soft_no": false,
+      "counter": ["headache for the industry", "driving this project"],
+      "origin": "playbook",
+      "patterns_origin": "extension"
+    },
+    {
+      "id": "israel_concern",
+      "table": "politics",
+      "contexts": ["sales", "investor", "kol"],
+      "said": "How are things back in Israel? We've been worried.",
+      "patterns": [
+        "how are things back in israel|home",
+        "how are things in israel",
+        "we've been worried",
+        "we have been worried",
+        "been thinking about you",
+        "hope your family is safe|okay|ok"
+      ],
+      "examples": ["How are things back in Israel? We've been worried.", "How are things back home? We've been thinking about you."],
+      "means": {"en": "Concern, not politics. Answer the care, not the politics", "he": "דאגה, לא פוליטיקה. עונים לאכפתיות, לא לפוליטיקה"},
+      "move": {"en": "Thank them warmly, one human sentence, no position, and bridge back within 15 seconds: \"Thank you for asking - it really means a lot. Family and the team are all safe, and honestly, it's made us even more focused on building. How's your quarter shaping up?\"", "he": "להודות בחום, משפט אנושי אחד, בלי עמדה, וגשר חזרה תוך 15 שניות: \"Thank you for asking - it really means a lot. Family and the team are all safe, and honestly, it's made us even more focused on building. How's your quarter shaping up?\""},
+      "lean": "neutral",
+      "soft_no": false,
+      "counter": ["thank you for asking", "means a lot", "quarter shaping up"],
+      "origin": "playbook",
+      "patterns_origin": "extension"
+    },
+    {
+      "id": "israel_politics_question",
+      "table": "politics",
+      "contexts": ["sales", "investor", "kol"],
+      "said": "What do you think about [the government / the situation]?",
+      "patterns": [
+        "what do you think about|of the government|situation|war|conflict",
+        "your take on the government|situation|war|conflict"
+      ],
+      "examples": ["What do you think about the government?", "What's your take on the situation over there?"],
+      "means": {"en": "A direct political question about home. Give no position", "he": "שאלה פוליטית ישירה על הבית. לא נותנים עמדה"},
+      "move": {"en": "No position, one fact about the business: \"There are a lot of views back home, including inside my own team. I try to leave politics to the politicians and keep us focused on shipping. What I can tell you is how it affects the business: [one factual sentence].\"", "he": "בלי עמדה, עובדה אחת על העסק: \"There are a lot of views back home, including inside my own team. I try to leave politics to the politicians and keep us focused on shipping. What I can tell you is how it affects the business: [one factual sentence].\""},
+      "lean": "neutral",
+      "soft_no": false,
+      "counter": ["a lot of views back home", "leave politics to the politicians", "how it affects the business"],
+      "origin": "playbook",
+      "patterns_origin": "extension"
+    },
+    {
+      "id": "pushed_for_opinion",
+      "table": "politics",
+      "contexts": ["sales", "investor", "kol"],
+      "said": "Come on, you must have a take!",
+      "patterns": [
+        "you must have a take|opinion|view",
+        "come on ... take|opinion",
+        "which side are you on"
+      ],
+      "examples": ["Come on, you must have a take!", "Oh come on, you must have an opinion."],
+      "means": {"en": "They are pushing you to pick a side. Still no side", "he": "דוחקים בכם לבחור צד. עדיין בלי צד"},
+      "move": {"en": "Stay a guest: \"I'm still a guest here. I've learned to follow American politics the way I follow baseball: with real interest, and without picking a team.\"", "he": "נשארים אורחים: \"I'm still a guest here. I've learned to follow American politics the way I follow baseball: with real interest, and without picking a team.\""},
+      "lean": "neutral",
+      "soft_no": false,
+      "counter": ["still a guest", "follow baseball", "without picking a team"],
+      "origin": "playbook",
+      "patterns_origin": "extension"
+    },
+    {
+      "id": "political_joke",
+      "table": "politics",
+      "contexts": ["sales", "investor", "kol"],
+      "said": "(a political joke of theirs)",
+      "patterns": [],
+      "examples": [],
+      "means": {"en": "Their political humor is not an invitation to yours", "he": "ההומור הפוליטי שלהם אינו הזמנה להומור פוליטי שלכם"},
+      "move": {"en": "A smile, nothing of your own: \"Ha - never a dull moment here. So, about that pilot...\"", "he": "חיוך, בלי תוספת משלכם: \"Ha - never a dull moment here. So, about that pilot...\""},
+      "lean": "neutral",
+      "soft_no": false,
+      "counter": ["never a dull moment"],
+      "origin": "playbook"
+    }
+  ],
+  "green_hints": [
+    {
+      "id": "asked_pricing",
+      "label": {"en": "They asked an after-the-purchase question: pricing", "he": "שאלו שאלת אחרי-הרכישה: תמחור"},
+      "patterns": ["pricing", "how much", "price|prices|priced", "what does|would it|this cost", "cost per", "per seat|user|month|year", "discount|discounts", "contract length|terms|term", "payment terms", "license|licensing|licenses"],
+      "examples": ["What does pricing look like for 50 seats?", "How much would a pilot run us?"],
+      "origin": "playbook"
+    },
+    {
+      "id": "asked_security",
+      "label": {"en": "They asked an after-the-purchase question: security", "he": "שאלו שאלת אחרי-הרכישה: אבטחה"},
+      "patterns": ["soc 2", "soc2", "security review|questionnaire|assessment|team|requirements", "infosec", "pen test|testing", "pentest", "sso", "saml", "gdpr", "hipaa", "data residency|retention|privacy|protection", "compliance", "iso 27001"],
+      "examples": ["Are you SOC 2 compliant?", "Our infosec team will need a security review"],
+      "origin": "playbook"
+    },
+    {
+      "id": "asked_integration",
+      "label": {"en": "They asked an after-the-purchase question: integration", "he": "שאלו שאלת אחרי-הרכישה: אינטגרציה"},
+      "patterns": ["integrat*", "api|apis", "plug into", "work|works with our", "connect|connects to our", "webhook|webhooks", "our stack|crm|erp"],
+      "examples": ["Does it integrate with Salesforce?", "Do you have an API?"],
+      "origin": "playbook"
+    },
+    {
+      "id": "reference_call_request",
+      "label": {"en": "They asked for reference calls", "he": "ביקשו שיחות רפרנס"},
+      "patterns": ["reference call|calls|customer|customers", "references", "customer reference|references", "talk|speak to|with ... your customers|customer|clients"],
+      "examples": ["Could we do a reference call with one of your customers?"],
+      "origin": "playbook"
+    }
+  ],
+  "compliments": {
+    "rule_of_thumb": {
+      "en": "Subtract two enthusiasm levels from every compliment the founder hears, and add two to every compliment the founder gives.",
+      "he": "להוריד שתי דרגות התלהבות מכל מחמאה שהיזם שומע, ולהוסיף שתיים לכל מחמאה שהיזם נותן."
+    },
+    "levels": [
+      {
+        "level": 5,
+        "said": "\"Amazing! This is awesome!\"",
+        "patterns": ["amazing", "awesome", "love it|this|that"],
+        "extension_patterns": ["incredible", "fantastic", "phenomenal", "brilliant", "blown away", "wonderful", "excellent", "impressive", "super cool", "game changer"],
+        "reading": {"en": "Nice. A social default, not data", "he": "נחמד. ברירת מחדל חברתית, לא דאטה"}
+      },
+      {
+        "level": 4,
+        "said": "\"Great stuff.\"",
+        "patterns": ["great stuff", "great"],
+        "extension_patterns": ["great work|job", "nice work|job", "really nice", "very cool", "solid", "good stuff"],
+        "reading": {"en": "Fine. Neutral", "he": "בסדר. ניטרלי"}
+      },
+      {
+        "level": 3,
+        "said": "\"Interesting.\" / \"Good.\"",
+        "patterns": ["interesting", "good"],
+        "extension_patterns": ["ok|okay", "fine", "not bad", "makes sense"],
+        "standalone": true,
+        "reading": {"en": "There is probably a problem", "he": "כנראה יש בעיה"}
+      },
+      {
+        "level": 2,
+        "said": "\"I have a few thoughts...\" / \"Have you considered...?\"",
+        "patterns": ["few thoughts", "have you considered"],
+        "extension_patterns": ["have you thought about", "my concern|worry", "i wonder if|whether", "push back", "pushback", "one thing i'd push on"],
+        "reading": {"en": "Real criticism is starting. Listen and write", "he": "ביקורת אמיתית מתחילה. להקשיב ולכתוב"}
+      },
+      {
+        "level": 1,
+        "said": "Silence, topic change, \"How are you thinking about competition?\"",
+        "patterns": ["how are you thinking about competition|competitors"],
+        "extension_patterns": ["how do you think about competition|competitors|defensibility|moat", "how are you thinking about defensibility|moat", "what about competition|competitors"],
+        "reading": {"en": "A substantive red flag", "he": "דגל אדום מהותי"}
+      }
+    ]
+  },
+  "permission_to_say_no": {
+    "why": {
+      "en": "Giving an American explicit permission to say no converts vagueness into certainty.",
+      "he": "רשות מפורשת להגיד לא הופכת עמימות לוודאות."
+    },
+    "lines": [
+      "It sounds like this may not be a priority right now, and that's completely fine. If it's a no, I'd genuinely appreciate you telling me. It helps me focus.",
+      "Should I close this out on my end, or would it make sense to reconnect in Q2?",
+      "I'm assuming the timing isn't right. If I'm wrong, just hit reply. Otherwise, no response needed and I won't keep nudging."
+    ],
+    "markers": [
+      "if it's a no",
+      "not be a priority right now",
+      "not a priority right now",
+      "close this out",
+      "timing isn't right",
+      "timing is not right",
+      "reconnect in q1|q2|q3|q4",
+      "totally|completely|perfectly fine if ... no",
+      "okay|ok|fine to say no",
+      "no hard feelings"
+    ]
+  },
+  "non_examples": [
+    "Looking forward to Tuesday at 10.",
+    "I'll send the NDA today.",
+    "Can you start the pilot on March 3?",
+    "Here is the signed order form."
+  ]
+}

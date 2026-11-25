@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: decode-with-facts-yellow-leaning-red
+expected_outcome: |
+  The assistant relays the engine's verdict without softening it: Yellow, leaning Red, because nothing has cost the other side anything. It decodes the keep-in-touch line as a soft no, names the recap as the next touch (due today, sent despite Thanksgiving week), and ends with the stamp line. The facts were all given, so the verdict comes in this reply. Up to three follow-up questions after it are fine.

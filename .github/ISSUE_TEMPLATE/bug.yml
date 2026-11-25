@@ -1,0 +1,34 @@
+name: Something is broken
+description: An error, a crash, a wrong date or time, an install that does not work.
+title: "Bug: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you asked for and what you got. Paste the error text if there is one.
+    validations:
+      required: true
+  - type: input
+    id: stamp
+    attributes:
+      label: The stamp line
+      description: The last line of the answer. It starts with "[verified by code" or says "NOT VERIFIED BY CODE".
+      placeholder: "[verified by code: american-business-playbook 2.0.0 | rules ... | seal ok]"
+  - type: dropdown
+    id: host
+    attributes:
+      label: Where you ran it
+      options:
+        - Claude (desktop, web or mobile)
+        - Claude Code
+        - Another agent
+        - The command line, by hand
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version, if you know it
+      placeholder: "python3 --version"

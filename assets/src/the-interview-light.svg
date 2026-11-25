@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="400" viewBox="0 0 1600 400" role="img">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#F7F4EC"/><stop offset="1" stop-color="#EFEADD"/>
+  </linearGradient>
+  <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+    <path d="M1 1 L11 6 L1 11" fill="none" stroke="#14213D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<rect width="1600" height="400" fill="url(#bg)"/>
+<path d="M118 96 H514 A22 22 0 0 1 536 118 V224 A22 22 0 0 1 514 246 H162 L126 272 L134 246 H118 A22 22 0 0 1 96 224 V118 A22 22 0 0 1 118 96 Z" fill="#FFFFFF" fill-opacity="0.9" stroke="#14213D" stroke-opacity="0.55" stroke-width="2" stroke-linejoin="round"/>
+<text x="130" y="156" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="600" fill="#14213D" fill-opacity="1.0" text-anchor="start" letter-spacing="0">“Great meeting.</text>
+<text x="130" y="204" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="600" fill="#14213D" fill-opacity="1.0" text-anchor="start" letter-spacing="0">I think it’s closed.”</text>
+<text x="316" y="322" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="#5C6B8A" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">what you said</text>
+<line x1="576" y1="190" x2="646" y2="190" stroke="#14213D" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="682" y="44" width="500" height="280" rx="18" fill="#FFFFFF" fill-opacity="0.9" stroke="#14213D" stroke-opacity="0.55" stroke-width="2"/>
+<circle cx="728" cy="96" r="15" fill="#F2B134" fill-opacity="1.0"/>
+<text x="728" y="103" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">?</text>
+<text x="764" y="100" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="23" font-weight="600" fill="#14213D" fill-opacity="1.0" text-anchor="start" letter-spacing="0">Who is the American here?</text>
+<text x="764" y="128" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#5C6B8A" fill-opacity="1.0" text-anchor="start" letter-spacing="0">it decides the framework</text>
+<circle cx="728" cy="180" r="15" fill="#F2B134" fill-opacity="1.0"/>
+<text x="728" y="187" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">?</text>
+<text x="764" y="184" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="23" font-weight="600" fill="#14213D" fill-opacity="1.0" text-anchor="start" letter-spacing="0">What did they say, word for word?</text>
+<text x="764" y="212" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#5C6B8A" fill-opacity="1.0" text-anchor="start" letter-spacing="0">a summary hides the words that matter</text>
+<circle cx="728" cy="264" r="15" fill="#F2B134" fill-opacity="1.0"/>
+<text x="728" y="271" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">?</text>
+<text x="764" y="268" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="23" font-weight="600" fill="#14213D" fill-opacity="1.0" text-anchor="start" letter-spacing="0">Is there an agreed next step?</text>
+<text x="764" y="296" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#5C6B8A" fill-opacity="1.0" text-anchor="start" letter-spacing="0">no step means no deal</text>
+<text x="932" y="362" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="#5C6B8A" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">three questions a turn, each with its reason</text>
+<line x1="1218" y1="190" x2="1288" y2="190" stroke="#14213D" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="1408" y="96" font-family="'Inter Display', Inter, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="60" font-weight="800" fill="#14213D" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">37%</text>
+<text x="1366" y="147" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#5C6B8A" fill-opacity="1.0" text-anchor="end" letter-spacing="0">who</text>
+<rect x="1380" y="136" width="130" height="12" rx="6" fill="#14213D" fill-opacity="0.16"/>
+<rect x="1380" y="136" width="65" height="12" rx="6" fill="#3FB27F"/>
+<text x="1366" y="183" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#5C6B8A" fill-opacity="1.0" text-anchor="end" letter-spacing="0">said</text>
+<rect x="1380" y="172" width="130" height="12" rx="6" fill="#14213D" fill-opacity="0.16"/>
+<rect x="1380" y="172" width="26" height="12" rx="6" fill="#3FB27F"/>
+<text x="1366" y="219" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#5C6B8A" fill-opacity="1.0" text-anchor="end" letter-spacing="0">cost</text>
+<rect x="1380" y="208" width="130" height="12" rx="6" fill="#14213D" fill-opacity="0.16"/>
+<rect x="1380" y="208" width="65" height="12" rx="6" fill="#3FB27F"/>
+<text x="1366" y="255" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#5C6B8A" fill-opacity="1.0" text-anchor="end" letter-spacing="0">next</text>
+<rect x="1380" y="244" width="130" height="12" rx="6" fill="#14213D" fill-opacity="0.16"/>
+<rect x="1380" y="244" width="65" height="12" rx="6" fill="#3FB27F"/>
+<text x="1366" y="291" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#5C6B8A" fill-opacity="1.0" text-anchor="end" letter-spacing="0">goal</text>
+<rect x="1380" y="280" width="130" height="12" rx="6" fill="#14213D" fill-opacity="0.16"/>
+<text x="1408" y="362" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="#5C6B8A" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">the picture so far</text>
+</svg>

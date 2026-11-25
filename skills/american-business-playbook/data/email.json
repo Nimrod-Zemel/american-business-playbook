@@ -1,0 +1,178 @@
+{
+  "_about": "Email rules as data. Source of truth for `playbook.py lint` and for the rules section of the generated references/email-playbook.md. Phrase lists use the phrase syntax documented in CONTRIBUTING.md. origin=playbook lists come from the guide and the v1 linter; origin=extension lists widen recognition and are listed in docs/ASSUMPTIONS.md.",
+  "principle": "The Israeli mistake: a long, dense, overly direct email that dumps full depth on the inbox. The correction: the email does not sell the product. The email sells the meeting.",
+  "rules": [
+    "Maximum 5 sentences (about 120 words) for cold and follow-up emails.",
+    "BLUF (Bottom Line Up Front): the first line says why you are writing.",
+    "Exactly one ask, phrased as an easy closed question: \"Would Tuesday or Thursday afternoon work for a 20-minute call?\"",
+    "Softeners are grammar, not weakness: \"Would you be open to...\", \"No worries if not\". By contrast, \"Send me your feedback\" reads as a command.",
+    "Specific subject line, scannable body, short paragraphs.",
+    "Depth belongs in the meeting. Attach a one-pager at most, never a 30-slide deck on first contact.",
+    "Never use em dashes or en dashes; use regular hyphens, commas, or periods."
+  ],
+  "types": {
+    "cold": {"max_sentences": 5, "max_words": 130, "target_words": 120, "asks": "exactly_one", "softener": "request_or_release", "subject": "expected", "origin": "playbook"},
+    "conference": {"max_sentences": 5, "max_words": 130, "target_words": 120, "asks": "exactly_one", "softener": "request_or_release", "subject": "expected", "origin": "playbook"},
+    "followup": {"max_sentences": 5, "max_words": 130, "target_words": 120, "asks": "exactly_one", "softener": "request_or_release", "subject": "optional", "origin": "playbook"},
+    "intro": {"max_sentences": 6, "max_words": 150, "asks": "exactly_one", "softener": "request_or_release", "subject": "expected", "origin": "playbook"},
+    "recap": {"max_sentences": 8, "max_words": 170, "asks": "exactly_one", "softener": "any", "subject": "expected", "origin": "playbook"},
+    "breakup": {"max_sentences": 6, "max_words": 140, "asks": "at_most_one", "softener": "any", "subject": "optional", "origin": "playbook"},
+    "reply": {"max_sentences": 7, "max_words": 160, "asks": "at_most_one", "softener": "any", "subject": "optional", "origin": "playbook"},
+    "thank_you": {"max_sentences": 4, "max_words": 80, "asks": "at_most_one", "softener": "any", "subject": "optional", "origin": "extension"},
+    "investor_update": {"max_words": 250, "asks": "update", "softener": "none", "subject": "expected", "sections": ["Shipped", "Sold", "Learned", "Ask"], "optional_sections": ["Team"], "origin": "playbook"},
+    "linkedin": {"max_chars": 250, "asks": "any", "softener": "none", "subject": "none", "origin": "playbook"},
+    "scheduling": {"asks": "at_most_one", "softener": "none", "subject": "none", "origin": "playbook"}
+  },
+  "examples": {
+    "_about": "The guide's own example lines, word for word. tests/test_mail.py checks that the linter treats each the way the guide does: the lines to use count as softeners, the lines to avoid are flagged.",
+    "closed_ask": "Would Tuesday or Thursday afternoon work for a 20-minute call?",
+    "use": ["Would you be open to...", "Any chance you'd have 20 minutes...", "No worries if not."],
+    "avoid": ["Send me your feedback.", "I want to schedule a call.", "You must understand that..."],
+    "hurt": "I guess you're not interested...",
+    "origin": "playbook"
+  },
+  "subject_max_chars": 65,
+  "paragraph": {"max_lines": 4, "max_sentences": 3, "max_words": 60, "origin_lines": "playbook", "origin_other": "extension"},
+  "softeners": {
+    "request": {
+      "playbook": ["would you be open", "any chance", "would it make sense", "worth a", "happy to", "feel free", "if it's helpful", "if helpful"],
+      "extension": ["would you be comfortable", "would ... make sense", "would ... work", "worth restarting|exploring|picking", "would love", "i'd love", "open to"]
+    },
+    "release": {
+      "playbook": ["no worries", "totally understand", "of course if not"],
+      "extension": ["no hard feelings", "completely understand", "either way", "no rush", "no pressure", "should i circle back", "door is always open", "timing isn't right", "timing is not right"]
+    },
+    "appreciation": {
+      "playbook": [],
+      "extension": ["thank you", "thanks", "appreciate", "anything i missed"]
+    }
+  },
+  "pushy": {
+    "playbook": ["asap", "as soon as possible", "urgent", "immediately", "kindly", "please advise", "awaiting your", "revert back", "do the needful", "i need you to"],
+    "extension": ["urgently", "right away", "at your earliest convenience", "waiting for your", "i expect", "by end of day"]
+  },
+  "command_openers": {
+    "playbook": ["send me", "give me", "call me", "tell me", "share your", "provide your", "review this", "let me know your availability"],
+    "extension": ["send us", "get back to me", "reply to me", "answer me", "update me", "contact me", "email me", "call us", "write me", "respond to me", "confirm your"]
+  },
+  "command_lead_ins": ["please", "pls", "so", "and", "also", "then", "now", "just"],
+  "directive": {
+    "playbook": ["you must", "i want to schedule"],
+    "extension": ["re:(?<!would )(?<!do )(?<!did )(?<!will )(?<!what )(?<!if )\\byou need to\\b", "you have to", "i want you to"]
+  },
+  "checking_in": {
+    "playbook": ["just checking in"],
+    "extension": ["checking in", "just following up", "just wanted to follow up", "wanted to check in", "touching base"]
+  },
+  "nudge_only": {
+    "extension": ["any update|updates", "bumping this", "did you get|see|receive my"]
+  },
+  "hurt_tone": {
+    "playbook": ["i guess you're not interested", "i guess you are not interested"],
+    "extension": [
+      "you didn't reply|respond|answer",
+      "you did not reply|respond|answer",
+      "you never replied|responded|answered",
+      "you never got back",
+      "still waiting",
+      "as per my last|previous email|message",
+      "per my last|previous email|message",
+      "i already sent|told|wrote",
+      "for the second|third|fourth time",
+      "you ignored",
+      "nobody replied|responded|answered",
+      "disappointed"
+    ]
+  },
+  "apology": {"extension": ["sorry", "apologies", "apologize", "apologise"]},
+  "throat_clearing": {
+    "extension": [
+      "i hope this email|message|note finds you well",
+      "hope this finds you well",
+      "hope this email|message|note finds you well",
+      "i hope you are doing well|great|fine",
+      "i hope you're doing well|great|fine",
+      "hope you're doing well|great|fine",
+      "hope you are doing well|great|fine",
+      "my name is",
+      "let me introduce myself",
+      "allow me to introduce",
+      "i am the ceo|founder|cofounder|cto",
+      "i'm the ceo|founder|cofounder|cto",
+      "i wanted to reach out",
+      "i am reaching out to introduce",
+      "i'm reaching out to introduce",
+      "i am writing to introduce",
+      "i'm writing to introduce",
+      "how are you"
+    ]
+  },
+  "generic_subjects": {
+    "extension": ["hello", "hi", "hey", "introduction", "intro", "quick question", "question", "following up", "follow up", "checking in", "touching base", "meeting", "partnership", "collaboration", "opportunity", "business opportunity", "cooperation", "proposal"]
+  },
+  "formal_greetings": {
+    "extension": ["dear sir", "dear madam", "to whom it may concern", "dear mr|mrs|ms|dr", "respected sir|madam", "greetings"]
+  },
+  "deck_attached": {
+    "extension": ["attached|attaching|enclosed ... deck|presentation|slides|pitch", "deck|presentation attached", "see the attached deck|presentation"]
+  },
+  "linkedin_pitch": {
+    "extension": ["demo", "pilot", "pricing", "20 minutes", "quick call", "book a call|meeting|demo", "buy", "our solution"]
+  },
+  "pleasantry_questions": ["how are you", "how's it going", "how is it going", "how have you been"],
+  "closed_starters": ["would", "could", "can", "is", "are", "do", "does", "did", "should", "will", "worth", "any", "open", "anything", "have", "has", "may", "shall", "was", "were", "am"],
+  "open_starters": ["what", "how", "why", "when", "where", "who", "which"],
+  "greeting_words": ["hi", "hello", "hey", "dear", "good morning", "good afternoon", "good evening"],
+  "signoffs": ["best", "best regards", "kind regards", "warm regards", "regards", "thanks", "thanks so much", "thank you", "many thanks", "cheers", "warmly", "sincerely", "talk soon", "all the best"],
+  "abbreviations": ["mr.", "mrs.", "ms.", "dr.", "inc.", "ltd.", "co.", "corp.", "vs.", "e.g.", "i.e.", "u.s.", "a.m.", "p.m.", "approx.", "est.", "st."],
+  "messages": {
+    "length_sentences": {"level": "error", "en": "Length: {n} sentences (max {max} for '{type}'). Cut depth; it belongs in the meeting.", "he": "אורך: {n} משפטים (מקסימום {max} ל-{type}). לקצץ עומק, הוא שייך לפגישה."},
+    "length_words": {"level": "error", "en": "Words: {n} (limit {max}). Trim to the bottom line.", "he": "מילים: {n} (מגבלה {max}). לקצר לשורה התחתונה."},
+    "length_words_target": {"level": "warn", "en": "Words: {n}. The target is about {target}.", "he": "מילים: {n}. היעד בערך {target}."},
+    "ask_none": {"level": "error", "en": "Ask: no question found. Close with one easy yes/no question.", "he": "בקשה: לא נמצאה שאלה. לסגור בשאלת כן/לא קלה אחת."},
+    "ask_many": {"level": "error", "en": "Ask: {n} asks found (questions and instructions). Exactly one ask per email; pick the easiest.", "he": "בקשה: נמצאו {n} בקשות (שאלות והוראות). בדיוק בקשה אחת במייל, לבחור את הקלה."},
+    "ask_many_soft": {"level": "error", "en": "Ask: {n} asks (questions and instructions). Keep at most one, or none for a breakup.", "he": "בקשה: {n} בקשות (שאלות והוראות). להשאיר לכל היותר אחת, או אף אחת במייל פרידה."},
+    "ask_open": {"level": "warn", "en": "Ask is open-ended (\"{q}\"). Make it an easy closed question: \"Would Tuesday or Thursday work for a 20-minute call?\"", "he": "הבקשה פתוחה (\"{q}\"). להפוך לשאלה סגורה וקלה: \"Would Tuesday or Thursday work for a 20-minute call?\""},
+    "blurb_questions": {"level": "error", "en": "Forwardable blurb: {n} questions. Keep at most one.", "he": "פסקת ה-Forwardable: {n} שאלות. להשאיר לכל היותר אחת."},
+    "pushy": {"level": "error", "en": "Pushy phrases: {hits}. Replace with softeners.", "he": "ניסוחים לוחצים: {hits}. להחליף במרככים."},
+    "command_tone": {"level": "error", "en": "Command tone: {hits}. Rephrase as a request: 'Would you be open to...'", "he": "טון פקודתי: {hits}. לנסח כבקשה: 'Would you be open to...'"},
+    "directive": {"level": "warn", "en": "Directive phrasing: {hits}. Offer, do not instruct.", "he": "ניסוח מורה: {hits}. להציע, לא להורות."},
+    "softener_missing": {"level": "error", "en": "Softeners: none found. Add one ('Would you be open to...', 'No worries if not').", "he": "מרככים: לא נמצאו. להוסיף אחד ('Would you be open to...', 'No worries if not')."},
+    "typography_dash": {"level": "error", "en": "Typography: em/en dash found. House style forbids them; use a hyphen, comma, or period.", "he": "טיפוגרפיה: נמצא em/en dash. אסור בסגנון הבית. להשתמש במקף רגיל, פסיק או נקודה."},
+    "hidden_chars": {"level": "error", "en": "Hidden characters found ({hits}). Paste as plain text.", "he": "נמצאו תווים נסתרים ({hits}). להדביק כטקסט נקי."},
+    "hebrew_in_english": {"level": "error", "en": "Language: Hebrew characters in an English deliverable.", "he": "שפה: אותיות עבריות בתוצר באנגלית."},
+    "subject_long": {"level": "error", "en": "Subject: {n} chars. Keep under 65 and specific.", "he": "נושא: {n} תווים. להישאר מתחת ל-65 ולהיות ספציפי."},
+    "subject_empty": {"level": "error", "en": "Subject: empty. Make it specific (who/what/why).", "he": "נושא: ריק. לכתוב ספציפי (מי/מה/למה)."},
+    "subject_missing": {"level": "warn", "en": "Subject: none provided. A '{type}' email needs a specific subject line.", "he": "נושא: לא סופק. מייל מסוג {type} צריך שורת נושא ספציפית."},
+    "subject_generic": {"level": "warn", "en": "Subject: \"{s}\" is generic. Make it specific (who/what/why).", "he": "נושא: \"{s}\" גנרי. לכתוב ספציפי (מי/מה/למה)."},
+    "paragraph_long": {"level": "warn", "en": "Paragraphs: {n} block(s) too long. Break them up; scannability sells.", "he": "פסקאות: {n} בלוקים ארוכים מדי. לפרק, סריקות מוכרת."},
+    "placeholder_left": {"level": "error", "en": "Missing facts: {hits}. Ask the founder; never invent.", "he": "עובדות חסרות: {hits}. לשאול את היזם, לא להמציא."},
+    "bluf": {"level": "warn", "en": "BLUF: the opener (\"{s}\") does not say why you are writing. Lead with the bottom line.", "he": "BLUF: הפתיח (\"{s}\") לא אומר למה כותבים. לפתוח בשורה התחתונה."},
+    "checking_in": {"level": "error", "en": "{hits}: never \"just checking in\". Give a fresh reason: an article, a metric, a customer, the feature they asked about.", "he": "{hits}: אף פעם לא \"just checking in\". לתת סיבה טרייה: מאמר, מטריקה, לקוח, הפיצ'ר שביקשו."},
+    "nudge_only": {"level": "warn", "en": "Nudge with no value ({hits}). Every touch needs a fresh reason.", "he": "נדנוד בלי ערך ({hits}). כל נגיעה צריכה סיבה טרייה."},
+    "hurt_tone": {"level": "error", "en": "Sounds hurt: {hits}. No reply is almost never an insult; it is an inbox.", "he": "נשמע פגוע: {hits}. היעדר תשובה כמעט אף פעם אינו עלבון, זה אינבוקס."},
+    "over_apology": {"level": "warn", "en": "Over-apologizing ({n}). Do not over-apologize; lead with new value.", "he": "התנצלות יתר ({n}). לא להתנצל יותר מדי, לפתוח בערך חדש."},
+    "deck_attached": {"level": "warn", "en": "Attachment: a deck on first contact. Attach a one-pager at most.", "he": "צרופה: דק במגע ראשון. לצרף one-pager לכל היותר."},
+    "formal_greeting": {"level": "warn", "en": "Greeting: \"{s}\" is too formal for American B2B. Use \"Hi <first name>,\".", "he": "פנייה: \"{s}\" רשמית מדי ל-B2B אמריקאי. להשתמש ב-\"Hi <first name>,\"."},
+    "unverified_number": {"level": "error", "en": "Unverified numbers: {hits} do not appear in the founder's source. Confirm, or replace with a [bracket].", "he": "מספרים לא מאומתים: {hits} לא מופיעים במקור של היזם. לאמת, או להחליף ב[סוגריים]."},
+    "update_sections": {"level": "error", "en": "Investor update: missing section(s) {hits}. Use Shipped / Sold / Learned / Ask.", "he": "עדכון משקיעים: חסרים סעיפים {hits}. להשתמש ב-Shipped / Sold / Learned / Ask."},
+    "update_ask": {"level": "error", "en": "Investor update: exactly one specific ask. Found {n}.", "he": "עדכון משקיעים: בדיוק בקשה ספציפית אחת. נמצאו {n}."},
+    "linkedin_long": {"level": "error", "en": "LinkedIn note: {n} characters (max {max}).", "he": "הודעת לינקדאין: {n} תווים (מקסימום {max})."},
+    "linkedin_pitch": {"level": "warn", "en": "LinkedIn note reads like a pitch ({hits}). A connection note is never a pitch.", "he": "הודעת הלינקדאין נקראת כמו פיץ' ({hits}). הודעת חיבור אינה פיץ'."}
+  },
+  "labels": {
+    "status_pass": {"en": "clean", "he": "נקי"},
+    "status_revise": {"en": "revise", "he": "לתקן"},
+    "must_fix": {"en": "Must fix", "he": "חובה לתקן"},
+    "consider": {"en": "Consider", "he": "לשקול"},
+    "numbers": {"en": "Numbers", "he": "מספרים"},
+    "max": {"en": "max", "he": "מקסימום"},
+    "sentences": {"en": "sentences", "he": "משפטים"},
+    "words": {"en": "words", "he": "מילים"},
+    "asks": {"en": "asks", "he": "בקשות"},
+    "before_after": {"en": "Before -> after", "he": "לפני -> אחרי"},
+    "ask_founder": {"en": "Missing from the founder (do not invent)", "he": "חסר מהיזם (לא להמציא)"},
+    "clean_line": {"en": "Result: clean. Sell the meeting, not the product.", "he": "תוצאה: נקי. מוכרים את הפגישה, לא את המוצר."},
+    "advisory": {"en": "The linter is advisory on warnings; fix or justify each one.", "he": "הלינטר מייעץ לגבי אזהרות: לתקן או לנמק כל אחת."}
+  }
+}

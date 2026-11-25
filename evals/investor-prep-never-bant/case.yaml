@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: investor-prep-never-bant
+expected_outcome: |
+  A prep sheet for an investor meeting with BANT switched off: what to demonstrate, the process questions a founder may ask an investor, the soft-nos to expect with their counter-moves, the one ask, and a time box. The prep command was run with type investor. The founder named who the meeting is with, the goal and the ask, so the sheet comes in this reply. Up to three follow-up questions after it are fine.

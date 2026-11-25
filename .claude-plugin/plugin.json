@@ -1,0 +1,24 @@
+{
+  "name": "american-business-playbook",
+  "displayName": "The American Playbook",
+  "version": "2.0.0",
+  "description": "American business communication coach for Israeli founders, from Dan Launchpad's American Playbook. The model interviews and writes; a deterministic Python engine judges.",
+  "author": {
+    "name": "Nimrod Zemel",
+    "url": "https://github.com/Nimrod-Zemel"
+  },
+  "homepage": "https://github.com/Nimrod-Zemel/american-business-playbook",
+  "repository": "https://github.com/Nimrod-Zemel/american-business-playbook",
+  "license": "Apache-2.0",
+  "keywords": [
+    "israel",
+    "startup",
+    "founders",
+    "us-go-to-market",
+    "sales",
+    "fundraising",
+    "email",
+    "cross-cultural",
+    "dan-launchpad"
+  ]
+}

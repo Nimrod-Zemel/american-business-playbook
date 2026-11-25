@@ -1,0 +1,41 @@
+{
+  "cycles": [
+    {
+      "version": "1.1.0",
+      "date": "2026-08-05",
+      "lessons": [
+        "Merged the parallel 'american-playbook' v2 skill (built and benchmarked in Cowork) into this canonical skill to eliminate trigger collision between two overlapping skills in the same account.",
+        "Adopted from the merged skill: core rule 7 (no invented facts, brackets plus a question), The Intro Economy section (double opt-in, reply speed, BCC protocol, loop closing, give-before-ask) with a Mode Router row, 7 additional email templates (conference follow-up, second angle, re-entry, monthly investor update, bar-extraction reply, thank-you and loop-close, LinkedIn and scheduling), advanced investor communication in meeting-prep-modes (process-signal reading with the pipeline hygiene rule, update anatomy, honest momentum engineering, associate dynamics, second-meeting reads), 4 additional agent-failure Gotchas, and an enriched simulation debrief rubric (dated next step, verbatim Israeli-isms).",
+        "Softened the unverified five-plus-touches sales statistic to folklore-labeled directional guidance per fact-grounding standards.",
+        "Kept this skill's superior assets over the merged-in one: Socratic-before-solutions intake with the verbatim-quote demand, The Bench personas and routing, voice-note invitations, dual-timezone send times, character sheets with geography modifiers, the 14-day yellow rule, and the no-dashes typography rule.",
+        "Benchmark evidence carried from the american-playbook line: with-skill 19/19 vs without-skill 16/19 assertions (iteration-1); iteration-2 re-run against this merged skill with a sparring eval added and discriminating decoder assertions.",
+        "SKILL_HE.md updated in structural parity for every change (rule 7, router row, intro economy, gotchas, debrief, resource descriptions).",
+        "Added GEMINI-GEM.md, a generated single-file export (SKILL.md body plus all four references inline) for founders pasting into a Gemini Gem; regenerate it whenever SKILL.md or references change.",
+        "Iteration-2 eval caught a live behavioral regression: the Socratic rule gated an explicit 'start the simulation now' request behind a three-question intake while the no-skill baseline opened in character immediately. Fixed with the simulation-start exception in Mode C step 3 (EN + HE in parity) and verified by re-run.",
+        "Iteration-2 benchmark vs no-skill baseline: 24/25 (96%) vs 21/25 (84%). Reliable discriminators: email length discipline, monthly Shipped/Sold/Learned/Ask cadence, soft-pass counter-move prep. eval-3 (simulation start) now passes both configs and is retained as a regression guard.",
+        "Fixed from an eval finding both configs failed: the investor question bank lacked a check-size / lead-follow fund-fit question; added to meeting-prep-modes C2."
+      ]
+    },
+    {
+      "version": "2.0.0",
+      "date": "2026-11-25",
+      "lessons": [
+        "Rebuilt on one principle: the model interviews and writes, a deterministic engine judges. Verdicts, scores, counts, dates and send times now come from scripts/playbook.py, so the same facts give the same answer every time. In 1.1.0 the model read the tables as prose and judged by itself.",
+        "Moved the whole playbook from prose into rule tables under data/ (decoder rows, traffic-light signals, email limits and phrase lists, 15 templates, cadence and holiday windows, prep sheets, guards, characters, debrief rubric, bench, intro protocol). The reference files are now generated from those tables and cannot drift from the engine.",
+        "Every answer ends with a stamp naming the engine version, a fingerprint of the rule tables and any check that did not run. Without code execution the skill falls back to references/manual-mode.md and must say NOT VERIFIED BY CODE.",
+        "New judgments in code that 1.1.0 left to the model: the traffic-light verdict with intake gating (no verdict until verbatim quotes, the next step and its owner, and what it cost them are known), compliment calibration, the investor soft-pass path, the BANT-on-investor guard, simulation scene selection by seed, debrief scoring, intro protocol checks, bench routing with a two-nudge budget, and send-time selection on both clocks.",
+        "Defects found in the 1.1.0 scripts while porting them, all fixed and covered by tests: the linter dropped a one-line email that opened with a greeting, so the value-bump and second-angle templates reported no question; four of the guide's own templates (breakup, recap, second angle, bar extraction) failed the linter's softener rule; a question quoted inside a sentence was counted as a second ask; the scheduler needed the host's time zone database and failed without it.",
+        "The follow-up cadence reproduces the 1.1.0 scheduler exactly on 1,096 consecutive meeting dates (2026 to 2028) with single federal holidays switched off. With them on, which is the new default, 55 of those dates move.",
+        "Time zone math no longer depends on the host: US and Israeli daylight-saving rules are implemented in the engine and checked against the IANA database for every day from 2016 to 2040 in seven zones.",
+        "A figure in a rewrite that does not appear in the founder's own material is now a must-fix when a source is given. Inventing traction was a gotcha the model was asked to avoid; it is now a check the model cannot pass.",
+        "Kept from 1.1.0 without change in meaning: the description and its triggers, the three modes, the Hebrew coaching and English deliverable split, the no-dashes rule, the simulation-start exception, the bench personas and their rules, and the guide's own lines: of the 110 quoted strings in the 1.1.0 files, 108 are present verbatim, one was reworded, and one was the name of an error that can no longer occur.",
+        "Security posture: standard library only, no network, no subprocess, no environment reads, one optional file write. A sha256 seal over every shipped file is verified before the engine loads; planted modules and planted bytecode do not execute. A static self-audit and tests that plant violations back each claim.",
+        "Not carried over: the 1.1.0 benchmark (24/25 with the skill against 21/25 without) describes the old instructions. Model-level evals were not re-run for 2.0.0. Nine cases are defined under evals/ in the repository and should be run before the next change to SKILL.md.",
+        "Every place where the guide is qualitative and the code needed a number is tagged origin: extension in the data and listed in docs/ASSUMPTIONS.md in the repository for the author's review.",
+        "The interview moved into code. 1.1.0 told the model to ask two or three sharp questions per turn and left the choice of questions to it. 2.0.0 has a bank of 117 questions in data/interview.json and an interview command that picks the next three, musts first, only where they apply, and builds the fact sheets for the other commands from the answers. The model asks and records. It no longer chooses what to ask or fills a fact sheet by hand, which is where optimism got in.",
+        "The interview asks for bad news by name (the deferral lines founders forget to quote), so every Yellow and Red signal can be reached, and in email mode the founder's answers are the source the figures are checked against.",
+        "The guide (The American Playbook V2) is kept in the repository under docs/guide/ and checked against the rule tables on every build. The first run of that check found 30 English lines of the guide that the tables did not have: all of module 6 on politics, the frame and hard stop of module 5, and a few lines of modules 3, 4 and 8. They were added as data, with tests."
+      ]
+    }
+  ]
+}

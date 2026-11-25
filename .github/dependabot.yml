@@ -1,0 +1,11 @@
+# The workflows pin every action to a full commit hash. A pin that is never
+# refreshed turns into an old, unpatched action, so Dependabot proposes the
+# update once a month. Merge when the ci check on its pull request is green.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: ci

@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.DS_Store
+*.ics
+evals/results/
+/dist/*.skill
+/dist/*.zip
+/dist/SHA256SUMS

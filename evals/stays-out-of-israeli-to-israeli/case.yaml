@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: stays-out-of-israeli-to-israeli
+expected_outcome: |
+  A direct Hebrew email to an Israeli customer. The American playbook does not apply: no English email, no softeners imposed for an American reader, no US time zones, no engine run and no stamp line.

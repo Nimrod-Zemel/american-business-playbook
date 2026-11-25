@@ -1,0 +1,29 @@
+The American Playbook (american-business-playbook)
+Copyright 2026 Nimrod Zemel
+
+Licensed under the Apache License, Version 2.0. The full terms travel with
+this notice: LICENSE in the repository, LICENSE.txt inside the skill package.
+
+The rules this skill applies come from "The American Playbook", the guide
+Nimrod Zemel wrote with Dan Launchpad, Tel Aviv University. The guide itself,
+in docs/guide/ of the source repository, is not covered by the Apache License.
+It keeps its own terms, stated in docs/guide/README.md there.
+
+This work contains material adapted from another open-source project:
+
+  founder-skills (lool-ventures/founder-skills on GitHub)
+  Copyright 2026 lool ventures. Licensed under the Apache License, Version 2.0.
+  The integrity seal of the skill, scripts/abp/seal.py, is adapted from
+  founder-skills/scripts/script_hashes.py and was changed for this skill.
+  The header of that file says what was kept and what was changed.
+
+It follows conventions of another:
+
+  Skills IL (skills-il on GitHub)
+  Copyright (c) 2026 Skills IL (Yootech). MIT License.
+  The Hebrew companion file SKILL_HE.md and the layout of metadata.json.
+
+Ideas that shaped the design, with no text or code taken, are credited in
+THIRD_PARTY_NOTICES.md in the source repository
+(Nimrod-Zemel/american-business-playbook on GitHub), next to the commit of
+every source and the full text of every license.

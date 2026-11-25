@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: americanize-long-email
+expected_outcome: |
+  A short American cold email (at most 5 sentences, one closed ask, a softener, a specific subject, a first-name greeting) built only from facts in the founder's draft, plus a send moment given in Eastern time and in Israel time that avoids Thanksgiving week, one Hebrew coaching line on the main habit to fix, and the engine's stamp line. The lint command was run on the draft and on the rewrite. A pasted draft is not held back by questions: the email comes in this reply, and up to three follow-up questions after it are fine.

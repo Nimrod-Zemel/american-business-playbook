@@ -1,0 +1,44 @@
+{
+  "author": "Nimrod Zemel",
+  "version": "2.0.0",
+  "category": "communication",
+  "tags": {
+    "he": [
+      "תרבות עסקית אמריקאית",
+      "אימייל",
+      "מכירות",
+      "גיוס הון",
+      "פגישות",
+      "פולו-אפ",
+      "סטארטאפ",
+      "ישראל"
+    ],
+    "en": [
+      "american-business-culture",
+      "email",
+      "sales",
+      "fundraising",
+      "meetings",
+      "follow-up",
+      "startup",
+      "israel"
+    ]
+  },
+  "display_name": {
+    "he": "הפלייבוק האמריקאי",
+    "en": "The American Playbook"
+  },
+  "display_description": {
+    "he": "מאמן תקשורת עסקית אמריקאית ליזמים ישראלים, מבית Dan Launchpad של אוניברסיטת תל אביב. מנסח ומתזמן מיילים לאמריקאים, מפענח פגישות וסיגנלים (הלא העטוף בסוכר, רמזור הסיגנלים), ומכין ומדמה פגישות עם לקוחות, משקיעים ומומחים אמריקאים. המודל מראיין וכותב, ומנוע Python דטרמיניסטי שופט: אותן עובדות, אותה פסיקה, בכל פעם. מאמן בעברית מהירה, מייצר תוצרים באנגלית נקייה, ומנתב יזמים לאיש הצוות הנכון בתוכנית.",
+    "en": "American business communication coach for Israeli founders, from Tel Aviv University's Dan Launchpad. Drafts and times emails to Americans, decodes meetings and signals (the sugar-coated no, the signal traffic light), and preps and simulates meetings with US customers, investors, and KOLs. The model interviews and writes; a deterministic Python engine judges, so the same facts get the same verdict every time. Coaches in fast Hebrew, produces clean English deliverables, and routes founders to the right program team member."
+  },
+  "supported_agents": [
+    "claude-code",
+    "cursor",
+    "github-copilot",
+    "windsurf",
+    "opencode",
+    "codex",
+    "gemini-cli"
+  ]
+}

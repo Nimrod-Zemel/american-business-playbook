@@ -1,0 +1,275 @@
+{
+  "_about": "The email templates of the American Playbook. `playbook.py template` renders them. A slot the founder has not filled stays as a [bracket] and is reported as a missing fact: the engine never fills a metric, a logo or a name on its own. `example` holds the illustrative filled version from the guide; it is shown in the references and never used as output.",
+  "group_count_note": "The guide counts 12 template groups: cold, conference follow-up, forwardable intro, recap, value bump, second angle, breakup, re-entry, monthly investor update, bar-extraction reply, thank-you and loop-close, LinkedIn and scheduling.",
+  "templates": [
+    {
+      "id": "cold",
+      "group": 1,
+      "title": "Cold outreach (the base template)",
+      "type": "cold",
+      "when": "First contact, ideally with a connector or a specific trigger in the first line.",
+      "subject": "Intro via [Connector] - [the outcome, 3-5 words]",
+      "body": "Hi [First name],\n\n[Connector] mentioned [what they are working on].\n\nWe help [ICP] [outcome + number] - [one proof point].\n\nWorth a 20-minute call to see if this is relevant for [their plan or timeframe]? Happy to work around your calendar.\n\nBest,\n[Founder]",
+      "slots": {
+        "first_name": "[First name]",
+        "connector": "[Connector]",
+        "subject_outcome": "[the outcome, 3-5 words]",
+        "trigger": "[what they are working on]",
+        "icp": "[ICP]",
+        "outcome": "[outcome + number]",
+        "proof": "[one proof point]",
+        "their_plan": "[their plan or timeframe]",
+        "founder": "[Founder]"
+      },
+      "notes": "No connector? Replace the first line with the specific trigger you noticed, and drop \"Intro via\" from the subject.",
+      "example": "Subject: Intro via Sarah - cutting claims processing time\n\nHi Michael,\n\nSarah Cohen mentioned you're rebuilding the claims workflow at Acme.\n\nWe help mid-size insurers cut claims processing time by about 40% - we're already running paid pilots with two carriers.\n\nWorth a 20-minute call to see if this is relevant for your Q1 plans? Happy to work around your calendar.\n\nBest,\nDana",
+      "origin": "playbook"
+    },
+    {
+      "id": "conference",
+      "group": 2,
+      "title": "Conference / event follow-up (they said \"send me something\")",
+      "type": "conference",
+      "when": "After meeting someone at an event who asked you to send something.",
+      "subject": "Great meeting you at [Event] - [topic, 2-3 words]",
+      "body": "Hi [First name],\n\nReally enjoyed our conversation at [Event] about [the pain they described].\n\nThat challenge you mentioned - [restate their words back] - is exactly what we work on: we help [ICP] [outcome + number], and [one proof point].\n\nWould a 20-minute call next week make sense to dig in? Happy to work around your calendar.\n\nBest,\n[Founder]",
+      "slots": {
+        "first_name": "[First name]",
+        "event": "[Event]",
+        "topic": "[topic, 2-3 words]",
+        "their_pain": "[the pain they described]",
+        "their_words": "[restate their words back]",
+        "icp": "[ICP]",
+        "outcome": "[outcome + number]",
+        "proof": "[one proof point]",
+        "founder": "[Founder]"
+      },
+      "origin": "playbook"
+    },
+    {
+      "id": "forwardable",
+      "group": 3,
+      "title": "The Forwardable Email (intro request, double opt-in)",
+      "type": "intro",
+      "when": "Asking a connector for an intro. The connector forwards instead of composing.",
+      "subject": "Quick intro request - [Startup] x [Target Company]",
+      "body": "Hi [Connector],\n\nWould you be comfortable introducing me to [Name] at [Company]? Feel free to forward the paragraph below, and no worries at all if the timing isn't right.\n\n---\n[Startup] helps [ICP] cut [pain metric] by [number]. They're already working with [proof point]. [Founder] would love 20 minutes with [Name] to see whether this is relevant for their team. Worth a look?",
+      "slots": {
+        "connector": "[Connector]",
+        "startup": "[Startup]",
+        "company": ["[Target Company]", "[Company]"],
+        "name": "[Name]",
+        "icp": "[ICP]",
+        "pain_metric": "[pain metric]",
+        "number": "[number]",
+        "proof": "[proof point]",
+        "founder": "[Founder]"
+      },
+      "origin": "playbook"
+    },
+    {
+      "id": "recap",
+      "group": 4,
+      "title": "Recap (within 24 hours of every meeting)",
+      "type": "recap",
+      "when": "Within 24 hours of every meeting. What is not in the recap did not happen.",
+      "subject": "Recap + next steps - [Startup] / [Company]",
+      "body": "Hi [First name], thank you for the time today. Quick recap:\n- [Their pain, in their words, with a number]\n- [What was agreed or proposed]\n- Next step: [the next step, with an owner and a date]\n\nI'll send [what you promised] [when]. Anything I missed?",
+      "slots": {
+        "first_name": "[First name]",
+        "startup": "[Startup]",
+        "company": "[Company]",
+        "their_pain": "[Their pain, in their words, with a number]",
+        "agreed": "[What was agreed or proposed]",
+        "next_step": "[the next step, with an owner and a date]",
+        "promised": "[what you promised]",
+        "promised_when": "[when]"
+      },
+      "example": "Subject: Recap + next steps - [Startup] / [Company]\n\nHi Michael, thank you for the time today. Quick recap:\n- Your team spends ~15 hrs/week on manual claim triage\n- A 2-week pilot scoped to auto-triage could prove value fast\n- Next step: intro to Dana from your data team by Friday\n\nI'll send the pilot one-pager tomorrow. Anything I missed?",
+      "origin": "playbook"
+    },
+    {
+      "id": "value_bump",
+      "group": 5,
+      "title": "Value bump (day 3-4)",
+      "type": "followup",
+      "when": "Day 3-4 after the meeting, and once per quarter in nurture. Never \"just checking in\".",
+      "subject": "",
+      "body": "Hi [First name] - saw [the fresh reason: an article, a metric, a customer, the feature they asked about] and thought of our conversation: [link]. Still happy to [the next step you proposed] - would a quick call next week work?",
+      "slots": {
+        "first_name": "[First name]",
+        "fresh_reason": "[the fresh reason: an article, a metric, a customer, the feature they asked about]",
+        "link": "[link]",
+        "next_step": "[the next step you proposed]"
+      },
+      "notes": "Reply in the same thread, so no new subject line.",
+      "example": "Hi Michael - saw this new benchmark on claims automation and thought of our conversation: [link]. Still happy to scope that pilot - would a quick call next week work?",
+      "origin": "playbook"
+    },
+    {
+      "id": "second_angle",
+      "group": 6,
+      "title": "Second angle (day 8-10; shorter, one closed question)",
+      "type": "followup",
+      "when": "Day 8-10. Shorter than the value bump. One closed question.",
+      "subject": "",
+      "body": "Hi [First name] - quick one: is [the next step] still on the table for [timeframe], or should I circle back next quarter?",
+      "slots": {
+        "first_name": "[First name]",
+        "next_step": "[the next step]",
+        "timeframe": "[timeframe]"
+      },
+      "notes": "Reply in the same thread, so no new subject line.",
+      "origin": "playbook"
+    },
+    {
+      "id": "breakup",
+      "group": 7,
+      "title": "The Breakup Email (day 15-20; paradoxically the highest reply rate)",
+      "type": "breakup",
+      "when": "Day 15-20 with no reply, or as soon as the verdict is Red.",
+      "subject": "Closing the loop",
+      "body": "Hi [First name], I haven't heard back, so I'll assume the timing isn't right and close this on my end - no hard feelings at all. If things change, my door is always open. Wishing you and the team a great quarter!",
+      "slots": {
+        "first_name": "[First name]"
+      },
+      "origin": "playbook"
+    },
+    {
+      "id": "re_entry",
+      "group": 8,
+      "title": "Re-entry after the founder went silent (the FOUNDER dropped the thread)",
+      "type": "followup",
+      "when": "The founder dropped the thread. Do not over-apologize; lead with new value and restart the clock.",
+      "subject": "[New concrete development] - picking this back up",
+      "body": "Hi [First name],\n\nSince we last spoke, [the single most impressive new fact: pilot went live, new customer, metric moved].\n\nThat made me think of your [pain/initiative] - worth restarting the conversation? Happy to share what we've learned either way.\n\nBest,\n[Founder]",
+      "slots": {
+        "first_name": "[First name]",
+        "development": "[New concrete development]",
+        "new_fact": "[the single most impressive new fact: pilot went live, new customer, metric moved]",
+        "their_initiative": "[pain/initiative]",
+        "founder": "[Founder]"
+      },
+      "origin": "playbook"
+    },
+    {
+      "id": "investor_update",
+      "group": 9,
+      "title": "Monthly investor update (how \"keep us posted\" becomes a term sheet)",
+      "type": "investor_update",
+      "when": "Monthly-ish to every fund that said \"keep us posted\", plus current backers. Same 2-3 KPIs every month so slope is visible; one honest setback when real; exactly one ask.",
+      "subject": "[Startup] update - [Month]: [headline metric or milestone]",
+      "body": "Hi [First name],\n\nQuick monthly update:\n\nShipped: [1-2 product lines]\nSold / Pipeline: [pilot status, logos, revenue or LOI movement - the slope]\nLearned: [one honest insight, including a setback if real]\nAsk: [one specific ask: an intro, a candidate, feedback on X]\n\nThanks - happy to go deeper on any of it.\n\n[Founder]",
+      "slots": {
+        "first_name": "[First name]",
+        "startup": "[Startup]",
+        "month": "[Month]",
+        "headline": "[headline metric or milestone]",
+        "shipped": "[1-2 product lines]",
+        "sold": "[pilot status, logos, revenue or LOI movement - the slope]",
+        "learned": "[one honest insight, including a setback if real]",
+        "ask": "[one specific ask: an intro, a candidate, feedback on X]",
+        "founder": "[Founder]"
+      },
+      "origin": "playbook"
+    },
+    {
+      "id": "bar_extraction",
+      "group": 10,
+      "title": "Bar-extraction reply to an investor soft pass",
+      "type": "reply",
+      "when": "Reply to \"too early / keep us posted / come back with traction\".",
+      "subject": "",
+      "body": "Hi [First name],\n\nCompletely understand - thanks for the straight read.\n\nSo I make the next conversation worth your time: what would you need to see in the next 6 months for this to be a strong yes?\n\nI'll add you to our monthly updates either way. Thanks again for the time.\n\nBest,\n[Founder]",
+      "slots": {
+        "first_name": "[First name]",
+        "founder": "[Founder]"
+      },
+      "notes": "The open question here is deliberate: it extracts the bar.",
+      "origin": "playbook"
+    },
+    {
+      "id": "thank_you",
+      "group": 11,
+      "title": "Thank-you (within 24h of any favor or intro outcome)",
+      "type": "thank_you",
+      "when": "Within 24 hours of any favor.",
+      "subject": "",
+      "body": "Hi [First name] - thank you again for [the specific thing]. [One-line outcome or what you're doing with it.]",
+      "slots": {
+        "first_name": "[First name]",
+        "the_thing": "[the specific thing]",
+        "outcome": "[One-line outcome or what you're doing with it.]"
+      },
+      "origin": "playbook"
+    },
+    {
+      "id": "loop_close",
+      "group": 11,
+      "title": "Loop-close to the connector who made it happen",
+      "type": "thank_you",
+      "when": "After the meeting an intro produced. Two lines: what happened, and thank you.",
+      "subject": "",
+      "body": "Hi [Connector] - quick loop-close: met with [Name], [one-line outcome]. Thank you for making it happen!",
+      "slots": {
+        "connector": "[Connector]",
+        "name": "[Name]",
+        "outcome": "[one-line outcome]"
+      },
+      "origin": "playbook"
+    },
+    {
+      "id": "linkedin",
+      "group": 12,
+      "title": "LinkedIn connection note (max ~250 chars, never a pitch)",
+      "type": "linkedin",
+      "when": "Connecting on LinkedIn before or after a first touch.",
+      "subject": "",
+      "body": "Hi [First name] - enjoyed your [talk/post] on [topic] ([one specific detail]). Building in the same space at [Startup]; would love to connect.",
+      "slots": {
+        "first_name": "[First name]",
+        "talk_or_post": "[talk/post]",
+        "topic": "[topic]",
+        "detail": "[one specific detail]",
+        "startup": "[Startup]"
+      },
+      "origin": "playbook"
+    },
+    {
+      "id": "scheduling",
+      "group": 12,
+      "title": "Scheduling with slots (always in THEIR timezone)",
+      "type": "scheduling",
+      "when": "Offering times. Always in the recipient's timezone. `playbook.py template --id scheduling --tz ET` fills real dates.",
+      "subject": "",
+      "body": "Happy to work around your calendar - would any of these work ([their TZ])?\n- Tue [date], 9:00-11:00\n- Wed [date], 8:00-10:00\n- Thu [date], 13:00-15:00\nOr grab any time that suits you here: [scheduling link]",
+      "slots": {
+        "their_tz": "[their TZ]",
+        "scheduling_link": "[scheduling link]"
+      },
+      "computed": "scheduling_slots",
+      "origin": "playbook"
+    },
+    {
+      "id": "intro_reply_bcc",
+      "group": 0,
+      "title": "First reply to an intro (BCC protocol)",
+      "type": "reply",
+      "when": "The first reply after an intro lands. Within hours, not days. Moves the connector out of the thread.",
+      "subject": "",
+      "body": "Thanks [Connector] (moving you to BCC to spare your inbox)!\n\nHi [Name], [one line on why this is relevant to them]. [Your one easy ask]",
+      "slots": {
+        "connector": "[Connector]",
+        "name": "[Name]",
+        "relevance": "[one line on why this is relevant to them]",
+        "ask": "[Your one easy ask]"
+      },
+      "notes": "The BCC line is from the guide. The second paragraph is a slot for the founder's own reply.",
+      "origin": "playbook"
+    }
+  ],
+  "americanize_prompt": {
+    "title": "The Americanize Prompt (for founders to keep as a shortcut)",
+    "text": "You are an American business-communication editor working for an Israeli startup founder. Rewrite the email below so it reads like a native American B2B email:\n- Max 5 sentences, bottom line up front\n- Exactly one ask, phrased as an easy yes/no question\n- Warm-professional tone with natural softeners (\"Would you be open to...\", \"No worries if not\")\n- No bluntness, no unnecessary technical depth (that belongs in the meeting)\n- Keep all facts intact. Flag anything that sounds pushy or too direct in American business culture.\nReturn only: a one-line subject suggestion + the rewritten email.\n\n[PASTE YOUR EMAIL HERE]"
+  }
+}

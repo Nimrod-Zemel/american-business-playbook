@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Python ${{ matrix.python }}
+    # Pinned image: Python 3.9 builds exist for 24.04 but not for newer runner images.
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14", "3.15"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+          # Lets the newest entry resolve while it is still a release candidate.
+          allow-prereleases: true
+      - name: Tests (standard library only, nothing to install)
+        run: python -B -m unittest discover -s tests
+      - name: Integrity seal matches the tree
+        run: python -B tools/seal.py --check
+      - name: Generated references match the rule tables
+        run: python -B tools/build_refs.py --check
+      - name: Self-audit (no network, no subprocess, no hooks)
+        run: python -B tools/audit.py
+      - name: Credits (every borrowed file is listed with its source and license)
+        run: python -B tools/notices.py
+      - name: Guide (every English line the guide teaches is in a rule table)
+        run: python -B tools/guide.py
+      - name: Doctor
+        run: python -B skills/american-business-playbook/scripts/playbook.py doctor --lang en

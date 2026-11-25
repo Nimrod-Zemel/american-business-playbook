@@ -1,0 +1,243 @@
+{
+  "_about": "Timing rules: the send window, the follow-up cadence, US holiday windows, and timezone shortcuts. Source of truth for `playbook.py send-time` and `playbook.py cadence`, and for the timing sections of the generated references/email-playbook.md.",
+  "mindset": "In Israel a third follow-up feels like nagging; in America the ABSENCE of follow-up reads as lack of seriousness. Polite persistence signals hunger, professionalism, and sales ability. And no reply is almost never an insult; it is an inbox.",
+  "send_window": {
+    "weekdays": [1, 2, 3],
+    "weekday_names": "Tuesday to Thursday",
+    "start": "08:30",
+    "end": "10:30",
+    "representative": "09:30",
+    "origin": "playbook"
+  },
+  "touches": [
+    {
+      "id": "recap",
+      "n": 1,
+      "name": {"en": "Recap", "he": "ריקאפ"},
+      "timing": "Within 24 hours",
+      "window_days": [1, 1],
+      "template": "recap",
+      "content": "Three bullets, decisions, action items with owners, next step with a date. Puts the founder in the top 10% and builds a paper trail",
+      "content_he": "שלושה בולטים, החלטות, משימות עם בעלים, צעד הבא עם תאריך. שם את היזם בעשירון העליון ובונה תיעוד",
+      "origin": "playbook"
+    },
+    {
+      "id": "value",
+      "n": 2,
+      "name": {"en": "Value touch", "he": "נגיעת ערך"},
+      "timing": "Day 3-4",
+      "window_days": [3, 4],
+      "template": "value_bump",
+      "content": "Never \"just checking in\". Always a fresh reason: an article, a metric, a customer, the feature they asked about",
+      "content_he": "אף פעם לא \"just checking in\". תמיד סיבה טרייה: מאמר, מטריקה, לקוח, הפיצ'ר שביקשו",
+      "origin": "playbook"
+    },
+    {
+      "id": "second_angle",
+      "n": 3,
+      "name": {"en": "Second angle", "he": "זווית שנייה"},
+      "timing": "Day 8-10",
+      "window_days": [8, 10],
+      "template": "second_angle",
+      "content": "Shorter; one closed question",
+      "content_he": "קצר יותר, שאלה סגורה אחת",
+      "origin": "playbook"
+    },
+    {
+      "id": "breakup",
+      "n": 4,
+      "name": {"en": "Breakup", "he": "פרידה"},
+      "timing": "Day 15-20",
+      "window_days": [15, 20],
+      "template": "breakup",
+      "content": "Polite closure. Highest reply rate of the sequence",
+      "content_he": "סגירה מנומסת. שיעור המענה הגבוה ברצף",
+      "origin": "playbook"
+    },
+    {
+      "id": "nurture",
+      "n": 5,
+      "name": {"en": "Nurture", "he": "Nurture"},
+      "timing": "Quarterly after breakup",
+      "window_days": [88, 95],
+      "template": "value_bump",
+      "content": "One value touch per quarter. A no now is not a no forever, if the exit was graceful",
+      "content_he": "נגיעת ערך אחת ברבעון. לא של עכשיו אינו לא לתמיד, אם היציאה הייתה אלגנטית",
+      "origin": "playbook"
+    }
+  ],
+  "min_gap_days": 2,
+  "notes": {
+    "recap_24h": {"en": "within 24 hours of the meeting", "he": "תוך 24 שעות מהפגישה"},
+    "recap_weekend": {"en": "meeting ended near the weekend; send first thing {weekday}", "he": "הפגישה נגמרה סמוך לסוף השבוע, לשלוח דבר ראשון ב{weekday}"},
+    "recap_holiday": {"en": "holiday window, send anyway - recaps do not wait", "he": "חלון חג, לשלוח בכל זאת - ריקאפ לא מחכה"},
+    "outside_window": {"en": "outside Tue-Thu (weekend/holiday constraints)", "he": "מחוץ לשלישי עד חמישי (אילוצי סוף שבוע או חג)"},
+    "pushed": {"en": "pushed past a weekend or holiday window", "he": "נדחה אל אחרי סוף שבוע או חלון חג"},
+    "respaced": {"en": "respaced to keep {days}+ days after the previous touch", "he": "רווח מחדש כדי לשמור {days}+ ימים מהנגיעה הקודמת"}
+  },
+  "weekday_names": {
+    "en": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "he": ["יום שני", "יום שלישי", "יום רביעי", "יום חמישי", "יום שישי", "שבת", "יום ראשון"]
+  },
+  "next_moves": {
+    "red_or_forced": {"en": "Close it out gracefully, then one value touch per quarter.", "he": "לסגור באלגנטיות, ואז נגיעת ערך אחת ברבעון."},
+    "after_breakup": {"en": "The breakup is sent. One value touch per quarter from here.", "he": "מייל הפרידה נשלח. מכאן נגיעת ערך אחת ברבעון."},
+    "green_recap": {"en": "Put the dated step in writing within 24 hours. What is not in the recap did not happen.", "he": "לכתוב את הצעד עם התאריך תוך 24 שעות. מה שלא בריקאפ לא קרה."},
+    "green_hold": {"en": "Recap is out and a dated step exists. Deliver on it; restart the cadence only if the date slips.", "he": "הריקאפ יצא ויש צעד עם תאריך. לעמוד בו. לחזור לקיידנס רק אם התאריך זז."},
+    "founder_went_silent": {"en": "You dropped the thread. Do not over-apologize; lead with new value and restart the clock.", "he": "הת'רד נרדם אצלך. בלי התנצלות יתר: לפתוח בערך חדש ולאפס את השעון."},
+    "next_in_cadence": {"en": "Next touch in the cadence.", "he": "הנגיעה הבאה בקיידנס."},
+    "investor_soft_pass": {"en": "A pass is still a relationship: thank them, ask the 6-months question, and add them to your monthly updates. Reply within 24 hours, in the same thread.", "he": "פס הוא עדיין מערכת יחסים: להודות, לשאול את שאלת 6 החודשים, ולהוסיף לעדכון החודשי. לענות תוך 24 שעות, באותו ת'רד."}
+  },
+  "off_cadence_touches": {
+    "bar_extraction_reply": {"en": "Bar-extraction reply", "he": "מענה לחילוץ הרף"},
+    "investor_update": {"en": "Investor update", "he": "עדכון משקיעים"}
+  },
+  "do": [
+    "Fresh value in every touch",
+    "Reply in the same thread",
+    "Their morning, Tuesday to Thursday",
+    "Close every email with one easy question"
+  ],
+  "do_not": [
+    "\"Just checking in\"",
+    "Sound hurt",
+    "Blast all channels the same day",
+    "Give up after one touch (sales folklore consistently puts winning deals at five-plus touches; treat the exact number as directional, the persistence principle as law)"
+  ],
+  "timing_rules": [
+    "Think in the recipient's clock: ET, CT, MT, or PT. Best send window: Tuesday to Thursday, 8:30-10:30 AM their time.",
+    "Start of quarter: open minds. End of quarter: closed heads (unless you are the deal being closed).",
+    "Israel-to-US reality check: a 9:30 AM ET send is 16:30 in Israel (15:30 during the DST gap weeks). Schedule sends; do not stay up."
+  ],
+  "holiday_windows": [
+    {
+      "id": "thanksgiving_week",
+      "name": "Thanksgiving week",
+      "rule": "week_of_nth_weekday",
+      "month": 11,
+      "weekday": 3,
+      "n": 4,
+      "dates": "The full week of the 4th Thursday of November",
+      "note": "Effectively dead from Wednesday",
+      "origin": "playbook"
+    },
+    {
+      "id": "winter_shutdown",
+      "name": "Winter shutdown",
+      "rule": "fixed_range",
+      "start": [12, 15],
+      "end": [1, 5],
+      "dates": "Mid-December to the first week of January",
+      "note": "The longest dead zone of the year",
+      "origin": "playbook"
+    },
+    {
+      "id": "independence_day_week",
+      "name": "Independence Day week",
+      "rule": "fixed_range",
+      "start": [7, 1],
+      "end": [7, 7],
+      "dates": "July 1-7",
+      "note": "Many take the full week",
+      "origin": "playbook"
+    },
+    {
+      "id": "labor_day_week",
+      "name": "Labor Day week",
+      "rule": "week_of_nth_weekday",
+      "month": 9,
+      "weekday": 0,
+      "n": 1,
+      "dates": "The week of the first Monday of September",
+      "note": "The unofficial end of summer",
+      "origin": "playbook"
+    }
+  ],
+  "cautions": {
+    "august": {
+      "en": "August: not dead, but slow; decision-makers rotate through vacations. Send, but expect latency.",
+      "he": "אוגוסט: לא מת, אבל איטי. מקבלי החלטות בחופשות לסירוגין. לשלוח, אבל לצפות לאיטיות.",
+      "origin": "playbook"
+    },
+    "quarter_end": {
+      "en": "End of quarter: closed heads (unless you are the deal being closed).",
+      "he": "סוף רבעון: ראשים סגורים (אלא אם אתה העסקה שנסגרת).",
+      "last_days": 10,
+      "origin": "playbook",
+      "threshold_origin": "extension"
+    },
+    "quarter_start": {
+      "en": "Start of quarter: open minds.",
+      "he": "תחילת רבעון: ראשים פתוחים.",
+      "first_days": 21,
+      "origin": "playbook",
+      "threshold_origin": "extension"
+    },
+    "dst_gap": {
+      "en": "DST gap week: Israel and the US changed clocks on different dates, so the usual time difference is off by one hour.",
+      "he": "שבוע פער שעון הקיץ: ישראל וארה\"ב מזיזות שעון בתאריכים שונים, ולכן ההפרש הרגיל שונה בשעה.",
+      "origin": "playbook"
+    }
+  },
+  "federal_holidays": {
+    "enabled": true,
+    "origin": "extension",
+    "source": "https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/",
+    "note": "Single-day federal holidays that fall outside the four playbook windows. A send date that lands on one is skipped. Weekend rule per OPM: Saturday is observed on the preceding Friday, Sunday on the following Monday.",
+    "days": [
+      {"id": "new_years_day", "name": "New Year's Day", "rule": "fixed", "month": 1, "day": 1},
+      {"id": "mlk_day", "name": "Birthday of Martin Luther King, Jr.", "rule": "nth_weekday", "month": 1, "weekday": 0, "n": 3},
+      {"id": "washingtons_birthday", "name": "Washington's Birthday", "rule": "nth_weekday", "month": 2, "weekday": 0, "n": 3},
+      {"id": "memorial_day", "name": "Memorial Day", "rule": "last_weekday", "month": 5, "weekday": 0},
+      {"id": "juneteenth", "name": "Juneteenth National Independence Day", "rule": "fixed", "month": 6, "day": 19},
+      {"id": "independence_day", "name": "Independence Day", "rule": "fixed", "month": 7, "day": 4},
+      {"id": "labor_day", "name": "Labor Day", "rule": "nth_weekday", "month": 9, "weekday": 0, "n": 1},
+      {"id": "columbus_day", "name": "Columbus Day", "rule": "nth_weekday", "month": 10, "weekday": 0, "n": 2},
+      {"id": "veterans_day", "name": "Veterans Day", "rule": "fixed", "month": 11, "day": 11},
+      {"id": "thanksgiving_day", "name": "Thanksgiving Day", "rule": "nth_weekday", "month": 11, "weekday": 3, "n": 4},
+      {"id": "christmas_day", "name": "Christmas Day", "rule": "fixed", "month": 12, "day": 25}
+    ]
+  },
+  "zones": {
+    "ET": {"name": "Eastern Time", "std_offset_hours": -5, "dst": true, "iana": "America/New_York"},
+    "CT": {"name": "Central Time", "std_offset_hours": -6, "dst": true, "iana": "America/Chicago"},
+    "MT": {"name": "Mountain Time", "std_offset_hours": -7, "dst": true, "iana": "America/Denver"},
+    "PT": {"name": "Pacific Time", "std_offset_hours": -8, "dst": true, "iana": "America/Los_Angeles"},
+    "AZ": {"name": "Arizona (no DST)", "std_offset_hours": -7, "dst": false, "iana": "America/Phoenix"},
+    "AKT": {"name": "Alaska Time", "std_offset_hours": -9, "dst": true, "iana": "America/Anchorage"},
+    "HT": {"name": "Hawaii Time (no DST)", "std_offset_hours": -10, "dst": false, "iana": "Pacific/Honolulu"}
+  },
+  "zone_aliases": {
+    "est": "ET", "edt": "ET", "eastern": "ET", "east coast": "ET",
+    "cst": "CT", "cdt": "CT", "central": "CT",
+    "mst": "MT", "mdt": "MT", "mountain": "MT",
+    "pst": "PT", "pdt": "PT", "pacific": "PT", "west coast": "PT",
+    "arizona": "AZ", "alaska": "AKT", "hawaii": "HT"
+  },
+  "cities": {
+    "_origin": "extension",
+    "new york": "ET", "nyc": "ET", "manhattan": "ET", "brooklyn": "ET", "boston": "ET", "cambridge": "ET",
+    "washington dc": "ET", "dc": "ET", "philadelphia": "ET", "pittsburgh": "ET",
+    "atlanta": "ET", "miami": "ET", "orlando": "ET", "tampa": "ET", "charlotte": "ET", "raleigh": "ET",
+    "detroit": "ET", "columbus": "ET", "cleveland": "ET", "cincinnati": "ET", "baltimore": "ET",
+    "chicago": "CT", "austin": "CT", "dallas": "CT", "houston": "CT", "san antonio": "CT",
+    "minneapolis": "CT", "st louis": "CT", "kansas city": "CT", "nashville": "CT", "milwaukee": "CT",
+    "new orleans": "CT", "omaha": "CT",
+    "denver": "MT", "boulder": "MT", "salt lake city": "MT", "albuquerque": "MT", "boise": "MT",
+    "san francisco": "PT", "sf": "PT", "bay area": "PT", "silicon valley": "PT", "palo alto": "PT",
+    "mountain view": "PT", "san jose": "PT", "oakland": "PT", "los angeles": "PT", "la": "PT",
+    "san diego": "PT", "seattle": "PT", "portland": "PT", "las vegas": "PT", "sacramento": "PT",
+    "phoenix": "AZ", "scottsdale": "AZ", "tucson": "AZ",
+    "anchorage": "AKT", "honolulu": "HT"
+  },
+  "israel": {
+    "std_offset_hours": 2,
+    "dst_rule": "IDT starts on the Friday before the last Sunday of March at 02:00 and ends on the last Sunday of October at 02:00.",
+    "iana": "Asia/Jerusalem"
+  },
+  "us_dst_rule": "US daylight time starts on the second Sunday of March at 02:00 and ends on the first Sunday of November at 02:00.",
+  "closing_rule": {
+    "en": "Rules: fresh value in every touch, same thread, one easy closed question per email.",
+    "he": "כללים: ערך טרי בכל נגיעה, באותו ת'רד, שאלה סגורה וקלה אחת בכל מייל."
+  }
+}

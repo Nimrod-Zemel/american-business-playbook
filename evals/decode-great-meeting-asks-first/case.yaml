@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: decode-great-meeting-asks-first
+expected_outcome: |
+  The assistant does not confirm the deal and does not give a verdict yet. It runs the interview and asks at most three short questions, the ones the engine returned: whether there is an agreed next step, what the meeting has cost the other side so far, and the American's exact words or how many questions he asked.

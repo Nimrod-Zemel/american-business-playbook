@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: simulation-starts-on-request
+expected_outcome: |
+  The simulation starts in the first reply: one setup line with the rules and how to stop, at most one quick question, then the American character speaks in English, in character. The American does not volunteer criticism or a direct no.

@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: interview-stops-when-told
+expected_outcome: |
+  The founder asked for an answer without more questions, and gets one. The assistant runs the interview with the stop flag, decodes the investor's line as a soft pass, gives the counter-question that extracts the bar, and says plainly that there is no traffic-light verdict because it does not know what the meeting cost the other side. It does not interrogate: at most one short question, and it may be none.

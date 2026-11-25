@@ -1,0 +1,43 @@
+name: A rule feels wrong
+description: The skill decoded a line, judged a meeting, flagged an email or asked a question in a way that does not match your experience with Americans.
+title: "Rule: "
+labels: ["rule"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Rules are data, so most of these are fixed by editing one line of JSON. Please remove names and deal details before you paste anything.
+  - type: textarea
+    id: said
+    attributes:
+      label: What was said or written
+      description: The American's exact words, or the sentence in your draft. English as it was.
+    validations:
+      required: true
+  - type: textarea
+    id: got
+    attributes:
+      label: What the skill answered or asked
+      description: The verdict, the decoding, the lint finding, or the question it asked (or never asked). Include the stamp line at the end of the answer.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you think is right, and why
+      description: What happened next in real life is the best evidence.
+    validations:
+      required: true
+  - type: dropdown
+    id: context
+    attributes:
+      label: Context
+      options:
+        - Sales
+        - Investor
+        - Domain expert (KOL)
+        - Email
+        - The interview (a question it should ask, or should not)
+        - Other
+    validations:
+      required: true

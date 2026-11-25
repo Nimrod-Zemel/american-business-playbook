@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="400" viewBox="0 0 1600 400" role="img">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0E1830"/><stop offset="1" stop-color="#18284D"/>
+  </linearGradient>
+  <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+    <path d="M1 1 L11 6 L1 11" fill="none" stroke="#F7F4EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<rect width="1600" height="400" fill="url(#bg)"/>
+<rect x="110" y="44" width="430" height="300" rx="18" fill="#F7F4EC" fill-opacity="0.06" stroke="#F7F4EC" stroke-opacity="0.55" stroke-width="2"/>
+<text x="140" y="90" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="500" fill="#F7F4EC" fill-opacity="0.9" text-anchor="start" letter-spacing="0">Dear Sir or Madam,</text>
+<rect x="140" y="112" width="360" height="10" rx="5" fill="#F7F4EC" fill-opacity="0.26"/>
+<rect x="140" y="135" width="330" height="10" rx="5" fill="#F7F4EC" fill-opacity="0.26"/>
+<rect x="140" y="158" width="350" height="10" rx="5" fill="#F7F4EC" fill-opacity="0.26"/>
+<rect x="140" y="181" width="300" height="10" rx="5" fill="#F7F4EC" fill-opacity="0.26"/>
+<rect x="140" y="204" width="340" height="10" rx="5" fill="#F7F4EC" fill-opacity="0.26"/>
+<rect x="140" y="227" width="250" height="10" rx="5" fill="#F7F4EC" fill-opacity="0.26"/>
+<rect x="140" y="250" width="345" height="10" rx="5" fill="#F7F4EC" fill-opacity="0.26"/>
+<rect x="140" y="273" width="220" height="10" rx="5" fill="#F7F4EC" fill-opacity="0.26"/>
+<rect x="140" y="296" width="310" height="10" rx="5" fill="#F7F4EC" fill-opacity="0.26"/>
+<circle cx="418" cy="232" r="15" fill="#E5534B" fill-opacity="1.0"/>
+<text x="418" y="239" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">?</text>
+<circle cx="388" cy="278" r="15" fill="#E5534B" fill-opacity="1.0"/>
+<text x="388" y="285" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">?</text>
+<circle cx="478" cy="301" r="15" fill="#E5534B" fill-opacity="1.0"/>
+<text x="478" y="308" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">?</text>
+<text x="325" y="378" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="#93A3C4" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">9 sentences, 3 asks</text>
+<line x1="580" y1="194" x2="700" y2="194" stroke="#F7F4EC" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="640" y="172" font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="20" font-weight="600" fill="#F7F4EC" fill-opacity="0.9" text-anchor="middle" letter-spacing="0">lint</text>
+<rect x="740" y="84" width="430" height="220" rx="18" fill="#F7F4EC" fill-opacity="0.06" stroke="#F7F4EC" stroke-opacity="0.55" stroke-width="2"/>
+<text x="770" y="130" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="500" fill="#F7F4EC" fill-opacity="0.9" text-anchor="start" letter-spacing="0">Hi Michael,</text>
+<rect x="770" y="156" width="350" height="10" rx="5" fill="#F7F4EC" fill-opacity="0.5"/>
+<rect x="770" y="182" width="300" height="10" rx="5" fill="#F7F4EC" fill-opacity="0.5"/>
+<rect x="770" y="208" width="240" height="10" rx="5" fill="#F7F4EC" fill-opacity="0.5"/>
+<circle cx="1040" cy="213" r="15" fill="#3FB27F" fill-opacity="1.0"/>
+<text x="1040" y="220" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">?</text>
+<text x="770" y="270" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="#F7F4EC" fill-opacity="0.7" text-anchor="start" letter-spacing="0">Best, Dana</text>
+<text x="955" y="338" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="#93A3C4" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">3 sentences, 1 ask</text>
+<line x1="1208" y1="194" x2="1290" y2="194" stroke="#F7F4EC" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="3 9" marker-end="url(#arrow)"/>
+<rect x="1318" y="124" width="190" height="140" rx="16" fill="#F7F4EC" fill-opacity="0.06" stroke="#F7F4EC" stroke-opacity="0.55" stroke-width="2"/>
+<text x="1413" y="172" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="700" fill="#F7F4EC" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">Tue 09:30 ET</text>
+<text x="1413" y="206" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="#F7F4EC" fill-opacity="0.85" text-anchor="middle" letter-spacing="0">16:30 Israel</text>
+<text x="1413" y="240" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="17" font-weight="400" fill="#93A3C4" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">not a holiday</text>
+</svg>

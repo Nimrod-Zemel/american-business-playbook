@@ -1,0 +1,64 @@
+{
+  "_about": "The Intro Economy: the unspoken protocol of warm intros in the US, as checkable rules. Source of truth for `playbook.py intro`.",
+  "premise": "In the US, the doors that matter open almost exclusively through warm intros, and the system has a strict unspoken protocol. Breaking it produces no confrontation, only silence: the founder simply stops getting connected.",
+  "premise_he": "בארה\"ב הדלתות החשובות נפתחות כמעט רק דרך אינטרו חם, ולמערכת יש פרוטוקול נוקשה שאיש לא אומר בקול. הפרה שלו לא מייצרת עימות, רק שקט: פשוט מפסיקים לחבר את היזם.",
+  "rules": [
+    {
+      "id": "double_opt_in",
+      "title": {"en": "Double opt-in", "he": "Double Opt-In"},
+      "text": {"en": "Never connect two people without both agreeing first. When requesting an intro, always attach a forwardable email so the connector forwards instead of composing.", "he": "לא מחברים שני אנשים בלי אישור שניהם. כשמבקשים אינטרו, תמיד מצרפים מייל Forwardable כדי שהמחבר יעביר במקום לנסח."},
+      "template": "forwardable"
+    },
+    {
+      "id": "speed",
+      "title": {"en": "Speed", "he": "מהירות"},
+      "text": {"en": "When an intro lands, reply within hours, not days. A slow reply embarrasses the person who vouched; their reputation is on the line, not just the founder's.", "he": "כשאינטרו נוחת, עונים תוך שעות, לא ימים. תגובה איטית מביכה את מי שערב. המוניטין שלו על הכף, לא רק של היזם."},
+      "template": "intro_reply_bcc"
+    },
+    {
+      "id": "bcc",
+      "title": {"en": "BCC protocol", "he": "פרוטוקול BCC"},
+      "text": {"en": "The first reply moves the connector out: \"Thanks Sarah (moving you to BCC to spare your inbox)!\"", "he": "במענה הראשון משחררים את המחבר: \"Thanks Sarah (moving you to BCC to spare your inbox)!\""},
+      "template": "intro_reply_bcc"
+    },
+    {
+      "id": "close_loop",
+      "title": {"en": "Close the loop", "he": "סגירת הלופ"},
+      "text": {"en": "After the meeting, two lines to the connector: what happened, and thank you. People who do not close loops do not get second intros.", "he": "אחרי הפגישה, שתי שורות למחבר: מה קרה ותודה. מי שלא סוגר לופים לא מקבל אינטרו שני."},
+      "template": "loop_close"
+    },
+    {
+      "id": "give_first",
+      "title": {"en": "Give before you ask", "he": "נותנים לפני שמבקשים"},
+      "text": {"en": "The American network runs on a favor balance. An account that only withdraws gets closed.", "he": "הרשת האמריקאית רצה על מאזן טובות. חשבון שרק מושכים ממנו נסגר."},
+      "template": null
+    }
+  ],
+  "thresholds": {
+    "reply_great_hours": {"value": 4, "origin": "extension", "source": "\"reply within hours, not days\""},
+    "reply_late_hours": {"value": 24, "origin": "extension", "source": "\"reply within hours, not days\""},
+    "loop_close_hours": {"value": 24, "origin": "playbook", "source": "\"within 24h of any favor or intro outcome\""}
+  },
+  "stages": {
+    "asking": {"en": "Asking a connector for an intro", "he": "מבקשים אינטרו ממחבר"},
+    "received": {"en": "An intro just landed in your inbox", "he": "אינטרו נחת באינבוקס"},
+    "after_meeting": {"en": "The meeting the intro produced has happened", "he": "הפגישה שהאינטרו ייצר התקיימה"},
+    "connecting": {"en": "You want to connect two other people", "he": "אתה רוצה לחבר בין שני אנשים אחרים"}
+  },
+  "messages": {
+    "attach_forwardable": {"en": "Attach a forwardable email so the connector forwards instead of composing.", "he": "לצרף מייל Forwardable, כדי שהמחבר יעביר במקום לנסח."},
+    "forwardable_ok": {"en": "Forwardable email attached.", "he": "מייל Forwardable מצורף."},
+    "give_first_unknown": {"en": "When did you last do something for this connector? If the answer is never, give first.", "he": "מתי בפעם האחרונה עשית משהו בשביל המחבר הזה? אם התשובה היא אף פעם, קודם לתת."},
+    "give_first_no": {"en": "You have only withdrawn from this account. Give before you ask: an intro, a candidate, a useful article.", "he": "עד עכשיו רק משכת מהחשבון הזה. לתת לפני שמבקשים: אינטרו, מועמד, מאמר שימושי."},
+    "give_first_ok": {"en": "Favor balance is healthy.", "he": "מאזן הטובות תקין."},
+    "reply_now": {"en": "Reply now. It has been {hours} hours; the rule is hours, not days.", "he": "לענות עכשיו. עברו {hours} שעות. הכלל הוא שעות, לא ימים."},
+    "reply_late": {"en": "Late: {hours} hours since the intro. Reply now, keep it short, do not over-apologize.", "he": "באיחור: {hours} שעות מאז האינטרו. לענות עכשיו, בקצרה, בלי התנצלות יתר."},
+    "reply_on_time": {"en": "Replied within {hours} hours. On time.", "he": "נענה תוך {hours} שעות. בזמן."},
+    "bcc_missing": {"en": "Move the connector to BCC in your first reply.", "he": "להעביר את המחבר ל-BCC במענה הראשון."},
+    "bcc_ok": {"en": "Connector moved to BCC.", "he": "המחבר הועבר ל-BCC."},
+    "loop_open": {"en": "Close the loop now: two lines to {connector}, what happened and thank you.", "he": "לסגור את הלופ עכשיו: שתי שורות ל-{connector}, מה קרה ותודה."},
+    "loop_closed": {"en": "Loop closed.", "he": "הלופ נסגר."},
+    "opt_in_missing": {"en": "Ask both sides before you connect them. Never surprise someone with an intro.", "he": "לשאול את שני הצדדים לפני שמחברים. אף פעם לא להפתיע מישהו באינטרו."},
+    "opt_in_ok": {"en": "Both sides agreed.", "he": "שני הצדדים אישרו."}
+  }
+}

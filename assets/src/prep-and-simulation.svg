@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="400" viewBox="0 0 1600 400" role="img">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0E1830"/><stop offset="1" stop-color="#18284D"/>
+  </linearGradient>
+  <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+    <path d="M1 1 L11 6 L1 11" fill="none" stroke="#F7F4EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<rect width="1600" height="400" fill="url(#bg)"/>
+<rect x="96" y="50" width="400" height="280" rx="18" fill="#F7F4EC" fill-opacity="0.06" stroke="#F7F4EC" stroke-opacity="0.55" stroke-width="2"/>
+<text x="126" y="96" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="23" font-weight="700" fill="#F7F4EC" fill-opacity="1.0" text-anchor="start" letter-spacing="0">Prep sheet: investor</text>
+<rect x="126" y="130" width="14" height="14" rx="3" fill="#F7F4EC" fill-opacity="0.55"/>
+<text x="154" y="142" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="#F7F4EC" fill-opacity="0.9" text-anchor="start" letter-spacing="0">goal: a second partner meeting</text>
+<rect x="126" y="174" width="14" height="14" rx="3" fill="#F7F4EC" fill-opacity="0.55"/>
+<text x="154" y="186" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="#F7F4EC" fill-opacity="0.9" text-anchor="start" letter-spacing="0">the ask, in one line</text>
+<rect x="126" y="218" width="14" height="14" rx="3" fill="#F7F4EC" fill-opacity="0.55"/>
+<text x="154" y="230" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="#F7F4EC" fill-opacity="0.9" text-anchor="start" letter-spacing="0">soft-nos to expect</text>
+<rect x="126" y="268" width="150" height="38" rx="19" fill="#E5534B" fill-opacity="0.16" stroke="#E5534B" stroke-width="2"/>
+<text x="201" y="294" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="19" font-weight="700" fill="#F7F4EC" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">BANT: off</text>
+<text x="296" y="368" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="#93A3C4" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">prepare</text>
+<line x1="532" y1="190" x2="602" y2="190" stroke="#F7F4EC" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M662 52 H998 A22 22 0 0 1 1020 74 V104 A22 22 0 0 1 998 126 H706 L670 152 L678 126 H662 A22 22 0 0 1 640 104 V74 A22 22 0 0 1 662 52 Z" fill="#F7F4EC" fill-opacity="0.06" stroke="#F7F4EC" stroke-opacity="0.55" stroke-width="2" stroke-linejoin="round"/>
+<text x="668" y="98" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="25" font-weight="500" fill="#F7F4EC" fill-opacity="1.0" text-anchor="start" letter-spacing="0">“We’ll circle back.”</text>
+<text x="1034" y="98" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#93A3C4" fill-opacity="1.0" text-anchor="start" letter-spacing="0">Michael</text>
+<path d="M722 196 H1118 A22 22 0 0 1 1140 218 V248 A22 22 0 0 1 1118 270 H1102 L1110 296 L1074 270 H722 A22 22 0 0 1 700 248 V218 A22 22 0 0 1 722 196 Z" fill="#F7F4EC" fill-opacity="0.06" stroke="#F7F4EC" stroke-opacity="0.55" stroke-width="2" stroke-linejoin="round"/>
+<text x="728" y="242" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="25" font-weight="500" fill="#F7F4EC" fill-opacity="1.0" text-anchor="start" letter-spacing="0">“Would Thursday at 10 work?”</text>
+<text x="686" y="242" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#93A3C4" fill-opacity="1.0" text-anchor="end" letter-spacing="0">you</text>
+<text x="890" y="368" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="#93A3C4" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">rehearse, in English</text>
+<line x1="1180" y1="190" x2="1250" y2="190" stroke="#F7F4EC" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<circle cx="1392" cy="182" r="96" fill="none" stroke="#F7F4EC" stroke-opacity="0.18" stroke-width="16"/>
+<circle cx="1392" cy="182" r="96" fill="none" stroke="#3FB27F" stroke-width="16" stroke-linecap="round" stroke-dasharray="519 603" transform="rotate(-90 1392 182)"/>
+<text x="1392" y="204" font-family="'Inter Display', Inter, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="64" font-weight="800" fill="#F7F4EC" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">8.6</text>
+<text x="1392" y="238" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#93A3C4" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">out of 10</text>
+<text x="1392" y="368" font-family="Inter, 'Inter Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="#93A3C4" fill-opacity="1.0" text-anchor="middle" letter-spacing="0">scored by code</text>
+</svg>

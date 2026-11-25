@@ -1,0 +1,166 @@
+{
+  "_about": "The signal traffic light as rules. `playbook.py decode` evaluates these against the facts the founder gave and returns Green, Yellow or Red with a rule trace. A signal counts only when it comes with evidence (a verbatim quote, a name, a date). Thresholds marked origin=extension quantify guidance that the guide states qualitatively; they are listed in docs/ASSUMPTIONS.md for the author's review.",
+  "contexts": ["sales", "investor", "kol"],
+  "lights": {
+    "green": {"en": "Green", "he": "ירוק"},
+    "yellow": {"en": "Yellow", "he": "צהוב"},
+    "red": {"en": "Red", "he": "אדום"}
+  },
+  "headlines": {
+    "green": {"en": "Green: a real buying signal. Log as pipeline.", "he": "ירוק: סיגנל קנייה אמיתי. לרשום כפייפליין."},
+    "green_investor": {"en": "Green: real process motion. This fund is in process.", "he": "ירוק: תנועת תהליך אמיתית. הקרן בתהליך."},
+    "yellow": {"en": "Yellow: verify. Do not count as traction.", "he": "צהוב: לאמת. לא לספור כ-traction."},
+    "yellow_lean_red": {"en": "Yellow, leaning Red: nothing here has cost them anything yet.", "he": "צהוב נוטה לאדום: שום דבר כאן עוד לא עלה להם משהו."},
+    "yellow_lean_green": {"en": "Yellow, leaning Green: a real signal, but no commitment yet. Convert it into a dated step.", "he": "צהוב נוטה לירוק: יש סיגנל אמיתי, אין עדיין מחויבות. להמיר לצעד עם תאריך."},
+    "yellow_conflict": {"en": "Yellow: conflicting signals. A dated step exists, but so do red flags.", "he": "צהוב: סיגנלים סותרים. יש צעד עם תאריך, אבל יש גם דגלים אדומים."},
+    "red": {"en": "Red: move on.", "he": "אדום: להתקדם הלאה."},
+    "kol_real": {"en": "Real feedback extracted: criticism or behavior data is on the table.", "he": "חולץ פידבק אמיתי: יש ביקורת או דאטה התנהגותי על השולחן."},
+    "kol_polite": {"en": "Polite feedback only: compliments are a social default, not an assessment.", "he": "פידבק מנומס בלבד: מחמאות הן ברירת מחדל חברתית, לא הערכה מקצועית."}
+  },
+  "sales": {
+    "green": [
+      {"id": "added_people", "label": {"en": "They brought additional people into the conversation", "he": "הכניסו אנשים נוספים לשיחה"}, "origin": "playbook"},
+      {"id": "reference_call_request", "label": {"en": "They asked for reference calls", "he": "ביקשו שיחות רפרנס"}, "origin": "playbook"},
+      {"id": "asked_pricing", "label": {"en": "After-the-purchase question: pricing details", "he": "שאלת אחרי-הרכישה: פרטי תמחור"}, "origin": "playbook"},
+      {"id": "asked_security", "label": {"en": "After-the-purchase question: security", "he": "שאלת אחרי-הרכישה: אבטחה"}, "origin": "playbook"},
+      {"id": "asked_integration", "label": {"en": "After-the-purchase question: integration", "he": "שאלת אחרי-הרכישה: אינטגרציה"}, "origin": "playbook"},
+      {"id": "next_meeting_booked_in_meeting", "label": {"en": "The next meeting was booked before the current one ended", "he": "הפגישה הבאה נקבעה לפני שהנוכחית הסתיימה"}, "origin": "playbook"},
+      {"id": "fast_replies", "label": {"en": "Replies arrive within a day or two", "he": "תשובות מגיעות תוך יום-יומיים"}, "origin": "playbook"}
+    ],
+    "yellow": [
+      {"id": "compliments_no_step", "label": {"en": "General compliments with no step attached", "he": "מחמאות כלליות בלי צעד מחובר"}, "origin": "playbook"},
+      {"id": "circle_back", "label": {"en": "\"Let me circle back\"", "he": "\"Let me circle back\""}, "origin": "playbook"},
+      {"id": "loop_in_unnamed", "label": {"en": "\"I'll loop in my colleague\" with no name and no date", "he": "\"I'll loop in my colleague\" בלי שם ובלי תאריך"}, "origin": "playbook"}
+    ],
+    "red": [
+      {"id": "ghosting", "label": {"en": "Ghosting after 3-4 touches", "he": "גוסטינג אחרי 3-4 נגיעות"}, "origin": "playbook"},
+      {"id": "keep_posted_no_questions", "label": {"en": "\"Keep us posted\" with not a single question from their side", "he": "\"Keep us posted\" בלי שאלה אחת מהצד שלהם"}, "origin": "playbook"},
+      {"id": "refuses_concrete_step", "label": {"en": "Consistent refusal to take any concrete step", "he": "סירוב עקבי לקחת צעד קונקרטי כלשהו"}, "origin": "playbook"},
+      {"id": "reach_out_anytime", "label": {"en": "\"Feel free to reach out anytime\"", "he": "\"Feel free to reach out anytime\""}, "origin": "playbook"}
+    ]
+  },
+  "investor": {
+    "green": [
+      {"id": "second_meeting_scheduled_in_meeting", "label": {"en": "A second meeting was scheduled before the first ended", "he": "פגישה שנייה נקבעה לפני שהראשונה הסתיימה"}, "origin": "playbook"},
+      {"id": "more_partners_joining", "label": {"en": "More partners are joining", "he": "פרטנרים נוספים מצטרפים"}, "origin": "playbook"},
+      {"id": "data_room_request", "label": {"en": "They requested the data room", "he": "ביקשו גישה ל-data room"}, "origin": "playbook"},
+      {"id": "reference_request", "label": {"en": "They requested references", "he": "ביקשו רפרנסים"}, "origin": "playbook"},
+      {"id": "cohort_request", "label": {"en": "They requested cohort data", "he": "ביקשו דאטה של קוהורטים"}, "origin": "playbook"},
+      {"id": "unprompted_terms_talk", "label": {"en": "Unprompted talk of check size, ownership, or timeline", "he": "דיבור יזום על גודל צ'ק, אחזקה או לוח זמנים"}, "origin": "playbook"},
+      {"id": "intro_to_portfolio_or_fund", "label": {"en": "They made an intro to a portfolio founder or another fund", "he": "עשו אינטרו לפאונדר מהפורטפוליו או לקרן אחרת"}, "origin": "playbook"}
+    ],
+    "yellow": [
+      {"id": "warm_replies_no_date", "label": {"en": "Warm replies with no next date", "he": "תשובות חמות בלי תאריך הבא"}, "origin": "playbook"},
+      {"id": "stuck_at_associate", "label": {"en": "Weeks at associate level with no partner exposure", "he": "שבועות ברמת אסוסייט בלי חשיפה לפרטנר"}, "origin": "playbook"},
+      {"id": "circle_back", "label": {"en": "\"Let me circle back\"", "he": "\"Let me circle back\""}, "origin": "playbook"},
+      {"id": "loop_in_unnamed", "label": {"en": "\"I'll loop in my colleague\" with no name and no date", "he": "\"I'll loop in my colleague\" בלי שם ובלי תאריך"}, "origin": "playbook"}
+    ],
+    "red": [
+      {"id": "questions_stopped_only_compliments", "label": {"en": "Questions stopped and only compliments remain", "he": "השאלות נפסקו ונשארו רק מחמאות"}, "origin": "playbook"},
+      {"id": "rescheduled_without_alternatives", "label": {"en": "They rescheduled without offering alternatives", "he": "דחו פגישה בלי להציע חלופות"}, "origin": "playbook"},
+      {"id": "ghosting", "label": {"en": "Ghosting after 3-4 touches", "he": "גוסטינג אחרי 3-4 נגיעות"}, "origin": "playbook"},
+      {"id": "keep_posted_no_questions", "label": {"en": "\"Keep us posted\" with not a single question from their side", "he": "\"Keep us posted\" בלי שאלה אחת מהצד שלהם"}, "origin": "playbook"},
+      {"id": "reach_out_anytime", "label": {"en": "\"Feel free to reach out anytime\"", "he": "\"Feel free to reach out anytime\""}, "origin": "playbook"}
+    ],
+    "process": {
+      "open_diligence_signal": "open_diligence_request",
+      "open_diligence_label": {"en": "An open diligence request", "he": "בקשת דיליג'נס פתוחה"},
+      "in_process": {"en": "In process: there is a scheduled next interaction or an open diligence request.", "he": "בתהליך: יש אינטראקציה הבאה ביומן או בקשת דיליג'נס פתוחה."},
+      "nurture": {"en": "Nurture: no scheduled next interaction and no open diligence request. Report it as nurture, not as process.", "he": "Nurture: אין אינטראקציה הבאה ביומן ואין בקשת דיליג'נס פתוחה. לדווח כ-nurture, לא כתהליך."},
+      "rule": "A fund is \"in process\" only if there is a scheduled next interaction or an open diligence request; everything else is nurture and is reported as nurture."
+    }
+  },
+  "kol": {
+    "real_feedback_signals": [
+      {"id": "criticism_voiced", "label": {"en": "They voiced a specific criticism or objection", "he": "השמיעו ביקורת או התנגדות ספציפית"}, "origin": "playbook"},
+      {"id": "behavior_data_shared", "label": {"en": "They described what they actually did the last time they had this problem", "he": "תיארו מה עשו בפועל בפעם האחרונה שנתקלו בבעיה"}, "origin": "playbook"},
+      {"id": "named_who_should_not_buy", "label": {"en": "They named who should not buy this", "he": "אמרו מי לא צריך לקנות את זה"}, "origin": "playbook"}
+    ]
+  },
+  "thresholds": {
+    "ghosting_touches": {"value": 3, "source": "\"Ghosting after 3-4 touches\"", "origin": "playbook"},
+    "yellow_max_age_days": {"value": 14, "source": "\"A Yellow older than 14 days forces a choice\"", "origin": "playbook"},
+    "fast_reply_days": {"value": 2, "source": "\"Replies arrive within a day or two\"", "origin": "playbook"}
+  },
+  "decision_rules": [
+    {"id": "R1", "text": "Any Red rule fires, and there is no dated future next step: Red."},
+    {"id": "R2", "text": "A Red rule fires but a dated future next step exists: Yellow (conflicting signals)."},
+    {"id": "G1", "text": "At least one evidenced Green signal AND a commitment (a dated next step, or a paid currency with evidence): Green."},
+    {"id": "Y1", "text": "Otherwise Yellow. Leaning Green when an evidenced Green signal exists without commitment. Leaning Red when there is no next step, no paid currency, and either zero questions from their side or a soft-no phrase."},
+    {"id": "Y14", "text": "A Yellow older than 14 days forces a choice: run the breakup sequence or archive the lead. No third option."},
+    {"id": "E1", "text": "A signal with no evidence is listed as claimed and does not count."},
+    {"id": "I1", "text": "No verbatim quote and no transcript: no verdict. The engine returns the intake questions instead (override with --force, which stamps the verdict as provisional)."}
+  ],
+  "forced_decision": {
+    "en": "This Yellow is {age} days old. A Yellow older than 14 days forces a choice: run the breakup sequence or archive the lead. No third option.",
+    "he": "הצהוב הזה בן {age} ימים. צהוב מעל 14 יום מחייב הכרעה: רצף פרידה או ארכיון. אין אפשרות שלישית."
+  },
+  "intake": {
+    "max_questions_per_turn": 3,
+    "questions": [
+      {
+        "id": "quotes",
+        "field": "quotes",
+        "required_for_verdict": true,
+        "voice_ok": true,
+        "en": "What did they say at the key moment, word for word?",
+        "he": "מה בדיוק הם אמרו ברגע המפתח, מילה במילה?"
+      },
+      {
+        "id": "next_step",
+        "field": "next_step",
+        "required_for_verdict": true,
+        "voice_ok": false,
+        "en": "Who proposed the next step, and does it have a calendar date?",
+        "he": "מי הציע את הצעד הבא, ויש לו תאריך ביומן?"
+      },
+      {
+        "id": "cost_to_them",
+        "field": "cost_to_them",
+        "required_for_verdict": true,
+        "voice_ok": false,
+        "en": "What did this cost THEM so far: time, data, an intro, a budget discussion?",
+        "he": "מה זה עלה להם עד עכשיו: זמן, דאטה, אינטרו, שיחת תקציב?"
+      },
+      {
+        "id": "their_questions",
+        "field": "their_questions",
+        "required_for_verdict": false,
+        "voice_ok": false,
+        "en": "What did they ask about price, security, or integration, if anything?",
+        "he": "מה הם שאלו על מחיר, אבטחה או אינטגרציה, אם בכלל?",
+        "by_context": {
+          "_origin": "extension",
+          "investor": {
+            "en": "What did they ask you, and did they ask for anything: a data room, references, cohort data?",
+            "he": "מה הם שאלו אותך, והם ביקשו משהו: דאטה רום, רפרנסים, נתוני קוהורט?"
+          },
+          "kol": {
+            "en": "What did they ask you about your approach, if anything?",
+            "he": "מה הם שאלו אותך על הגישה שלך, אם בכלל?"
+          }
+        }
+      }
+    ],
+    "transcript_clarifier": {
+      "id": "decision_needed",
+      "field": "decision_needed",
+      "en": "What decision do you need from this debrief?",
+      "he": "איזו החלטה אתה צריך מהתחקיר הזה?"
+    },
+    "voice_note_invite": {
+      "en": "This one may take a few sentences. Feel free to answer with a voice message instead of typing.",
+      "he": "זו תשובה ארוכה. אפשר לענות בהודעה קולית במקום להקליד."
+    },
+    "excellent_meeting_trigger": {
+      "en": "When a founder says a meeting was excellent, that word opens the intake. It is not a reason to celebrate.",
+      "he": "כשיזם אומר שפגישה הייתה \"מצוינת\", המילה הזו פותחת אינטייק. היא לא סיבה לחגוג."
+    }
+  },
+  "pushes": {
+    "green": {"en": "Is the next step in writing, with a date and an owner? If not, that is your recap.", "he": "הצעד הבא כתוב, עם תאריך ובעלים? אם לא, זה הריקאפ שלך."},
+    "yellow": {"en": "What is the smallest step that would cost them something this week?", "he": "מה הצעד הכי קטן שיעלה להם משהו כבר השבוע?"},
+    "red": {"en": "Before you archive: did you send the breakup email? It has the highest reply rate of the sequence.", "he": "לפני הארכיון: שלחת מייל פרידה? יש לו את שיעור המענה הגבוה ברצף."},
+    "resists_verdict": {"en": "Do not argue feelings. Re-run the iron rule: what did it cost them?", "he": "לא מתווכחים עם רגשות. מריצים שוב את כלל הברזל: מה זה עלה להם?"}
+  }
+}

@@ -1,0 +1,60 @@
+name: release
+
+# Push a tag like v2.0.0 to publish a release. The job re-runs every check,
+# builds the reproducible package (.zip and .skill, the same bytes), attaches
+# a signed build-provenance attestation to it, and creates the GitHub release.
+#
+# Verify a downloaded package with:
+#   gh attestation verify american-business-playbook.zip --repo Nimrod-Zemel/american-business-playbook
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      - name: The tag must match the engine version
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          version="$(python -B skills/american-business-playbook/scripts/playbook.py --version | awk '{print $2}')"
+          test "v${version}" = "${TAG}" || { echo "Tag ${TAG} does not match engine version ${version}"; exit 1; }
+      - name: Tests
+        run: python -B -m unittest discover -s tests
+      - name: Build the package (checks seal, generated files, self-audit and credits first)
+        run: python -B tools/package.py
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        with:
+          subject-path: |
+            dist/american-business-playbook.zip
+            dist/american-business-playbook.skill
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          files="dist/american-business-playbook.zip dist/american-business-playbook.skill dist/SHA256SUMS dist/GEMINI-GEM.md"
+          if gh release view "${TAG}" >/dev/null 2>&1; then
+            # The release was drafted in the GitHub UI: attach the files to it.
+            gh release upload "${TAG}" ${files} --clobber
+          else
+            gh release create "${TAG}" ${files} \
+              --title "${TAG}" \
+              --notes "Install: download american-business-playbook.zip (the .skill file is the same bytes). Not the Source code archives. Changes: see CHANGELOG.md. Verify: gh attestation verify american-business-playbook.zip --repo ${GITHUB_REPOSITORY}"
+          fi

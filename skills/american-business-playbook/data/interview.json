@@ -1,0 +1,913 @@
+{
+  "_about": "The question bank: what the skill asks a founder before it judges, writes or simulates. Each question says which fact it fills in an engine command (feeds), why it is asked, and how much the answer matters (level 1 must, 2 sharpens, 3 depth). `playbook.py interview` picks the next questions in code, draws the picture of what is known, and composes the fact sheets for the other commands. The questions are the skill's own, so the table is tagged extension. A why line that restates a rule of the guide names its module. A must may ease: `eases` names the earlier answer that drops it to a lower level (a founder who brought a draft is not asked for the ask and the proof before the rewrite). In email mode, what the founder says is the founder's own material: those answers become source.txt, and every figure in the email is checked against them.",
+  "origin": "extension",
+  "principle": {
+    "en": "Ask before you judge. A verdict on half a story is a guess, and a founder's first telling leaves out exactly the facts that decide it.",
+    "he": "שואלים לפני ששופטים. פסיקה על חצי סיפור היא ניחוש, והגרסה הראשונה של יזם משמיטה בדיוק את העובדות שמכריעות."
+  },
+  "max_questions_per_turn": 3,
+  "default_depth": "standard",
+  "depths": {
+    "quick": {"levels": [1], "label": {"en": "quick: only what the engine cannot work without", "he": "מהיר: רק מה שהמנוע לא יכול בלעדיו"}},
+    "standard": {"levels": [1, 2], "label": {"en": "standard: the musts, and what sharpens the answer", "he": "רגיל: החובה, ומה שמחדד את התשובה"}},
+    "deep": {"levels": [1, 2, 3], "label": {"en": "deep: everything the bank has for this situation", "he": "עמוק: כל מה שיש בבנק למצב הזה"}}
+  },
+  "levels": {
+    "1": {"en": "must", "he": "חובה"},
+    "2": {"en": "sharpens", "he": "מחדד"},
+    "3": {"en": "depth", "he": "עומק"}
+  },
+  "weights": {"_origin": "extension", "1": 3, "2": 2, "3": 1},
+  "modes": {
+    "email": {"label": {"en": "an email", "he": "מייל"}},
+    "decode": {"label": {"en": "a meeting or thread to decode", "he": "פגישה או ת'רד לפענוח"}},
+    "prep": {"label": {"en": "a meeting to prepare", "he": "פגישה להתכונן אליה"}},
+    "scene": {"label": {"en": "a simulation", "he": "סימולציה"}},
+    "intro": {"label": {"en": "a warm intro", "he": "אינטרו חם"}}
+  },
+  "lead": {
+    "_about": "Within a level, these questions are asked first in the given mode, in this order: the ones that move the engine's answer most. The rest follow in the order of the bank.",
+    "decode": ["context", "quotes", "next_step_exists", "next_step_date", "next_step_proposed_by", "next_step_accepted", "cost_to_them", "their_questions", "deferral_lines", "after_purchase", "people_and_references", "pace", "diligence_asks", "partner_exposure", "terms_and_intros", "cooling", "investor_wording", "real_feedback", "pushback", "meeting_date", "touches_sent", "touches_done", "their_city", "next_step_what", "decision_needed", "investor_process_asked", "meeting_goal_was", "your_promises"],
+    "prep": ["context", "goal_currency", "the_ask", "goal_words", "their_role", "their_org", "upcoming_date", "meeting_minutes", "meeting_number", "background", "promised_last_time", "their_pain", "their_power", "bant_known", "round_facts", "traction_truth", "fundraise_live", "fund_fit", "assumption_to_break", "feared_objections", "talk_track", "proof_points", "their_city"],
+    "email": ["email_type", "draft_exists", "the_one_ask", "their_last_message", "fresh_value", "agreed_items", "event_context", "update_lines", "thanks_for", "proof_points", "their_city", "their_name", "company_one_liner", "why_them_now", "their_pain", "your_promises"],
+    "scene": ["context", "practice_focus"],
+    "intro": ["intro_stage"]
+  },
+  "dimensions": [
+    {"id": "who", "label": {"en": "Who they are", "he": "מי הם"}},
+    {"id": "history", "label": {"en": "How you got here", "he": "איך הגעתם לכאן"}},
+    {"id": "said", "label": {"en": "What was said", "he": "מה נאמר"}},
+    {"id": "commitment", "label": {"en": "What it cost them", "he": "מה זה עלה להם"}},
+    {"id": "next", "label": {"en": "What happens next", "he": "מה קורה עכשיו"}},
+    {"id": "goal", "label": {"en": "What you want", "he": "מה אתה רוצה"}},
+    {"id": "you", "label": {"en": "Your side", "he": "הצד שלך"}},
+    {"id": "proof", "label": {"en": "What you can prove", "he": "מה אתה יכול להוכיח"}},
+    {"id": "draft", "label": {"en": "The message itself", "he": "ההודעה עצמה"}},
+    {"id": "risks", "label": {"en": "What could go wrong", "he": "מה יכול להשתבש"}},
+    {"id": "logistics", "label": {"en": "Time and place", "he": "זמן ומקום"}}
+  ],
+  "questions": [
+    {
+      "id": "context", "dimension": "who", "level": {"decode": 1, "prep": 1, "scene": 1, "email": 2}, "kind": "choice", "guide_module": 1,
+      "choices": ["sales", "investor", "kol"],
+      "ask": {"en": "Who is the American here: a customer or partner, an investor, or a domain expert?", "he": "מי האמריקאי כאן: לקוח או שותף, משקיע, או מומחה תוכן?"},
+      "why": {"en": "It decides the framework. BANT runs only in sales, and an investor's \"keep us posted\" is read differently from a customer's.", "he": "זה קובע את המסגרת. BANT רץ רק במכירה, ו-\"keep us posted\" של משקיע נקרא אחרת משל לקוח."},
+      "feeds": [{"command": "decode", "path": "context"}, {"command": "prep", "path": "type"}, {"command": "scene", "arg": "--type"}, {"command": "guard", "arg": "--audience"}]
+    },
+    {
+      "id": "email_type", "dimension": "draft", "level": {"email": 1}, "kind": "choice", "guide_module": 3,
+      "choices": ["cold", "intro", "followup", "recap", "breakup", "scheduling", "thank_you", "reply", "investor_update", "conference", "linkedin"],
+      "ask": {"en": "What kind of email is it: cold, an intro request, a follow-up, a recap, a breakup, scheduling, a thank-you, a reply, an investor update, after a conference, or a LinkedIn message?", "he": "איזה מייל זה: קר, בקשת אינטרו, פולואפ, ריקאפ, פרידה, תיאום, תודה, תשובה, עדכון משקיעים, אחרי כנס, או הודעת לינקדאין?"},
+      "why": {"en": "Each kind has its own limits. A recap may run long. A cold email may not.", "he": "לכל סוג מגבלות משלו. ריקאפ יכול להיות ארוך. מייל קר לא."},
+      "feeds": [{"command": "lint", "arg": "--type"}]
+    },
+    {
+      "id": "draft_exists", "dimension": "draft", "level": {"email": 1}, "kind": "choice",
+      "choices": ["have_draft", "from_scratch"],
+      "ask": {"en": "Do you have a draft, in any language, or are we writing from scratch?", "he": "יש לך טיוטה, בכל שפה, או שכותבים מאפס?"},
+      "why": {"en": "A draft shows your habits. The linter measures it before anything is rewritten.", "he": "טיוטה מראה את ההרגלים שלך. הלינטר מודד אותה לפני שמשכתבים."},
+      "feeds": [{"command": "lint", "draft": true, "when_is": "have_draft"}]
+    },
+    {
+      "id": "their_role", "dimension": "who", "level": {"decode": 2, "prep": 2, "email": 2, "scene": 3}, "kind": "text",
+      "ask": {"en": "What is their title, and what do they actually own?", "he": "מה התפקיד שלהם, ועל מה הם אחראים בפועל?"},
+      "why": {"en": "The same sentence weighs differently from a budget owner and from someone who collects information.", "he": "אותו משפט שוקל אחרת כשהוא בא מבעל תקציב או ממי שרק אוסף מידע."},
+      "feeds": [{"command": "prep", "path": "counterpart.role"}]
+    },
+    {
+      "id": "their_org", "dimension": "who", "level": {"prep": 2, "email": 2, "decode": 3}, "kind": "text", "guide_module": 8,
+      "ask": {"en": "Which company or fund, in one line: what they do and how big?", "he": "איזו חברה או קרן, בשורה אחת: מה הם עושים ובאיזה גודל?"},
+      "why": {"en": "Pace, formality and the size of a realistic first step all follow the organization.", "he": "הקצב, הפורמליות וגודל הצעד הראשון הריאלי נגזרים מהארגון."},
+      "feeds": [{"command": "prep", "path": "counterpart.org"}]
+    },
+    {
+      "id": "their_name", "dimension": "who", "level": {"email": 2, "prep": 3}, "kind": "text", "guide_module": 3,
+      "ask": {"en": "Their first name?", "he": "מה השם הפרטי שלהם?"},
+      "why": {"en": "The email opens with it. A wrong or stiff greeting is the first thing they read.", "he": "המייל נפתח בו. פנייה שגויה או רשמית מדי היא הדבר הראשון שהם קוראים."},
+      "feeds": [{"command": "prep", "path": "counterpart.name"}]
+    },
+    {
+      "id": "their_city", "dimension": "logistics", "level": {"email": 1, "decode": 2, "prep": 2, "scene": 3}, "kind": "text", "guide_module": 4,
+      "eases": {"when": [{"q": "draft_exists", "is": "have_draft"}], "to": 2},
+      "ask": {"en": "Where are they based? A city or a time zone is enough.", "he": "איפה הם יושבים? עיר או אזור זמן מספיקים."},
+      "why": {"en": "The send time, the small talk and the pace of decisions all follow the place.", "he": "שעת השליחה, הסמול-טוק וקצב ההחלטות נגזרים מהמקום."},
+      "feeds": [{"command": "decode", "path": "tz"}, {"command": "prep", "path": "city"}, {"command": "send-time", "arg": "--tz"}, {"command": "cadence", "arg": "--tz"}, {"command": "scene", "arg": "--region", "via": "region"}]
+    },
+    {
+      "id": "how_met", "dimension": "history", "level": {"email": 2, "decode": 2, "prep": 2}, "kind": "choice", "guide_module": 7,
+      "choices": ["cold", "warm_intro", "inbound", "event", "existing"],
+      "ask": {"en": "How did this contact start: cold outreach, a warm intro, they came to you, an event, or someone you already knew?", "he": "איך הקשר התחיל: פנייה קרה, אינטרו חם, הם פנו אליך, אירוע, או מישהו שכבר הכרת?"},
+      "why": {"en": "A warm intro carries someone else's reputation and its own protocol. A cold email has to earn every line.", "he": "אינטרו חם נושא מוניטין של מישהו אחר ופרוטוקול משלו. מייל קר צריך להרוויח כל שורה."},
+      "feeds": []
+    },
+    {
+      "id": "connector_name", "dimension": "history", "level": {"email": 2, "prep": 3, "decode": 3, "intro": 2}, "kind": "text", "when_not_in_modes": ["intro"], "guide_module": 7,
+      "when": [{"q": "how_met", "is": "warm_intro"}],
+      "ask": {"en": "Who made the intro? A first name.", "he": "מי עשה את האינטרו? שם פרטי."},
+      "why": {"en": "Their name opens the email, and they are owed two lines after the meeting.", "he": "השם שלהם פותח את המייל, ומגיעות להם שתי שורות אחרי הפגישה."},
+      "feeds": [{"command": "intro", "path": "connector"}]
+    },
+    {
+      "id": "stage_now", "dimension": "history", "level": {"email": 2, "decode": 3}, "kind": "choice", "when_not_in_modes": ["decode"], "guide_module": 4,
+      "choices": ["no_contact", "emailed_no_reply", "one_meeting", "several_meetings", "pilot_or_diligence", "went_silent"],
+      "when": [{"q": "email_type", "in": ["followup", "reply", "breakup", "scheduling", "recap", "thank_you", "investor_update"]}],
+      "ask": {"en": "Where does it stand today: no contact yet, emailed with no reply, one meeting done, several meetings, a pilot or diligence, or gone silent?", "he": "איפה זה עומד היום: עוד אין קשר, נשלח מייל בלי מענה, פגישה אחת, כמה פגישות, פיילוט או בדיקת נאותות, או שקט?"},
+      "why": {"en": "It places you on the follow-up cadence and tells which email comes next.", "he": "זה ממקם אותך על קיידנס הפולואפ ואומר איזה מייל בא עכשיו."},
+      "feeds": []
+    },
+    {
+      "id": "company_stage", "dimension": "you", "level": {"decode": 3, "prep": 3, "email": 3}, "kind": "text",
+      "ask": {"en": "Where is your company today: before a product, in pilots, or with paying customers? Roughly how many?", "he": "איפה החברה שלך היום: לפני מוצר, בפיילוטים, או עם לקוחות משלמים? בערך כמה?"},
+      "why": {"en": "\"A bit early for us\" and \"come back with traction\" are read against where you actually stand.", "he": "\"A bit early for us\" ו-\"come back with traction\" נקראים מול המקום שבו אתה באמת עומד."},
+      "feeds": [{"command": "lint", "source": true}]
+    },
+    {
+      "id": "decision_needed", "dimension": "goal", "level": {"decode": 2}, "kind": "text",
+      "ask": {"en": "What do you need to decide once we are done here?", "he": "מה אתה צריך להחליט כשנסיים כאן?"},
+      "why": {"en": "The answer is built around your decision, not around the story of the meeting.", "he": "התשובה נבנית סביב ההחלטה שלך, לא סביב סיפור הפגישה."},
+      "feeds": [{"command": "decode", "path": "decision_needed"}]
+    },
+    {
+      "id": "fundraise_live", "dimension": "risks", "level": {"prep": 2, "decode": 3}, "kind": "bool", "contexts": ["investor"],
+      "ask": {"en": "Is a fundraise running right now, with other investors in process?", "he": "יש גיוס פעיל כרגע, עם משקיעים נוספים בתהליך?"},
+      "why": {"en": "A live round changes what you may say about timing, and what a slow reply costs you.", "he": "סבב חי משנה מה מותר לומר על תזמון, וכמה עולה לך תשובה איטית."},
+      "feeds": [{"command": "prep", "path": "live_thread"}]
+    },
+    {
+      "id": "quotes", "dimension": "said", "level": {"decode": 1}, "kind": "quotes", "voice_ok": true, "guide_module": 1,
+      "ask": {"en": "What did they say, as close to word for word as you remember? Two or three lines are enough.", "he": "מה הם אמרו, הכי קרוב למילה במילה שאתה זוכר? שתיים-שלוש שורות מספיקות."},
+      "why": {"en": "The engine decodes wording. A summary hides exactly the words that matter.", "he": "המנוע מפענח ניסוח. סיכום מסתיר בדיוק את המילים שחשובות."},
+      "feeds": [{"command": "decode", "path": "quotes"}]
+    },
+    {
+      "id": "quotes_source", "dimension": "said", "level": {"decode": 2}, "kind": "choice",
+      "choices": ["recall", "transcript", "email_thread"],
+      "ask": {"en": "Are those their words from memory, from a transcript, or from an email thread?", "he": "אלה המילים שלהם מהזיכרון, מתמלול, או מת'רד במייל?"},
+      "why": {"en": "Memory rounds toward what you hoped to hear. A transcript does not.", "he": "זיכרון מעגל לכיוון מה שקיווית לשמוע. תמלול לא."},
+      "feeds": [{"command": "decode", "path": "source"}]
+    },
+    {
+      "id": "meeting_date", "dimension": "logistics", "level": {"decode": 2, "email": 2}, "kind": "date", "when_not_in_modes": ["decode"], "guide_module": 4,
+      "when": [{"q": "email_type", "in": ["recap", "followup", "breakup", "thank_you"]}],
+      "ask": {"en": "When was the meeting, or the last live conversation? A date.", "he": "מתי הייתה הפגישה, או השיחה החיה האחרונה? תאריך."},
+      "why": {"en": "Every follow-up date is counted from it, and a Yellow that sits too long becomes a decision.", "he": "כל תאריכי הפולואפ נספרים ממנו, וצהוב שיושב יותר מדי זמן הופך להכרעה."},
+      "feeds": [{"command": "decode", "path": "meeting_date"}, {"command": "cadence", "arg": "--meeting-date"}]
+    },
+    {
+      "id": "next_step_exists", "dimension": "next", "level": {"decode": 1}, "kind": "bool", "guide_module": 1,
+      "ask": {"en": "Is there an agreed next step? Yes or no.", "he": "יש צעד הבא מוסכם? כן או לא."},
+      "why": {"en": "No step means no deal, whatever the mood in the room was.", "he": "אין צעד, אין עסקה, לא משנה מה הייתה האווירה בחדר."},
+      "feeds": [{"command": "decode", "path": "next_step.exists"}]
+    },
+    {
+      "id": "next_step_what", "dimension": "next", "level": {"decode": 2}, "kind": "text", "guide_module": 5,
+      "when": [{"q": "next_step_exists", "is": true}],
+      "ask": {"en": "What exactly is the next step?", "he": "מה בדיוק הצעד הבא?"},
+      "why": {"en": "\"We will talk\" is not a step. A meeting, a document or an intro is.", "he": "\"נדבר\" זה לא צעד. פגישה, מסמך או אינטרו כן."},
+      "feeds": [{"command": "decode", "path": "next_step.what"}]
+    },
+    {
+      "id": "next_step_date", "dimension": "next", "level": {"decode": 1}, "kind": "date", "guide_module": 5,
+      "when": [{"q": "next_step_exists", "is": true}],
+      "ask": {"en": "Does it have a calendar date? Which one?", "he": "יש לו תאריך ביומן? איזה?"},
+      "why": {"en": "A step without a date is a wish.", "he": "צעד בלי תאריך הוא משאלה."},
+      "feeds": [{"command": "decode", "path": "next_step.date"}]
+    },
+    {
+      "id": "next_step_proposed_by", "dimension": "next", "level": {"decode": 1}, "kind": "choice",
+      "choices": ["them", "founder", "nobody"],
+      "when": [{"q": "next_step_exists", "is": true}],
+      "ask": {"en": "Who proposed it: they did, you did, or nobody in particular?", "he": "מי הציע אותו: הם, אתה, או אף אחד במיוחד?"},
+      "why": {"en": "A date only you proposed is your hope, not their commitment.", "he": "תאריך שרק אתה הצעת הוא התקווה שלך, לא המחויבות שלהם."},
+      "feeds": [{"command": "decode", "path": "next_step.proposed_by"}]
+    },
+    {
+      "id": "next_step_accepted", "dimension": "next", "level": {"decode": 1}, "kind": "bool", "guide_module": 1,
+      "when": [{"q": "next_step_exists", "is": true}],
+      "ask": {"en": "Is it on their calendar, or confirmed by them in writing?", "he": "זה ביומן שלהם, או שהם אישרו בכתב?"},
+      "why": {"en": "Their calendar is a currency. Your invitation is not.", "he": "היומן שלהם הוא מטבע. ההזמנה שלך לא."},
+      "feeds": [{"command": "decode", "path": "next_step.accepted_by_them"}]
+    },
+    {
+      "id": "cost_to_them", "dimension": "commitment", "level": {"decode": 1}, "kind": "costs", "guide_module": 1,
+      "ask": {"en": "What has this cost THEM so far? One by one: time on their calendar, data or access, an intro, a signature, money. For each, the concrete thing.", "he": "מה זה עלה להם עד עכשיו? אחד אחד: זמן ביומן, דאטה או גישה, אינטרו, חתימה, כסף. לכל אחד, הדבר הקונקרטי."},
+      "why": {"en": "Words are free. Commitment is measured only in what cost them something.", "he": "מילים הן חינם. מחויבות נמדדת רק במה שעלה להם משהו."},
+      "feeds": [{"command": "decode", "path": "cost_to_them"}]
+    },
+    {
+      "id": "their_questions", "dimension": "said", "level": {"decode": 2}, "kind": "int", "guide_module": 1,
+      "ask": {"en": "How many real questions did they ask you? A number.", "he": "כמה שאלות אמיתיות הם שאלו אותך? מספר."},
+      "why": {"en": "Interest asks questions. Politeness gives compliments.", "he": "עניין שואל שאלות. נימוס נותן מחמאות."},
+      "feeds": [{"command": "decode", "path": "their_questions"}]
+    },
+    {
+      "id": "deferral_lines", "dimension": "said", "level": {"decode": 2}, "kind": "quotes", "voice_ok": true, "guide_module": 1,
+      "ask": {"en": "Did they say anything like \"let me circle back\", \"I'll loop in a colleague\", \"keep us posted\" or \"feel free to reach out\"? Give me the line as they said it.", "he": "הם אמרו משהו כמו \"let me circle back\", \"I'll loop in a colleague\", \"keep us posted\" או \"feel free to reach out\"? תן לי את המשפט כמו שנאמר."},
+      "why": {"en": "Founders remember the compliments and forget the deferrals. The deferral is where the polite no sits.", "he": "יזמים זוכרים את המחמאות ושוכחים את הדחיות. בדחייה יושב ה\"לא\" המנומס."},
+      "feeds": [{"command": "decode", "extend": "quotes"}]
+    },
+    {
+      "id": "pushback", "dimension": "said", "level": {"decode": 2}, "kind": "quotes", "voice_ok": true, "guide_module": 2,
+      "ask": {"en": "What did they push back on or wonder about, in their words? \"Have you considered...\" counts.", "he": "על מה הם הקשו או תהו, במילים שלהם? גם \"Have you considered...\" נחשב."},
+      "why": {"en": "Real criticism starts quietly. \"I have a few thoughts\" is where it begins.", "he": "ביקורת אמיתית מתחילה בשקט. \"I have a few thoughts\" זה המקום שבו היא מתחילה."},
+      "feeds": [{"command": "decode", "extend": "quotes"}]
+    },
+    {
+      "id": "after_purchase", "dimension": "said", "level": {"decode": 2}, "kind": "signals", "contexts": ["sales"], "guide_module": 1,
+      "signals": ["asked_pricing", "asked_security", "asked_integration"],
+      "ask": {"en": "Did they ask about price, security or integration? Quote the question.", "he": "הם שאלו על מחיר, אבטחה או אינטגרציה? צטט את השאלה."},
+      "why": {"en": "Those are the questions people ask after they have decided to look seriously.", "he": "אלה שאלות ששואלים אחרי שהחליטו לבדוק ברצינות."},
+      "feeds": [{"command": "decode", "extend": "signals"}]
+    },
+    {
+      "id": "people_and_references", "dimension": "commitment", "level": {"decode": 2}, "kind": "signals", "contexts": ["sales"], "guide_module": 1,
+      "signals": ["added_people", "reference_call_request"],
+      "ask": {"en": "Did they bring anyone else into the conversation, or ask to speak with one of your customers? Who, and when?", "he": "הם הכניסו עוד מישהו לשיחה, או ביקשו לדבר עם לקוח שלך? מי ומתי?"},
+      "why": {"en": "Bringing people in spends their credit inside the company. Nobody does that for a maybe.", "he": "להכניס אנשים עולה להם בקרדיט פנימי. אף אחד לא עושה את זה בשביל אולי."},
+      "feeds": [{"command": "decode", "extend": "signals"}]
+    },
+    {
+      "id": "pace", "dimension": "next", "level": {"decode": 2}, "kind": "signals", "contexts": ["sales"], "guide_module": 1,
+      "signals": ["next_meeting_booked_in_meeting", "fast_replies"],
+      "ask": {"en": "Was the next meeting booked before this one ended? Do their replies come within a day or two?", "he": "הפגישה הבאה נקבעה לפני שהפגישה הזו נגמרה? התשובות שלהם מגיעות תוך יום-יומיים?"},
+      "why": {"en": "Speed is the one signal that is hard to fake politely.", "he": "מהירות היא הסיגנל היחיד שקשה לזייף בנימוס."},
+      "feeds": [{"command": "decode", "extend": "signals"}]
+    },
+    {
+      "id": "budget_line", "dimension": "said", "level": {"decode": 3}, "kind": "quotes", "contexts": ["sales"], "guide_module": 1,
+      "ask": {"en": "Did they say anything about budget? Their words.", "he": "הם אמרו משהו על תקציב? במילים שלהם."},
+      "why": {"en": "\"No budget this quarter\" is sometimes true and sometimes a wrapper. One question separates money from interest.", "he": "\"אין תקציב ברבעון הזה\" הוא לפעמים אמת ולפעמים עטיפה. שאלה אחת מפרידה כסף מעניין."},
+      "feeds": [{"command": "decode", "extend": "quotes"}]
+    },
+    {
+      "id": "refused_step", "dimension": "next", "level": {"decode": 3}, "kind": "signals", "contexts": ["sales"], "guide_module": 1,
+      "signals": ["refuses_concrete_step"],
+      "ask": {"en": "Have you proposed a concrete step before, and it was dodged? What did you propose, and what came back?", "he": "כבר הצעת צעד קונקרטי בעבר והתחמקו ממנו? מה הצעת, ומה חזר?"},
+      "why": {"en": "A second dodge of a concrete step is an answer.", "he": "התחמקות שנייה מצעד קונקרטי היא תשובה."},
+      "feeds": [{"command": "decode", "extend": "signals"}]
+    },
+    {
+      "id": "diligence_asks", "dimension": "commitment", "level": {"decode": 2}, "kind": "signals", "contexts": ["investor"],
+      "signals": ["data_room_request", "reference_request", "cohort_request", "open_diligence_request"],
+      "ask": {"en": "Did they ask for anything concrete: the data room, references, cohort data, anything still open?", "he": "הם ביקשו משהו קונקרטי: דאטה רום, רפרנסים, נתוני קוהורט, משהו שעדיין פתוח?"},
+      "why": {"en": "A fund is in process only with a scheduled next interaction or an open diligence request. Everything else is nurture.", "he": "קרן נמצאת בתהליך רק כשיש אינטראקציה הבאה ביומן או בקשת דיליג'נס פתוחה. כל השאר הוא nurture."},
+      "feeds": [{"command": "decode", "extend": "signals"}]
+    },
+    {
+      "id": "partner_exposure", "dimension": "who", "level": {"decode": 2}, "kind": "signals", "contexts": ["investor"],
+      "signals": ["more_partners_joining", "second_meeting_scheduled_in_meeting", "stuck_at_associate"],
+      "ask": {"en": "Who have you met there so far: a partner, an associate? Is another partner joining, and was a second meeting set before the first ended?", "he": "את מי פגשת שם עד עכשיו: שותף, אסוסיאייט? שותף נוסף מצטרף, ופגישה שנייה נקבעה לפני שהראשונה נגמרה?"},
+      "why": {"en": "Weeks at associate level with no partner in the room are a slow no.", "he": "שבועות ברמת אסוסיאייט בלי שותף בחדר הם \"לא\" איטי."},
+      "feeds": [{"command": "decode", "extend": "signals"}]
+    },
+    {
+      "id": "terms_and_intros", "dimension": "commitment", "level": {"decode": 2}, "kind": "signals", "contexts": ["investor"],
+      "signals": ["unprompted_terms_talk", "intro_to_portfolio_or_fund"],
+      "ask": {"en": "Did they raise check size, ownership or timeline on their own? Did they introduce you to a portfolio founder or to another fund?", "he": "הם העלו מיוזמתם גודל צ'ק, אחזקה או לוח זמנים? חיברו אותך ליזם מהפורטפוליו או לקרן אחרת?"},
+      "why": {"en": "Investors do not discuss terms, or spend an intro, on a company they have passed on.", "he": "משקיעים לא מדברים על תנאים, ולא מוציאים אינטרו, על חברה שכבר ויתרו עליה."},
+      "feeds": [{"command": "decode", "extend": "signals"}]
+    },
+    {
+      "id": "cooling", "dimension": "risks", "level": {"decode": 2}, "kind": "signals", "contexts": ["investor"], "guide_module": 1,
+      "signals": ["questions_stopped_only_compliments", "rescheduled_without_alternatives", "warm_replies_no_date"],
+      "ask": {"en": "Has anything cooled: the questions stopped, a meeting moved with no new date, warm replies that never name a date?", "he": "משהו התקרר: השאלות נפסקו, פגישה זזה בלי תאריך חדש, תשובות חמות שאף פעם לא נוקבות בתאריך?"},
+      "why": {"en": "Investors rarely say no. They slow down, and the slowing is the message.", "he": "משקיעים כמעט לא אומרים לא. הם מאטים, וההאטה היא ההודעה."},
+      "feeds": [{"command": "decode", "extend": "signals"}]
+    },
+    {
+      "id": "investor_wording", "dimension": "said", "level": {"decode": 2}, "kind": "quotes", "contexts": ["investor"], "voice_ok": true, "guide_module": 1,
+      "ask": {"en": "What did they say about your stage, your traction, or who else is in the round? Their words.", "he": "מה הם אמרו על השלב שלך, על הטרקשן, או על מי עוד בסבב? במילים שלהם."},
+      "why": {"en": "Investor-speak has its own dictionary. \"A bit early\", \"more traction\" and \"who else is in\" each mean something specific.", "he": "ל-Investor-Speak יש מילון משלו. \"A bit early\", \"more traction\" ו-\"who else is in\" אומרים כל אחד משהו מסוים."},
+      "feeds": [{"command": "decode", "extend": "quotes"}]
+    },
+    {
+      "id": "investor_process_asked", "dimension": "next", "level": {"decode": 2}, "kind": "text", "contexts": ["investor"],
+      "ask": {"en": "Did you ask what their process looks like from here? What did they answer?", "he": "שאלת איך נראה התהליך שלהם מכאן? מה הם ענו?"},
+      "why": {"en": "Process is what a founder may ask an investor about. A vague answer to a process question is an answer.", "he": "תהליך הוא מה שמותר ליזם לשאול עליו משקיע. תשובה מעורפלת לשאלת תהליך היא תשובה."},
+      "feeds": []
+    },
+    {
+      "id": "fund_fit", "dimension": "who", "level": {"prep": 2, "decode": 3}, "kind": "text", "contexts": ["investor"],
+      "ask": {"en": "What do you know about the fund: the stage it invests in, its usual check, and any portfolio company close to yours?", "he": "מה אתה יודע על הקרן: באיזה שלב היא משקיעה, מה הצ'ק הרגיל שלה, והאם יש לה חברת פורטפוליו קרובה לתחום שלך?"},
+      "why": {"en": "\"A bit early for us\" is often about the fund's stage and not about you. A portfolio company in your space changes the whole meeting.", "he": "\"A bit early for us\" הוא הרבה פעמים על השלב של הקרן ולא עליך. חברת פורטפוליו בתחום שלך משנה את כל הפגישה."},
+      "feeds": []
+    },
+    {
+      "id": "real_feedback", "dimension": "said", "level": {"decode": 2}, "kind": "signals", "contexts": ["kol"], "guide_module": 2,
+      "signals": ["criticism_voiced", "behavior_data_shared", "named_who_should_not_buy"],
+      "ask": {"en": "Did they criticize something specific, describe what they did the last time they had this problem, or name who should not buy this?", "he": "הם ביקרו משהו ספציפי, תיארו מה עשו בפעם האחרונה שנתקלו בבעיה, או אמרו מי לא צריך לקנות את זה?"},
+      "why": {"en": "With an expert, criticism and past behavior are the product. Praise is noise.", "he": "אצל מומחה, ביקורת והתנהגות עבר הן התוצר. מחמאות הן רעש."},
+      "feeds": [{"command": "decode", "extend": "signals"}]
+    },
+    {
+      "id": "meeting_goal_was", "dimension": "goal", "level": {"decode": 2}, "kind": "text", "guide_module": 5,
+      "ask": {"en": "What did you want to walk out of that meeting with, and did you ask for it out loud?", "he": "עם מה רצית לצאת מהפגישה הזו, וביקשת את זה בקול?"},
+      "why": {"en": "A meeting with no ask cannot produce a yes. If you never asked, the silence is not theirs.", "he": "פגישה בלי בקשה לא יכולה להוליד \"כן\". אם לא ביקשת, השתיקה היא לא שלהם."},
+      "feeds": []
+    },
+    {
+      "id": "touches_sent", "dimension": "history", "level": {"decode": 2}, "kind": "int", "guide_module": 1,
+      "ask": {"en": "How many follow-ups have you sent since their last reply, all unanswered?", "he": "כמה פולואפים שלחת מאז התשובה האחרונה שלהם, שנשארו בלי מענה?"},
+      "why": {"en": "Silence after three or four touches is the most common no in America.", "he": "שתיקה אחרי שלוש-ארבע נגיעות היא ה\"לא\" הנפוץ ביותר באמריקה."},
+      "feeds": [{"command": "decode", "path": "touches_sent"}]
+    },
+    {
+      "id": "touches_done", "dimension": "history", "level": {"decode": 2, "email": 2}, "kind": "list", "when_not_in_modes": ["decode"], "guide_module": 4,
+      "choices": ["recap", "value", "second_angle", "breakup", "nurture"],
+      "when": [{"q": "email_type", "in": ["recap", "followup", "breakup"]}],
+      "ask": {"en": "Which follow-ups already went out after the meeting: the recap, a value touch, a second angle, the breakup email?", "he": "אילו פולואפים כבר יצאו אחרי הפגישה: ריקאפ, נגיעת ערך, זווית שנייה, מייל פרידה?"},
+      "why": {"en": "The next email depends on the last one.", "he": "המייל הבא תלוי בקודם."},
+      "feeds": [{"command": "decode", "path": "touches_done"}, {"command": "cadence", "arg": "--sent", "join": ","}]
+    },
+    {
+      "id": "last_reply_date", "dimension": "history", "level": {"decode": 3}, "kind": "date",
+      "ask": {"en": "When did they last reply? A date, or never.", "he": "מתי הם ענו בפעם האחרונה? תאריך, או שלא ענו."},
+      "why": {"en": "It puts a date on the silence.", "he": "זה נותן תאריך לשתיקה."},
+      "feeds": [{"command": "decode", "path": "last_reply_date"}]
+    },
+    {
+      "id": "in_the_room", "dimension": "who", "level": {"decode": 3}, "kind": "text",
+      "ask": {"en": "Who was in the room on their side, by role?", "he": "מי היה בחדר מהצד שלהם, לפי תפקיד?"},
+      "why": {"en": "A decision maker who stayed quiet and a junior who was excited are two different meetings.", "he": "מקבל החלטות ששתק וג'וניור שהתלהב הן שתי פגישות שונות."},
+      "feeds": []
+    },
+    {
+      "id": "who_talked", "dimension": "said", "level": {"decode": 3}, "kind": "choice", "guide_module": 5,
+      "choices": ["mostly_me", "even", "mostly_them"],
+      "ask": {"en": "Who did most of the talking: you, them, or about even?", "he": "מי דיבר רוב הזמן: אתה, הם, או בערך חצי-חצי?"},
+      "why": {"en": "A meeting where you talked the whole time taught you nothing about them.", "he": "פגישה שבה דיברת כל הזמן לא לימדה אותך עליהם כלום."},
+      "feeds": []
+    },
+    {
+      "id": "how_it_ended", "dimension": "said", "level": {"decode": 3}, "kind": "text", "voice_ok": true,
+      "ask": {"en": "How did the last two minutes go? Who closed, and with what?", "he": "איך נראו שתי הדקות האחרונות? מי סגר, ובמה?"},
+      "why": {"en": "The end of a meeting is where the real answer usually sits.", "he": "בסוף הפגישה בדרך כלל יושבת התשובה האמיתית."},
+      "feeds": []
+    },
+    {
+      "id": "meeting_length", "dimension": "commitment", "level": {"decode": 3}, "kind": "text", "guide_module": 1,
+      "ask": {"en": "How long was the meeting scheduled for, and how long did it actually run?", "he": "לכמה זמן נקבעה הפגישה, וכמה זמן היא נמשכה בפועל?"},
+      "why": {"en": "Time is the first currency. A half hour that ran to fifty minutes was paid for. One cut at fifteen was not.", "he": "זמן הוא המטבע הראשון. חצי שעה שנמשכה חמישים דקות שולמה. פגישה שנחתכה בדקה ה-15 לא."},
+      "feeds": []
+    },
+    {
+      "id": "decision_process", "dimension": "who", "level": {"decode": 3, "prep": 3}, "kind": "text", "contexts": ["sales", "investor"], "guide_module": 8,
+      "ask": {"en": "How does a decision get made on their side: who decides, who can block it, and when do they meet?", "he": "איך מתקבלת החלטה בצד שלהם: מי מחליט, מי יכול לחסום, ומתי הם יושבים?"},
+      "why": {"en": "A champion with no path to a signature is a friend, not a deal. A fund decides in its partner meeting, not on your call.", "he": "אלוף בלי מסלול לחתימה הוא חבר, לא עסקה. קרן מחליטה בישיבת השותפים, לא בשיחה איתך."},
+      "feeds": []
+    },
+    {
+      "id": "their_alternative", "dimension": "risks", "level": {"decode": 3, "prep": 3}, "kind": "text", "contexts": ["sales"],
+      "ask": {"en": "What do they do today instead of buying from you: an incumbent vendor, something built in-house, or nothing?", "he": "מה הם עושים היום במקום לקנות ממך: ספק קיים, משהו שנבנה בפנים, או כלום?"},
+      "why": {"en": "You rarely lose to a competitor. You lose to things staying as they are.", "he": "כמעט אף פעם לא מפסידים למתחרה. מפסידים לזה שהכול נשאר כמו שהוא."},
+      "feeds": []
+    },
+    {
+      "id": "stakes", "dimension": "goal", "level": {"decode": 3, "prep": 3}, "kind": "text", "guide_module": 4,
+      "ask": {"en": "What is this worth to you if it lands: a deal size, a check, or a door it opens?", "he": "מה זה שווה לך אם זה נסגר: גודל עסקה, צ'ק, או דלת שזה פותח?"},
+      "why": {"en": "It sets how much chasing this deserves. A small maybe gets the breakup email. A big one gets a second angle first.", "he": "זה קובע כמה מרדף זה שווה. \"אולי\" קטן מקבל מייל פרידה. \"אולי\" גדול מקבל קודם זווית שנייה."},
+      "feeds": []
+    },
+    {
+      "id": "pricing_state", "dimension": "risks", "level": {"decode": 3, "prep": 3}, "kind": "choice", "contexts": ["sales"],
+      "choices": ["not_raised", "raised_with_model", "raised_without_model"],
+      "ask": {"en": "Did price come up, and did you have a pricing model ready?", "he": "מחיר עלה, והיה לך מודל תמחור מוכן?"},
+      "why": {"en": "A price improvised in the room becomes the anchor for the whole deal.", "he": "מחיר שאולתר בחדר הופך לעוגן של כל העסקה."},
+      "feeds": [{"command": "decode", "extend": "flags", "when_is": "raised_without_model", "value": ["pricing_raised_without_model"]}]
+    },
+    {
+      "id": "politics_came_up", "dimension": "risks", "level": {"decode": 3}, "kind": "choice", "guide_module": 6,
+      "choices": ["no", "yes_stayed_out", "yes_took_a_side"],
+      "ask": {"en": "Did politics, or the situation in Israel, come up? What did you do?", "he": "פוליטיקה, או המצב בארץ, עלו? מה עשית?"},
+      "why": {"en": "A wrong answer there does not start an argument. It ends the follow-up quietly.", "he": "תשובה לא נכונה שם לא פותחת ויכוח. היא סוגרת את ההמשך בשקט."},
+      "feeds": []
+    },
+    {
+      "id": "the_one_ask", "dimension": "goal", "level": {"email": 1}, "kind": "text", "guide_module": 3,
+      "when": [{"q": "email_type", "in": ["cold", "intro", "conference", "followup", "reply"]}],
+      "eases": {"when": [{"q": "draft_exists", "is": "have_draft"}], "to": 2},
+      "ask": {"en": "What is the one thing you want them to do after reading it?", "he": "מה הדבר האחד שאתה רוצה שהם יעשו אחרי שיקראו?"},
+      "why": {"en": "One email, one ask, phrased as a closed question that is easy to say yes to.", "he": "מייל אחד, בקשה אחת, מנוסחת כשאלה סגורה שקל להגיד לה כן."},
+      "feeds": [{"command": "lint", "source": true}]
+    },
+    {
+      "id": "proof_points", "dimension": "proof", "level": {"email": 1, "prep": 2}, "kind": "list", "when_not_in_modes": ["prep"], "voice_ok": true,
+      "when": [{"q": "email_type", "in": ["cold", "intro", "conference"]}],
+      "eases": {"when": [{"q": "draft_exists", "is": "have_draft"}], "to": 2},
+      "ask": {"en": "Which facts can you stand behind in writing: a number, a customer, a pilot? Say each the way you would say it to someone calling for a reference.", "he": "אילו עובדות אתה יכול לעמוד מאחוריהן בכתב: מספר, לקוח, פיילוט? תגיד כל אחת כמו שהיית אומר אותה למי שמתקשר לרפרנס."},
+      "why": {"en": "Every figure in the email is checked against what you told me. A number that came from nowhere stops the email.", "he": "כל מספר במייל נבדק מול מה שאמרת לי. מספר שהגיע משום מקום עוצר את המייל."},
+      "feeds": [{"command": "lint", "source": true}]
+    },
+    {
+      "id": "fresh_value", "dimension": "draft", "level": {"email": 1}, "kind": "text", "guide_module": 4,
+      "when": [{"q": "email_type", "is": "followup"}],
+      "eases": {"when": [{"q": "draft_exists", "is": "have_draft"}], "to": 2},
+      "ask": {"en": "What is new since your last touch: a metric, a customer, an article, the feature they asked for?", "he": "מה חדש מאז הנגיעה האחרונה: מטריקה, לקוח, כתבה, הפיצ'ר שהם ביקשו?"},
+      "why": {"en": "Never \"just checking in\". Every touch brings a new reason.", "he": "לעולם לא \"just checking in\". כל נגיעה מביאה סיבה חדשה."},
+      "feeds": [{"command": "lint", "source": true}]
+    },
+    {
+      "id": "their_last_message", "dimension": "said", "level": {"email": 1}, "kind": "quotes", "voice_ok": true,
+      "when": [{"q": "email_type", "is": "reply"}],
+      "eases": {"when": [{"q": "draft_exists", "is": "have_draft"}], "to": 2},
+      "ask": {"en": "What did they write to you last? Their words.", "he": "מה הם כתבו לך בפעם האחרונה? במילים שלהם."},
+      "why": {"en": "A reply answers their words, not your memory of them.", "he": "תשובה עונה למילים שלהם, לא לזיכרון שלך מהן."},
+      "feeds": [{"command": "lint", "source": true}]
+    },
+    {
+      "id": "agreed_items", "dimension": "next", "level": {"email": 1}, "kind": "list", "voice_ok": true, "guide_module": 5,
+      "when": [{"q": "email_type", "is": "recap"}],
+      "eases": {"when": [{"q": "draft_exists", "is": "have_draft"}], "to": 2},
+      "ask": {"en": "What was agreed in the meeting? Item by item, each with who owns it and by when.", "he": "מה סוכם בפגישה? סעיף אחרי סעיף, לכל אחד מי אחראי ועד מתי."},
+      "why": {"en": "What is not in the recap did not happen. The recap is where a spoken step becomes a written one.", "he": "מה שלא בריקאפ לא קרה. הריקאפ הוא המקום שבו צעד שנאמר בעל-פה הופך לכתוב."},
+      "feeds": [{"command": "lint", "source": true}]
+    },
+    {
+      "id": "event_context", "dimension": "history", "level": {"email": 1}, "kind": "text", "voice_ok": true, "guide_module": 3,
+      "when": [{"q": "email_type", "is": "conference"}],
+      "eases": {"when": [{"q": "draft_exists", "is": "have_draft"}], "to": 2},
+      "ask": {"en": "Which event, and what did they say there that you can say back to them in their own words?", "he": "איזה אירוע, ומה הם אמרו שם שאפשר להחזיר להם במילים שלהם?"},
+      "why": {"en": "After a conference they have met forty people. Their own sentence is what reminds them which one you were.", "he": "אחרי כנס הם פגשו ארבעים אנשים. המשפט שלהם עצמם הוא מה שמזכיר להם מי היית."},
+      "feeds": [{"command": "lint", "source": true}]
+    },
+    {
+      "id": "update_lines", "dimension": "proof", "level": {"email": 1}, "kind": "list", "voice_ok": true,
+      "when": [{"q": "email_type", "is": "investor_update"}],
+      "eases": {"when": [{"q": "draft_exists", "is": "have_draft"}], "to": 2},
+      "ask": {"en": "For the update: what shipped, what moved in sales or pipeline, one thing you learned, and the one ask. A line each.", "he": "לעדכון: מה יצא לאוויר, מה זז במכירות או בפייפליין, דבר אחד שלמדת, והבקשה האחת. שורה לכל אחד."},
+      "why": {"en": "The same two or three numbers every month, so the slope shows. One honest setback buys more trust than three wins.", "he": "אותם שניים-שלושה מספרים בכל חודש, כדי שיראו את השיפוע. כישלון כן אחד קונה יותר אמון משלושה ניצחונות."},
+      "feeds": [{"command": "lint", "source": true}]
+    },
+    {
+      "id": "thanks_for", "dimension": "history", "level": {"email": 1}, "kind": "text", "guide_module": 7,
+      "when": [{"q": "email_type", "is": "thank_you"}],
+      "eases": {"when": [{"q": "draft_exists", "is": "have_draft"}], "to": 2},
+      "ask": {"en": "What exactly did they do for you, and what came out of it?", "he": "מה בדיוק הם עשו בשבילך, ומה יצא מזה?"},
+      "why": {"en": "A thank-you that names the thing is remembered. A generic one is one more email.", "he": "תודה שנוקבת בדבר עצמו נזכרת. תודה כללית היא עוד מייל."},
+      "feeds": [{"command": "lint", "source": true}]
+    },
+    {
+      "id": "your_promises", "dimension": "next", "level": {"email": 2, "decode": 2}, "kind": "text", "when_not_in_modes": ["decode"], "guide_module": 5,
+      "when": [{"q": "email_type", "in": ["recap", "followup"]}],
+      "ask": {"en": "What did YOU promise to send or do, and has it gone out?", "he": "מה אתה הבטחת לשלוח או לעשות, וזה כבר יצא?"},
+      "why": {"en": "Your own open item is the easiest next touch there is. A promise you did not keep reads as a no from your side.", "he": "משהו פתוח בצד שלך הוא הנגיעה הבאה הכי קלה שיש. הבטחה שלא קיימת נקראת כ\"לא\" מהצד שלך."},
+      "feeds": [{"command": "lint", "source": true}]
+    },
+    {
+      "id": "why_them_now", "dimension": "who", "level": {"email": 2}, "kind": "text", "guide_module": 3,
+      "when": [{"q": "email_type", "in": ["cold", "linkedin", "conference"]}],
+      "ask": {"en": "Why this person, and why now? Something on their side: a post, a talk, a launch, a new role, a funding round.", "he": "למה דווקא האדם הזה, ולמה עכשיו? משהו מהצד שלו: פוסט, הרצאה, השקה, תפקיד חדש, סבב גיוס."},
+      "why": {"en": "A cold email earns its first line with something about them. An opening about you is where they stop reading.", "he": "מייל קר מרוויח את השורה הראשונה במשהו עליהם. פתיחה שמדברת עליך היא המקום שבו מפסיקים לקרוא."},
+      "feeds": [{"command": "lint", "source": true}]
+    },
+    {
+      "id": "same_thread", "dimension": "draft", "level": {"email": 2}, "kind": "bool", "guide_module": 4,
+      "when": [{"q": "stage_now", "in": ["emailed_no_reply", "one_meeting", "several_meetings", "pilot_or_diligence", "went_silent"]}],
+      "ask": {"en": "Is there an existing thread with them that you can reply in?", "he": "יש ת'רד קיים איתם שאפשר לענות בו?"},
+      "why": {"en": "A reply keeps the context in front of them. A new email makes them look for who you are.", "he": "תשובה שומרת את ההקשר מול העיניים שלהם. מייל חדש מכריח אותם לחפש מי אתה."},
+      "feeds": []
+    },
+    {
+      "id": "attachment", "dimension": "draft", "level": {"email": 2}, "kind": "choice", "guide_module": 3,
+      "choices": ["nothing", "one_pager", "deck"],
+      "ask": {"en": "Are you attaching anything: nothing, a one-pager, or a full deck?", "he": "אתה מצרף משהו: כלום, one-pager, או מצגת מלאה?"},
+      "why": {"en": "The email sells the meeting. The depth belongs in the meeting.", "he": "המייל מוכר את הפגישה. העומק שייך לפגישה."},
+      "feeds": []
+    },
+    {
+      "id": "scheduling_link", "dimension": "logistics", "level": {"email": 2}, "kind": "bool", "guide_module": 8,
+      "when": [{"q": "email_type", "is": "scheduling"}],
+      "ask": {"en": "Do you have a scheduling link to offer next to the slots?", "he": "יש לך קישור תיאום להציע לצד הסלוטים?"},
+      "why": {"en": "Three slots in their time zone, or a link. Never \"when works for you?\", and never tomorrow.", "he": "שלושה סלוטים בשעון שלהם, או קישור. אף פעם לא \"מתי נוח לך?\", ואף פעם לא מחר."},
+      "feeds": []
+    },
+    {
+      "id": "last_email_sent", "dimension": "draft", "level": {"email": 3}, "kind": "text", "guide_module": 4,
+      "when": [{"q": "stage_now", "in": ["emailed_no_reply", "went_silent"]}],
+      "ask": {"en": "Paste the last email you sent them, if you have it.", "he": "תדביק את המייל האחרון ששלחת להם, אם יש לך."},
+      "why": {"en": "The next touch has to add something. The same pitch again with \"following up\" on top is the most ignored email there is.", "he": "הנגיעה הבאה חייבת להוסיף משהו. אותו פיץ' שוב עם \"following up\" בראש הוא המייל שהכי מתעלמים ממנו."},
+      "feeds": [{"command": "lint", "source": true}]
+    },
+    {
+      "id": "fallback_ask", "dimension": "goal", "level": {"email": 3, "prep": 3}, "kind": "text", "guide_module": 1,
+      "ask": {"en": "If the answer to your ask is no, what smaller step would still be worth having?", "he": "אם התשובה לבקשה שלך היא לא, איזה צעד קטן יותר עדיין שווה משהו?"},
+      "why": {"en": "A smaller yes keeps the door open. A no with nothing behind it ends the thread.", "he": "\"כן\" קטן יותר משאיר את הדלת פתוחה. \"לא\" שאין מאחוריו כלום סוגר את הת'רד."},
+      "feeds": [{"command": "lint", "source": true}]
+    },
+    {
+      "id": "urgency", "dimension": "logistics", "level": {"email": 3}, "kind": "choice", "guide_module": 4,
+      "choices": ["can_wait", "must_go_today"],
+      "ask": {"en": "Can it wait for the best send window, or must it go out today?", "he": "זה יכול לחכות לחלון השליחה הטוב, או שזה חייב לצאת היום?"},
+      "why": {"en": "Their morning, Tuesday to Thursday, is when it gets read. A recap is the exception: it goes out within 24 hours.", "he": "הבוקר שלהם, שלישי עד חמישי, זה מתי שקוראים. ריקאפ הוא היוצא מן הכלל: הוא יוצא תוך 24 שעות."},
+      "feeds": []
+    },
+    {
+      "id": "signature", "dimension": "draft", "level": {"email": 3}, "kind": "text", "guide_module": 3,
+      "ask": {"en": "How do you sign? A first name.", "he": "איך אתה חותם? שם פרטי."},
+      "why": {"en": "The guide's template signs with a first name.", "he": "התבנית במדריך נחתמת בשם פרטי."},
+      "feeds": []
+    },
+    {
+      "id": "goal_currency", "dimension": "goal", "level": {"prep": 1}, "kind": "choice", "guide_module": 1,
+      "choices": ["calendar_time", "data_access", "intro", "signature", "money"],
+      "ask": {"en": "What do you want to walk out with: calendar time, data access, an intro, a signature, or money?", "he": "עם מה אתה רוצה לצאת מהפגישה: זמן ביומן, גישה לדאטה, אינטרו, חתימה או כסף?"},
+      "why": {"en": "A goal that is not one of these five cannot be checked when you leave the room.", "he": "מטרה שאינה אחד מחמשת אלה אי אפשר לבדוק כשיוצאים מהחדר."},
+      "feeds": [{"command": "prep", "path": "goal_currency"}]
+    },
+    {
+      "id": "the_ask", "dimension": "goal", "level": {"prep": 1}, "kind": "text", "guide_module": 5,
+      "ask": {"en": "What is the one ask you will make before the meeting ends?", "he": "מה הבקשה האחת שתבקש לפני שהפגישה נגמרת?"},
+      "why": {"en": "No meeting ends without a concrete step and a date. The ask is how you get there.", "he": "אין פגישה שנגמרת בלי צעד קונקרטי ותאריך. הבקשה היא הדרך לשם."},
+      "feeds": [{"command": "prep", "path": "the_ask"}]
+    },
+    {
+      "id": "goal_words", "dimension": "goal", "level": {"prep": 2}, "kind": "text",
+      "ask": {"en": "Say the goal in your own words, in one sentence.", "he": "תגיד את המטרה במילים שלך, במשפט אחד."},
+      "why": {"en": "If it takes three sentences, the meeting has three goals and will reach none of them.", "he": "אם צריך שלושה משפטים, לפגישה יש שלוש מטרות והיא לא תשיג אף אחת."},
+      "feeds": [{"command": "prep", "path": "goal"}]
+    },
+    {
+      "id": "upcoming_date", "dimension": "logistics", "level": {"prep": 2}, "kind": "date", "guide_module": 4,
+      "ask": {"en": "When is the meeting? A date.", "he": "מתי הפגישה? תאריך."},
+      "why": {"en": "It sets the deadline for the recap: within 24 hours of the meeting.", "he": "הוא קובע את הדדליין לריקאפ: תוך 24 שעות מהפגישה."},
+      "feeds": [{"command": "prep", "path": "meeting_date"}]
+    },
+    {
+      "id": "meeting_minutes", "dimension": "logistics", "level": {"prep": 2}, "kind": "int", "guide_module": 5,
+      "ask": {"en": "How long is it scheduled for, in minutes?", "he": "לכמה דקות היא נקבעה?"},
+      "why": {"en": "A 30-minute meeting ends at minute 28. The plan is built backwards from there.", "he": "פגישה של 30 דקות נגמרת בדקה ה-28. התוכנית נבנית משם אחורה."},
+      "feeds": [{"command": "prep", "path": "meeting_minutes"}]
+    },
+    {
+      "id": "meeting_number", "dimension": "history", "level": {"prep": 2}, "kind": "int",
+      "ask": {"en": "Which meeting is this with them: the first, the second?", "he": "איזו פגישה זו איתם: ראשונה, שנייה?"},
+      "why": {"en": "A first meeting has to earn the second. A second meeting has to move a commitment.", "he": "פגישה ראשונה צריכה להרוויח את השנייה. פגישה שנייה צריכה להזיז מחויבות."},
+      "feeds": [{"command": "prep", "path": "meeting_number"}]
+    },
+    {
+      "id": "background", "dimension": "history", "level": {"prep": 2}, "kind": "text", "voice_ok": true,
+      "ask": {"en": "Give me the history with them, and what they already know about you.", "he": "תן לי את ההיסטוריה איתם, ומה הם כבר יודעים עליך."},
+      "why": {"en": "You do not explain again what they know, and you do not skip what they never heard.", "he": "לא מסבירים שוב את מה שהם יודעים, ולא מדלגים על מה שלא שמעו."},
+      "feeds": [{"command": "prep", "path": "background"}]
+    },
+    {
+      "id": "promised_last_time", "dimension": "history", "level": {"prep": 2}, "kind": "text", "voice_ok": true, "guide_module": 5,
+      "when": [{"q": "meeting_number", "min": 2}],
+      "ask": {"en": "What did each side promise last time, and was it delivered?", "he": "מה כל צד הבטיח בפעם הקודמת, וזה קרה?"},
+      "why": {"en": "What was agreed out loud and never reached the recap did not happen. What did reach it has to be delivered.", "he": "מה שסוכם בעל-פה ולא נכנס לריקאפ לא קרה. מה שכן נכנס חייב להתבצע."},
+      "feeds": []
+    },
+    {
+      "id": "feared_objections", "dimension": "risks", "level": {"prep": 2}, "kind": "list", "voice_ok": true, "guide_module": 1,
+      "ask": {"en": "Which two or three objections are you most afraid to hear?", "he": "מאילו שתיים-שלוש התנגדויות אתה הכי חושש?"},
+      "why": {"en": "They will not be said as objections. They will arrive as a compliment and a deferral.", "he": "הן לא ייאמרו כהתנגדויות. הן יגיעו כמחמאה ודחייה."},
+      "feeds": []
+    },
+    {
+      "id": "their_pain", "dimension": "goal", "level": {"prep": 2, "email": 2}, "kind": "text", "contexts": ["sales"], "when_not_in_modes": ["prep"], "voice_ok": true,
+      "when": [{"q": "email_type", "in": ["recap", "conference", "cold"]}],
+      "ask": {"en": "What is their pain, in their words and not in yours?", "he": "מה הכאב שלהם, במילים שלהם ולא שלך?"},
+      "why": {"en": "In sales you qualify the need before you present. Their words go into the recap.", "he": "במכירה מקוולפים את הצורך לפני שמציגים. המילים שלהם נכנסות לריקאפ."},
+      "feeds": [{"command": "lint", "source": true}]
+    },
+    {
+      "id": "bant_known", "dimension": "said", "level": {"prep": 2}, "kind": "list", "contexts": ["sales"],
+      "choices": ["budget", "authority", "need", "timeline"],
+      "ask": {"en": "Which of these do you already know from them: where the budget comes from, who decides, the need in their words, the timeline?", "he": "מה מאלה אתה כבר יודע מהם: מאיפה התקציב, מי מחליט, הצורך במילים שלהם, לוח הזמנים?"},
+      "why": {"en": "The meeting is for what you do not know yet. Asking again what they already told you costs you the room.", "he": "הפגישה היא בשביל מה שעוד לא ידוע. לשאול שוב את מה שכבר אמרו לך עולה לך בחדר."},
+      "feeds": []
+    },
+    {
+      "id": "their_power", "dimension": "who", "level": {"prep": 2}, "kind": "choice", "contexts": ["sales"], "guide_module": 8,
+      "choices": ["decides", "champion", "influences", "unknown"],
+      "ask": {"en": "Is this person the one who decides, a champion who will sell it inside, someone with influence, or you do not know yet?", "he": "האדם הזה מחליט, אלוף שימכור את זה פנימה, בעל השפעה, או שעוד לא ברור?"},
+      "why": {"en": "You work several threads, and never behind your champion's back.", "he": "עובדים בכמה ת'רדים, ולעולם לא מאחורי הגב של האלוף שלך."},
+      "feeds": []
+    },
+    {
+      "id": "their_deadline", "dimension": "logistics", "level": {"prep": 3, "decode": 3}, "kind": "text", "contexts": ["sales"], "guide_module": 4,
+      "ask": {"en": "Is there a date on their side that makes this urgent: a renewal, a quarter, a project?", "he": "יש תאריך בצד שלהם שהופך את זה לדחוף: חידוש, רבעון, פרויקט?"},
+      "why": {"en": "Sales teams and funds live on a quarterly rhythm. The start of a quarter is open to new things. The last two weeks are not.", "he": "אנשי מכירות וקרנות חיים על קצב רבעוני. תחילת רבעון פתוחה ליוזמות חדשות. השבועיים האחרונים לא."},
+      "feeds": []
+    },
+    {
+      "id": "formal_stage", "dimension": "risks", "level": {"prep": 3}, "kind": "choice", "contexts": ["sales"], "guide_module": 8,
+      "choices": ["nothing_yet", "nda", "security_review", "procurement", "msa"],
+      "ask": {"en": "Has anything formal started: an NDA, a security review, procurement, an MSA?", "he": "התחיל משהו פורמלי: NDA, בדיקת אבטחה, רכש, MSA?"},
+      "why": {"en": "Those are real stages with timelines of their own. \"It will be fine\" moves nothing there.", "he": "אלה שלבים אמיתיים עם לוחות זמנים משלהם. \"יהיה בסדר\" לא מזיז שם כלום."},
+      "feeds": []
+    },
+    {
+      "id": "round_facts", "dimension": "proof", "level": {"prep": 2}, "kind": "text", "contexts": ["investor"], "voice_ok": true,
+      "ask": {"en": "What can you state about the round without rounding up: the amount, what is committed, and by whom?", "he": "מה אתה יכול לומר על הסבב בלי לעגל למעלה: הסכום, מה סגור, ומי?"},
+      "why": {"en": "One reference call unravels an inflated claim, and the raise with it.", "he": "שיחת רפרנס אחת מפרקת טענה מנופחת, ואת הגיוס איתה."},
+      "feeds": []
+    },
+    {
+      "id": "traction_truth", "dimension": "proof", "level": {"prep": 2, "decode": 3}, "kind": "text", "contexts": ["investor"],
+      "ask": {"en": "Of the leads you plan to present as traction, how many have a dated next step or have paid something?", "he": "מתוך הלידים שאתה מתכנן להציג כטרקשן, לכמה יש צעד הבא עם תאריך או שכבר שילמו משהו?"},
+      "why": {"en": "An enthusiastic yes is not traction. One phone call to a reference finds that out.", "he": "\"כן\" נלהב הוא לא טרקשן. שיחת טלפון אחת לרפרנס מגלה את זה."},
+      "feeds": []
+    },
+    {
+      "id": "numbers_cold", "dimension": "proof", "level": {"prep": 3}, "kind": "text", "contexts": ["investor"],
+      "ask": {"en": "Which numbers will they ask for, and do you know each one without looking: revenue, growth, burn, runway?", "he": "אילו מספרים ישאלו אותך, ואתה יודע כל אחד בלי להסתכל: הכנסות, צמיחה, קצב שריפה, ראנוויי?"},
+      "why": {"en": "A number you have to look up sounds like a number you are not sure of.", "he": "מספר שצריך לחפש נשמע כמו מספר שאתה לא בטוח בו."},
+      "feeds": []
+    },
+    {
+      "id": "references_ready", "dimension": "proof", "level": {"prep": 3}, "kind": "text", "contexts": ["sales", "investor"], "guide_module": 1,
+      "ask": {"en": "If they ask to speak with a customer this week, who can you offer?", "he": "אם יבקשו לדבר עם לקוח כבר השבוע, את מי אתה יכול להציע?"},
+      "why": {"en": "A reference request is one of the strongest signals there is. Fumbling it turns Green into Yellow.", "he": "בקשת רפרנס היא אחד הסיגנלים הכי חזקים שיש. לגמגם מולה הופך ירוק לצהוב."},
+      "feeds": []
+    },
+    {
+      "id": "assumption_to_break", "dimension": "goal", "level": {"prep": 2}, "kind": "text", "contexts": ["kol"], "guide_module": 2,
+      "ask": {"en": "Which assumption of yours do you want this expert to break?", "he": "איזו הנחה שלך אתה רוצה שהמומחה הזה ישבור?"},
+      "why": {"en": "You are there for the hard feedback, and nobody volunteers it.", "he": "באת בשביל הפידבק הקשה, ואף אחד לא מתנדב לתת אותו."},
+      "feeds": []
+    },
+    {
+      "id": "past_event", "dimension": "goal", "level": {"prep": 3}, "kind": "text", "contexts": ["kol"], "guide_module": 2,
+      "ask": {"en": "Which past event of theirs do you want to hear about: the last time they dealt with this problem?", "he": "על איזה אירוע עבר שלהם אתה רוצה לשמוע: הפעם האחרונה שהם התמודדו עם הבעיה?"},
+      "why": {"en": "Ask about what they did, not about what they would do.", "he": "שואלים על מה שהם עשו, לא על מה שהיו עושים."},
+      "feeds": []
+    },
+    {
+      "id": "give_back", "dimension": "goal", "level": {"prep": 3}, "kind": "text", "contexts": ["kol"], "guide_module": 7,
+      "ask": {"en": "What can you give this expert in return: data, an early look, an intro, credit?", "he": "מה אתה יכול לתת למומחה הזה בחזרה: דאטה, הצצה מוקדמת, אינטרו, קרדיט?"},
+      "why": {"en": "The network runs on a balance of favors. An expert who got something back takes the second call.", "he": "הרשת רצה על מאזן טובות. מומחה שקיבל משהו בחזרה עונה גם לשיחה השנייה."},
+      "feeds": []
+    },
+    {
+      "id": "talk_track", "dimension": "draft", "level": {"prep": 2}, "kind": "text", "voice_ok": true, "guide_module": 5,
+      "ask": {"en": "Do you have an opening line or a list of questions written down? Paste it.", "he": "יש לך משפט פתיחה או רשימת שאלות כתובים? תדביק."},
+      "why": {"en": "The check reads your actual words. It catches BANT aimed at an investor, a competitor trashed, and small talk that burns the room.", "he": "הבדיקה קוראת את המילים שלך בפועל. היא תופסת BANT שמכוון למשקיע, קטילת מתחרה, וסמול-טוק ששורף את החדר."},
+      "feeds": [{"command": "guard", "talk": true}]
+    },
+    {
+      "id": "sent_ahead", "dimension": "history", "level": {"prep": 3}, "kind": "choice",
+      "choices": ["nothing", "one_pager", "deck", "demo_access"],
+      "ask": {"en": "What did they get from you before the meeting: nothing, a one-pager, a deck, access to a demo?", "he": "מה הם קיבלו ממך לפני הפגישה: כלום, one-pager, מצגת, גישה לדמו?"},
+      "why": {"en": "The meeting cannot depend on their homework.", "he": "הפגישה לא יכולה להיות תלויה בשיעורי הבית שלהם."},
+      "feeds": []
+    },
+    {
+      "id": "their_side", "dimension": "who", "level": {"prep": 3}, "kind": "text", "guide_module": 5,
+      "ask": {"en": "Who else joins from their side, by role?", "he": "מי עוד מצטרף מהצד שלהם, לפי תפקיד?"},
+      "why": {"en": "You never correct someone in front of their team, so know who the team is.", "he": "לעולם לא מתקנים מישהו מול הצוות שלו, אז צריך לדעת מי הצוות."},
+      "feeds": []
+    },
+    {
+      "id": "competitor", "dimension": "risks", "level": {"prep": 3}, "kind": "text", "guide_module": 5,
+      "ask": {"en": "Which competitor will they compare you with?", "he": "לאיזה מתחרה ישוו אותך?"},
+      "why": {"en": "Have one respectful line about them ready. Trashing a competitor reads as insecurity.", "he": "צריך שורה מכבדת אחת עליהם מוכנה. קטילת מתחרה נקראת כחוסר ביטחון."},
+      "feeds": []
+    },
+    {
+      "id": "their_goal", "dimension": "who", "level": {"prep": 3}, "kind": "text",
+      "ask": {"en": "What do you think THEY want out of this meeting?", "he": "מה לדעתך הם רוצים להשיג מהפגישה הזו?"},
+      "why": {"en": "A meeting that serves only your goal does not get a second one.", "he": "פגישה שמשרתת רק את המטרה שלך לא מקבלת פגישה שנייה."},
+      "feeds": []
+    },
+    {
+      "id": "must_not_happen", "dimension": "risks", "level": {"prep": 3}, "kind": "text",
+      "ask": {"en": "What is the one thing that must not happen in this meeting?", "he": "מה הדבר האחד שאסור שיקרה בפגישה הזו?"},
+      "why": {"en": "Naming it once, before the meeting, is cheaper than recognizing it in the room.", "he": "לקרוא לזה בשם פעם אחת, לפני הפגישה, זול יותר מלזהות את זה בחדר."},
+      "feeds": []
+    },
+    {
+      "id": "small_talk_hook", "dimension": "who", "level": {"prep": 3}, "kind": "text", "guide_module": 5,
+      "ask": {"en": "Anything you know about them outside the deal that is safe to open with: their city, a talk they gave, their team?", "he": "משהו שאתה יודע עליהם מחוץ לעסקה ובטוח לפתוח איתו: העיר שלהם, הרצאה שנתנו, הצוות שלהם?"},
+      "why": {"en": "Small talk is the first test of the meeting, not a delay before it. One true, specific line beats the weather.", "he": "הסמול-טוק הוא המבחן הראשון של הפגישה, לא עיכוב לפניה. שורה אחת אמיתית וספציפית מנצחת את מזג האוויר."},
+      "feeds": []
+    },
+    {
+      "id": "demo_plan", "dimension": "you", "level": {"prep": 3}, "kind": "text",
+      "ask": {"en": "Will you show the product? What is the one thing the demo has to prove?", "he": "אתה מציג את המוצר? מה הדבר האחד שהדמו חייב להוכיח?"},
+      "why": {"en": "A demo that shows everything proves nothing. Depth goes where their question is, not where your slides are.", "he": "דמו שמראה הכול לא מוכיח כלום. העומק הולך לאן שהשאלה שלהם נמצאת, לא לאן שהשקפים שלך נמצאים."},
+      "feeds": []
+    },
+    {
+      "id": "your_side", "dimension": "you", "level": {"prep": 3}, "kind": "text", "guide_module": 5,
+      "ask": {"en": "Who joins from your side, and who answers what?", "he": "מי מצטרף מהצד שלך, ומי עונה על מה?"},
+      "why": {"en": "Two founders answering over each other read as a team that has not decided who owns what.", "he": "שני מייסדים שנכנסים אחד לדברי השני נקראים כצוות שלא החליט מי אחראי על מה."},
+      "feeds": []
+    },
+    {
+      "id": "english_comfort", "dimension": "you", "level": {"prep": 3, "scene": 3}, "kind": "choice",
+      "choices": ["pace", "small_talk", "pushing_back", "nothing"],
+      "ask": {"en": "What worries you most in English: keeping up with the pace, the small talk, pushing back politely, or nothing?", "he": "מה הכי מדאיג אותך באנגלית: לעמוד בקצב, הסמול-טוק, להתנגד בנימוס, או כלום?"},
+      "why": {"en": "The rehearsal goes where the worry is.", "he": "החזרה הולכת לאן שהדאגה נמצאת."},
+      "feeds": []
+    },
+    {
+      "id": "recap_slot", "dimension": "logistics", "level": {"prep": 3}, "kind": "bool", "guide_module": 4,
+      "ask": {"en": "Do you have twenty free minutes within a day of the meeting to send the recap?", "he": "יש לך עשרים דקות פנויות ביממה שאחרי הפגישה כדי לשלוח ריקאפ?"},
+      "why": {"en": "The recap goes out within 24 hours. Block the time now, not after.", "he": "הריקאפ יוצא תוך 24 שעות. חוסמים את הזמן עכשיו, לא אחרי."},
+      "feeds": []
+    },
+    {
+      "id": "format", "dimension": "logistics", "level": {"prep": 3}, "kind": "choice", "guide_module": 5,
+      "choices": ["video", "in_person", "phone"],
+      "ask": {"en": "Video, in person, or phone?", "he": "וידאו, פנים אל פנים, או טלפון?"},
+      "why": {"en": "On video nothing shows that you are waiting for your turn. Interrupting costs double.", "he": "בווידאו שום דבר לא מראה שאתה מחכה לתורך. התפרצות עולה כפול."},
+      "feeds": []
+    },
+    {
+      "id": "in_the_news", "dimension": "risks", "level": {"prep": 3}, "kind": "bool", "guide_module": 6,
+      "ask": {"en": "Is anything in the news likely to come up: an election season, events in Israel?", "he": "יש משהו בחדשות שעלול לעלות: עונת בחירות, אירועים בארץ?"},
+      "why": {"en": "You do not initiate, join or correct. The bridge line has to be ready before you need it.", "he": "לא יוזמים, לא מצטרפים, לא מתקנים. שורת הגשר צריכה להיות מוכנה לפני שצריך אותה."},
+      "feeds": []
+    },
+    {
+      "id": "practice_focus", "dimension": "goal", "level": {"scene": 2}, "kind": "choice",
+      "choices": ["soft_nos", "dated_step", "criticism", "politics"],
+      "ask": {"en": "What do you want to practice: catching soft-nos, landing a dated step, pulling out criticism, or staying out of politics?", "he": "מה אתה רוצה לתרגל: לזהות Soft No, לסגור צעד עם תאריך, לחלץ ביקורת, או להישאר מחוץ לפוליטיקה?"},
+      "why": {"en": "The scene is scored. Knowing the drill tells you what to look for in the debrief.", "he": "הסצנה מקבלת ציון. כשיודעים מה מתרגלים, יודעים מה לחפש בדיבריף."},
+      "feeds": [{"command": "scene", "flag": "--politics", "when_is": "politics"}]
+    },
+    {
+      "id": "real_meeting", "dimension": "history", "level": {"scene": 3}, "kind": "bool",
+      "ask": {"en": "Is this a rehearsal for a real meeting on your calendar?", "he": "זו חזרה לקראת פגישה אמיתית שיש לך ביומן?"},
+      "why": {"en": "If it is, the prep sheet comes first and the scene uses the same facts.", "he": "אם כן, דף ההכנה בא קודם והסצנה משתמשת באותן עובדות."},
+      "feeds": []
+    },
+    {
+      "id": "intro_stage", "dimension": "history", "level": {"intro": 1}, "kind": "choice", "guide_module": 7,
+      "choices": ["asking", "received", "after_meeting", "connecting"],
+      "ask": {"en": "Where are you with this intro: asking for one, one just landed, the meeting already happened, or you want to connect two people?", "he": "איפה אתה עם האינטרו: מבקש, אינטרו בדיוק הגיע, הפגישה כבר הייתה, או שאתה רוצה לחבר שני אנשים?"},
+      "why": {"en": "Each stage has one move the protocol expects, and quiet if you miss it.", "he": "לכל שלב יש מהלך אחד שהפרוטוקול מצפה לו, ושקט אם מפספסים אותו."},
+      "feeds": [{"command": "intro", "path": "stage"}]
+    },
+    {
+      "id": "company_one_liner", "dimension": "you", "level": {"email": 2, "intro": 2, "prep": 3}, "kind": "text", "when_not_in_modes": ["email", "prep"], "guide_module": 3,
+      "when": [{"q": "intro_stage", "in": ["asking", "received"]}],
+      "ask": {"en": "Your company's name, and what it does, in one sentence a stranger would get.", "he": "שם החברה שלך, ומה היא עושה, במשפט אחד שאדם זר יבין."},
+      "why": {"en": "It is the second line of a cold email and the whole of a forwardable intro. If it takes a paragraph, the email is already too long.", "he": "זו השורה השנייה במייל קר, וכל מה שיש באינטרו שמעבירים הלאה. אם צריך פסקה, המייל כבר ארוך מדי."},
+      "feeds": [{"command": "lint", "source": true}]
+    },
+    {
+      "id": "intro_target", "dimension": "who", "level": {"intro": 2}, "kind": "text", "guide_module": 3,
+      "when": [{"q": "intro_stage", "is": "asking"}],
+      "ask": {"en": "Who do you want to reach, and why are 20 minutes with you worth their time?", "he": "למי אתה רוצה להגיע, ולמה 20 דקות איתך שוות את הזמן שלו?"},
+      "why": {"en": "That sentence is the paragraph the connector forwards.", "he": "המשפט הזה הוא הפסקה שהמחבר מעביר."},
+      "feeds": []
+    },
+    {
+      "id": "forwardable_attached", "dimension": "draft", "level": {"intro": 1}, "kind": "bool", "guide_module": 3,
+      "when": [{"q": "intro_stage", "is": "asking"}],
+      "ask": {"en": "Did you attach a short paragraph the connector can forward as it is?", "he": "צירפת פסקה קצרה שהמחבר יכול להעביר כמו שהיא?"},
+      "why": {"en": "It doubles the chance that the intro happens.", "he": "זה מכפיל את הסיכוי שהאינטרו יקרה."},
+      "feeds": [{"command": "intro", "path": "forwardable_attached"}]
+    },
+    {
+      "id": "connector_strength", "dimension": "history", "level": {"intro": 2}, "kind": "choice", "guide_module": 7,
+      "choices": ["worked_together", "know_each_other", "loose_contact", "unknown"],
+      "when": [{"q": "intro_stage", "is": "asking"}],
+      "ask": {"en": "How well does the connector know them: they worked together, they know each other, or it is a loose contact?", "he": "כמה טוב המחבר מכיר אותם: עבדו יחד, מכירים, או קשר רופף?"},
+      "why": {"en": "An intro is only as warm as the connector's standing with them. A loose contact forwards your email. A former colleague vouches for you.", "he": "אינטרו חם בדיוק כמידת האמון שיש להם במחבר. קשר רופף מעביר את המייל שלך. קולגה לשעבר ערב לך."},
+      "feeds": []
+    },
+    {
+      "id": "gave_before", "dimension": "history", "level": {"intro": 2}, "kind": "bool", "guide_module": 7,
+      "when": [{"q": "intro_stage", "is": "asking"}],
+      "ask": {"en": "Have you done anything for this connector before asking?", "he": "עשית משהו בשביל המחבר הזה לפני שביקשת?"},
+      "why": {"en": "The network runs on a balance of favors. An account you only draw from gets closed.", "he": "הרשת רצה על מאזן טובות. חשבון שרק מושכים ממנו נסגר."},
+      "feeds": [{"command": "intro", "path": "gave_before"}]
+    },
+    {
+      "id": "hours_since_intro", "dimension": "logistics", "level": {"intro": 1}, "kind": "number", "guide_module": 7,
+      "when": [{"q": "intro_stage", "is": "received"}],
+      "ask": {"en": "How many hours ago did the intro email arrive?", "he": "לפני כמה שעות הגיע מייל האינטרו?"},
+      "why": {"en": "You answer within hours, not days. A slow reply embarrasses the person who vouched for you.", "he": "עונים תוך שעות, לא ימים. תגובה איטית מביכה את מי שערב לך."},
+      "feeds": [{"command": "intro", "path": "hours_since_intro"}]
+    },
+    {
+      "id": "replied", "dimension": "history", "level": {"intro": 1}, "kind": "bool", "guide_module": 7,
+      "when": [{"q": "intro_stage", "is": "received"}],
+      "ask": {"en": "Have you replied yet?", "he": "כבר ענית?"},
+      "why": {"en": "The clock started when the intro landed.", "he": "השעון התחיל כשהאינטרו נחת."},
+      "feeds": [{"command": "intro", "path": "replied"}]
+    },
+    {
+      "id": "moved_to_bcc", "dimension": "draft", "level": {"intro": 2}, "kind": "bool", "guide_module": 7,
+      "when": [{"q": "replied", "is": true}],
+      "ask": {"en": "Did your first reply move the connector to BCC?", "he": "התשובה הראשונה שלך העבירה את המחבר ל-BCC?"},
+      "why": {"en": "It spares their inbox and shows that you know the code.", "he": "זה חוסך להם את האינבוקס ומראה שאתה מכיר את הקוד."},
+      "feeds": [{"command": "intro", "path": "moved_to_bcc"}]
+    },
+    {
+      "id": "hours_since_meeting", "dimension": "logistics", "level": {"intro": 1}, "kind": "number", "guide_module": 7,
+      "when": [{"q": "intro_stage", "is": "after_meeting"}],
+      "ask": {"en": "How many hours have passed since the meeting that came out of this intro?", "he": "כמה שעות עברו מאז הפגישה שיצאה מהאינטרו?"},
+      "why": {"en": "The connector should hear from you before they have to ask.", "he": "המחבר צריך לשמוע ממך לפני שהוא נאלץ לשאול."},
+      "feeds": [{"command": "intro", "path": "hours_since_meeting"}]
+    },
+    {
+      "id": "loop_closed", "dimension": "history", "level": {"intro": 1}, "kind": "bool", "guide_module": 7,
+      "when": [{"q": "intro_stage", "is": "after_meeting"}],
+      "ask": {"en": "Did you tell the connector what came out of it, with a thank-you?", "he": "סיפרת למחבר מה יצא, עם תודה?"},
+      "why": {"en": "Whoever does not close the loop does not get a second intro.", "he": "מי שלא סוגר לופ לא מקבל אינטרו שני."},
+      "feeds": [{"command": "intro", "path": "loop_closed"}]
+    },
+    {
+      "id": "meeting_outcome", "dimension": "said", "level": {"intro": 2}, "kind": "text", "guide_module": 7,
+      "when": [{"q": "intro_stage", "is": "after_meeting"}],
+      "ask": {"en": "What came out of the meeting, in one line the connector would be glad to read?", "he": "מה יצא מהפגישה, בשורה אחת שהמחבר ישמח לקרוא?"},
+      "why": {"en": "Two lines: what happened, and thank you. It is how the next intro gets made.", "he": "שתי שורות: מה קרה, ותודה. ככה נולד האינטרו הבא."},
+      "feeds": []
+    },
+    {
+      "id": "both_agreed", "dimension": "risks", "level": {"intro": 1}, "kind": "bool", "guide_module": 7,
+      "when": [{"q": "intro_stage", "is": "connecting"}],
+      "ask": {"en": "Did both people agree to be connected?", "he": "שני האנשים הסכימו שיחברו ביניהם?"},
+      "why": {"en": "Double opt-in. You do not connect two people without a yes from each.", "he": "Double Opt-In. לא מחברים שני אנשים בלי אישור של שניהם."},
+      "feeds": [{"command": "intro", "path": "both_agreed"}]
+    }
+  ],
+  "cautions": [
+    {
+      "id": "deck_in_first_email", "guide_module": 3,
+      "when": [{"q": "attachment", "is": "deck"}],
+      "text": {"en": "A full deck in the email: send a one-pager. The email sells the meeting, and the depth belongs in the meeting.", "he": "מצגת מלאה במייל: שולחים one-pager. המייל מוכר את הפגישה, והעומק שייך לפגישה."}
+    },
+    {
+      "id": "warm_intro_protocol", "guide_module": 7, "not_in_modes": ["intro"],
+      "when": [{"q": "how_met", "is": "warm_intro"}],
+      "text": {"en": "This came through a warm intro. Reply within hours, move the connector to BCC in your first reply, and close the loop after the meeting. Check it with `intro`.", "he": "זה הגיע דרך אינטרו חם. עונים תוך שעות, מעבירים את המחבר ל-BCC בתשובה הראשונה, וסוגרים לופ אחרי הפגישה. בודקים עם `intro`."}
+    },
+    {
+      "id": "took_a_political_side", "guide_module": 6,
+      "when": [{"q": "politics_came_up", "is": "yes_took_a_side"}],
+      "text": {"en": "You took a side on politics. The cost is not an argument but a label, and nobody will tell you it happened. Next time: acknowledge the feeling, give no position, bridge to business.", "he": "לקחת צד בפוליטיקה. המחיר הוא לא עימות אלא תיוג, ואף אחד לא יגיד לך שזה קרה. בפעם הבאה: מכירים ברגש, בלי עמדה, ומגשרים לביזנס."}
+    },
+    {
+      "id": "outside_the_window", "guide_module": 4,
+      "when": [{"q": "urgency", "is": "must_go_today"}, {"q": "email_type", "in": ["cold", "followup", "intro", "scheduling", "conference", "linkedin", "investor_update", "breakup"]}],
+      "text": {"en": "Sending today regardless: outside Tuesday to Thursday morning in their time it is read less. If a day of waiting costs nothing, wait.", "he": "שולחים היום בכל מקרה: מחוץ לשלישי עד חמישי בבוקר בשעון שלהם קוראים פחות. אם יום המתנה לא עולה כלום, מחכים."}
+    },
+    {
+      "id": "one_sided_date", "guide_module": 1,
+      "when": [{"q": "next_step_proposed_by", "is": "founder"}, {"q": "next_step_accepted", "is": false}],
+      "text": {"en": "The date exists only on your side. Until it is on their calendar or confirmed in writing, it does not count as commitment.", "he": "התאריך קיים רק בצד שלך. עד שהוא ביומן שלהם או מאושר בכתב, הוא לא נחשב מחויבות."}
+    },
+    {
+      "id": "silence_is_an_answer", "guide_module": 1,
+      "when": [{"q": "stage_now", "is": "went_silent"}],
+      "text": {"en": "Silence is the most common no in America. Run the full follow-up sequence, send the breakup email, and move on without resentment.", "he": "שתיקה היא ה\"לא\" הנפוץ ביותר באמריקה. מריצים את רצף הפולואפ המלא, שולחים מייל פרידה, וממשיכים הלאה בלי טינה."}
+    },
+    {
+      "id": "election_season", "guide_module": 6,
+      "when": [{"q": "in_the_news", "is": true}],
+      "text": {"en": "With politics in the air: no candidate names, no jokes, even if they start. A light laugh at their joke is fine. Adding one of yours is not.", "he": "כשפוליטיקה באוויר: בלי שמות מועמדים, בלי בדיחות, גם אם הם פתחו. צחוק קל על בדיחה שלהם בסדר. להוסיף אחת משלך: לא."}
+    },
+    {
+      "id": "rehearsal_needs_prep", "guide_module": null,
+      "when": [{"q": "real_meeting", "is": true}],
+      "text": {"en": "A rehearsal for a real meeting: build the prep sheet first, with the same facts, then run the scene.", "he": "חזרה לפגישה אמיתית: בונים קודם את דף ההכנה, עם אותן עובדות, ואז מריצים את הסצנה."}
+    },
+    {
+      "id": "loose_connector", "guide_module": 7,
+      "when": [{"q": "connector_strength", "is": "loose_contact"}],
+      "text": {"en": "A loose contact can only forward. The paragraph you attach has to carry the whole case, and the ask has to be easy to refuse.", "he": "קשר רופף יכול רק להעביר הלאה. הפסקה שאתה מצרף צריכה לשאת את כל הטיעון, והבקשה צריכה להיות קלה לסירוב."}
+    },
+    {
+      "id": "talked_the_whole_time", "guide_module": 5,
+      "when": [{"q": "who_talked", "is": "mostly_me"}],
+      "text": {"en": "You did most of the talking, so what you have is their politeness, not their view. Next time open with the frame line and spend most of the time on their workflow.", "he": "אתה דיברת רוב הזמן, אז מה שיש לך הוא הנימוס שלהם ולא הדעה שלהם. בפעם הבאה פותחים בשורת המסגרת ונותנים את רוב הזמן ל-workflow שלהם."}
+    },
+    {
+      "id": "enthusiasm_is_not_traction", "guide_module": 1,
+      "when": [{"q": "context", "is": "investor"}, {"q": "traction_truth", "answered": true}],
+      "text": {"en": "Present to the investor only leads with a dated step or a paid currency. The rest are conversations, and one reference call tells them apart.", "he": "מציגים למשקיע רק לידים עם צעד מתוארך או מטבע ששולם. כל השאר הן שיחות, ושיחת רפרנס אחת מבדילה ביניהן."}
+    }
+  ],
+  "labels": {
+    "title": {"en": "Picture so far ({mode}): {known} of {total} facts known, {percent}%", "he": "תמונת מצב ({mode}): {known} מתוך {total} עובדות ידועות, {percent}%"},
+    "depth": {"en": "Depth", "he": "עומק"},
+    "missing": {"en": "missing", "he": "חסר"},
+    "ask_next": {"en": "Ask next (at most {n} per turn)", "he": "לשאול עכשיו (עד {n} בסבב)"},
+    "why": {"en": "why", "he": "למה"},
+    "open_musts": {"en": "Still open, and what each one decides", "he": "עדיין פתוח, ומה כל אחד מכריע"},
+    "cautions": {"en": "From what you said so far", "he": "ממה שאמרת עד עכשיו"},
+    "ready": {"en": "Enough to run. The picture is complete at this depth.", "he": "מספיק כדי להריץ. התמונה מלאה בעומק הזה."},
+    "stopped": {"en": "Stopped by the founder. Running with what there is, and saying what is missing.", "he": "היזם עצר. מריצים עם מה שיש, ואומרים מה חסר."},
+    "run": {"en": "Run next, exactly as written", "he": "להריץ עכשיו, בדיוק כפי שכתוב"},
+    "after_draft": {"en": "Save the founder's draft as draft.txt and measure it before you rewrite", "he": "לשמור את הטיוטה של היזם כ-draft.txt ולמדוד אותה לפני שמשכתבים"},
+    "after_rewrite": {"en": "After you write the email, save it as rewrite.txt and check it", "he": "אחרי שכתבת את המייל, לשמור אותו כ-rewrite.txt ולבדוק"},
+    "after_talk": {"en": "When the founder has a talk track or a list of questions, save it as talk.txt and run", "he": "כשליזם יש טקסט לפגישה או רשימת שאלות, לשמור כ-talk.txt ולהריץ"},
+    "source_file": {"en": "source.txt is the founder's own material. Save these lines as source.txt. Every figure in the email is checked against them", "he": "source.txt הוא החומר של היזם עצמו. לשמור את השורות האלה כ-source.txt. כל מספר במייל נבדק מולן"},
+    "source_both": {"en": "source.txt is the founder's own material: the draft, followed by these lines. Every figure in the email is checked against it", "he": "source.txt הוא החומר של היזם עצמו: הטיוטה, ואחריה השורות האלה. כל מספר במייל נבדק מולו"},
+    "source_draft": {"en": "source.txt is the founder's own material: here, a copy of the draft. Every figure in the email is checked against it.", "he": "source.txt הוא החומר של היזם עצמו: כאן, עותק של הטיוטה. כל מספר במייל נבדק מולו."},
+    "partial": {"en": "Run this for the decoding of their lines. It gives no verdict without: {fields}", "he": "להריץ את זה בשביל פענוח המשפטים שלהם. בלי {fields} אין פסיקה"},
+    "talk_file": {"en": "Save the founder's text below as talk.txt, then run", "he": "לשמור את הטקסט של היזם שלמטה כ-talk.txt, ואז להריץ"},
+    "notes": {"en": "Context for your writing. Code does not judge these", "he": "הקשר לכתיבה שלך. הקוד לא שופט את אלה"},
+    "more": {"en": "{n} more wait at this depth. If the founder already answered one, record it now and do not ask it: {ids}", "he": "עוד {n} מחכות בעומק הזה. אם היזם כבר ענה על אחת מהן, לרשום עכשיו ולא לשאול: {ids}"},
+    "deeper": {"en": "{n} more exist one level deeper", "he": "עוד {n} קיימות בעומק הבא"},
+    "not_yet": {"en": "not enough yet for {command}: {fields}", "he": "עוד לא מספיק ל-{command}: {fields}"},
+    "voice": {"en": "a voice note is fine", "he": "אפשר בהודעה קולית"},
+    "skipped": {"en": "skipped", "he": "דולג"},
+    "none": {"en": "none", "he": "אין"}
+  }
+}

@@ -1,0 +1,15 @@
+# THIRD-PARTY: proof-engine. The field layout follows proof-engine's CITATION.cff
+# by Yaniv Golan (MIT), with this project's values. See THIRD_PARTY_NOTICES.md.
+cff-version: 1.2.0
+message: "If you use The American Playbook, please cite it as below."
+type: software
+title: "The American Playbook"
+abstract: "A coaching skill for Israeli founders who sell, fundraise and network in the US. The model interviews and writes, and a deterministic Python engine judges."
+authors:
+  - family-names: "Zemel"
+    given-names: "Nimrod"
+url: "https://github.com/Nimrod-Zemel/american-business-playbook"
+repository-code: "https://github.com/Nimrod-Zemel/american-business-playbook"
+license: Apache-2.0
+version: 2.0.0
+date-released: 2026-11-25

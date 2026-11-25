@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: follow-up-cadence-around-thanksgiving
+expected_outcome: |
+  The five-touch cadence from the engine, in Central time and Israel time: the recap goes out today (24 November) even though it is Thanksgiving week, the value touch waits until Monday 30 November, then 2 December, 8 December and a nurture touch on 23 February 2027.

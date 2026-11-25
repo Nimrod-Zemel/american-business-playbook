@@ -1,0 +1,127 @@
+{
+  "_about": "The Bench: Dan Launchpad team personas, the topic-to-person routing table, and program facts. Source of truth for `playbook.py bench` and for the generated references/dan-launchpad-bench.md. Another program can reuse this skill by replacing this one file, or switch the bench off with \"enabled\": false.",
+  "enabled": true,
+  "program": "Dan Launchpad",
+  "purpose": "The bench makes coaching feel like the program's hallway: real people, real expertise, real referrals.",
+  "max_nudges_per_session": 2,
+  "usage_rules": [
+    "Maximum 1-2 persona nudges per session. Seasoning, not the meal.",
+    "Nudges are hypothetical questions in the person's spirit (\"What would Eyal ask here?\") or referrals to actually talk to them. NEVER invent quotes, opinions, decisions, or commitments on their behalf.",
+    "Nudges live in the Hebrew coaching layer only. They never appear in English deliverables.",
+    "Tone: warm, funny, respectful. The humor punches with love; these are the founder's actual mentors.",
+    "Never include personal contact details (emails, phones). Referrals point to \"talk to X at the program\".",
+    "All persona facts are public professional information (program website, published research, public profiles), verified August 2026."
+  ],
+  "people": [
+    {
+      "id": "eyal",
+      "name": "Eyal Benjamin (PhD)",
+      "first_name": "Eyal",
+      "first_name_he": "אייל",
+      "gender": "m",
+      "role": "Executive Director, founder of the program",
+      "facts": [
+        "PhD in new-venture strategy (Swinburne University of Technology, Melbourne). 5x serial entrepreneur across ICT and automotive ventures, with a venture capital background.",
+        "Faculty at the Coller School of Management, TAU; led entrepreneurial activities at the Coller Institute of Venture; academic director of innovation studies at LAHAV (TAU executive education).",
+        "Published research on radical strategic change in new ventures, including the divergent views of VC investors and entrepreneurs on strategic change. That is exactly the founder-investor perception gap this skill decodes."
+      ],
+      "triggers_text": "strategy dilemmas, pivots, positioning, \"should we change direction\", any founder-vs-investor disagreement about strategy",
+      "topics": ["strategy", "strategic", "pivot", "positioning", "direction", "dilemma", "fork", "אסטרטגיה", "פיבוט", "מיצוב", "דילמה", "כיוון"],
+      "flags": ["strategic_fork"],
+      "sample_nudge_he": "רגע, לפני שנחליט - מה אייל היה שואל על הדילמה הזו? האיש כתב דוקטורט על שינוי אסטרטגי בוונצ'רים, וחקר בדיוק למה משקיעים ויזמים רואים את אותה החלטה הפוך. נסה לנסח את השאלה שלו, ואז נענה עליה ביחד.",
+      "route_why": "PhD and published research on new-venture strategic change"
+    },
+    {
+      "id": "nimrod",
+      "name": "Nimrod Zemel",
+      "first_name": "Nimrod",
+      "first_name_he": "נמרוד",
+      "gender": "m",
+      "role": "VP Value Creation",
+      "facts": [
+        "The business fox of the team: business development, value creation, and a global network. Works hands-on with the portfolio ventures on business fundamentals, the things that make or break a good idea on its way to becoming a real company.",
+        "Author of the American Playbook guide this skill is built on."
+      ],
+      "triggers_text": "pricing, business model, revenue logic, partnerships, \"who can intro me\", any demo that has no commercial story behind it",
+      "topics": ["pricing", "price", "business model", "revenue", "partnership", "partnerships", "intro", "intros", "commercial", "תמחור", "מחיר", "מודל עסקי", "הכנסות", "שותפות", "שותפויות", "אינטרו"],
+      "flags": ["pricing_raised_without_model"],
+      "sample_nudge_he": "יפה הדמו. עכשיו שאלת נמרוד: מה המודל העסקי ומה התמחור, ולמה דווקא זה? אם אין לך תשובה בשני משפטים, זו הפגישה הבאה שלך בתוכנית.",
+      "route_why": "VP Value Creation, business fundamentals, global network"
+    },
+    {
+      "id": "dana",
+      "name": "Dana Kliss-Regev",
+      "first_name": "Dana",
+      "first_name_he": "דנה",
+      "gender": "f",
+      "role": "Portfolio and Investors' Relations Manager",
+      "facts": [
+        "Runs the program's portfolio and investor relations. Background at Techstars and at Provengo (previously Testory); holds an M.Teach in computer science and physics education. Analytical and technical, not just relational."
+      ],
+      "triggers_text": "anything investors: fundraising process, investor meetings, intros to funds and angels, investor updates, program operations",
+      "topics": ["investor", "investors", "fundraising", "fundraise", "raise", "round", "fund", "funds", "angel", "angels", "investor update", "term sheet", "משקיע", "משקיעים", "גיוס", "סבב", "קרן", "קרנות", "אנג'ל"],
+      "flags": ["investor_thread"],
+      "sample_nudge_he": "ואם במשקיעים עסקינן - אחרי שנסגור את ההכנה, שווה לך רבע שעה עם דנה. היא מנהלת את קשרי המשקיעים של התוכנית והגיעה מ-Techstars. זה המגרש שלה.",
+      "route_why": "Portfolio and IR manager, ex-Techstars"
+    },
+    {
+      "id": "einat",
+      "name": "Einat Gan-Shalev",
+      "first_name": "Einat",
+      "first_name_he": "עינת",
+      "gender": "f",
+      "role": "Head of Communities",
+      "facts": [
+        "Leads marketing and communities for the program. Prior background as a recruiter specializing in software development, working with stealth-mode startups and funded innovation departments, so she also covers early hiring questions.",
+        "Community builder by nature: writes about music communities in the digital era, including reporting from festival backstages."
+      ],
+      "triggers_text": "marketing, content, branding, community building, events, and first hires / recruiting",
+      "topics": ["marketing", "content", "branding", "brand", "community", "communities", "events", "event", "hiring", "first hire", "first hires", "recruiting", "recruit", "שיווק", "תוכן", "מיתוג", "קהילה", "קהילות", "אירועים", "גיוס עובדים", "ריקרוטינג"],
+      "flags": [],
+      "sample_nudge_he": "כל מה שנוגע לשיווק, קהילות ותוכן - עינת. ואגב, גם גיוס עובדים ראשונים: היא באה מעולם הריקרוטמנט לפני התוכנית. דבר איתה.",
+      "route_why": "Head of Communities, ex software-dev recruiter"
+    },
+    {
+      "id": "erez",
+      "name": "Erez Gavish",
+      "first_name": "Erez",
+      "first_name_he": "ארז",
+      "gender": "m",
+      "role": "TechOps and Special Projects",
+      "facts": [
+        "The founding team's special-ops: tech operations, 3D printing, automation projects, prototyping.",
+        "Behind the program's MatchUP \"Find your startup co-founder!\" events, which earned rave reviews for production quality (attendee booklets, LinkedIn QR codes, skill-set stickers). Serves as a judge at TAU's Coller Startup Competition.",
+        "Rides a BMW R 1200 motorcycle. Use sparingly, as an easter egg."
+      ],
+      "triggers_text": "prototyping, hardware, 3D printing, automation, finding a co-founder, TAU competitions",
+      "topics": ["prototype", "prototyping", "hardware", "3d printing", "3d", "automation", "co-founder", "cofounder", "competition", "אבטיפוס", "חומרה", "הדפסת תלת מימד", "אוטומציה", "קו-פאונדר", "שותף מייסד", "תחרות"],
+      "flags": [],
+      "sample_nudge_he": "הדפסת תלת-מימד, אוטומציה, או שאתה בכלל מחפש קו-פאונדר? ארז היקר, האיש של המשימות המיוחדות. ואם הוא הגיע על ה-BMW, תן לו להוריד קסדה קודם.",
+      "route_why": "TechOps and special projects, MatchUP events, Coller competition judge"
+    }
+  ],
+  "routing": [
+    {"topic": "Strategy dilemma, pivot, positioning", "person": "eyal"},
+    {"topic": "Pricing, business model, partnerships, intros", "person": "nimrod"},
+    {"topic": "Investors, fundraising, investor updates", "person": "dana"},
+    {"topic": "Marketing, community, content, first hires", "person": "einat"},
+    {"topic": "Prototyping, automation, co-founder search", "person": "erez"}
+  ],
+  "program_facts": [
+    "Dan Launchpad is a venture enhancement program powered by Tel Aviv University, launched in 2023 thanks to a donation by Swiss entrepreneur and philanthropist Dan Holzmann.",
+    "Not a classic accelerator: applications year-round, no fixed cohorts, no demo days, no equity taken, and fully 1:1 tailored mentorship for as long as it takes.",
+    "Accepted ventures receive a 10,000 dollar grant, paired mentorship with industry leaders, personalized Academy learning, and office space.",
+    "Admission criteria include a BETA-stage product and a co-founder affiliated with Tel Aviv University.",
+    "Portfolio of 20+ startups across Climate, AI, Robotics, Medical Devices, Enterprise SaaS, Digital Health, Biotech, and more; alumni have raised millions from professional investors plus hundreds of thousands in grants.",
+    "Program site: https://www.danlaunchpad.co.il/"
+  ],
+  "bench_beats_bot": "If a founder is stuck on something squarely in one person's lane (a live fundraise, a pivot decision, a first hire), the best coaching move is the referral itself: prep the founder's question crisply, then send them to the human. The skill's job is to make that conversation better, not to replace it.",
+  "nudge_forms": {
+    "question": {"en": "Ask a hypothetical question in {name}'s spirit: \"What would {name} ask here?\" Never put words in their mouth.", "he_m": "לשאול שאלה היפותטית ברוח של {name_he}: \"מה {name_he} היה שואל כאן?\" לא לשים מילים בפה.", "he_f": "לשאול שאלה היפותטית ברוח של {name_he}: \"מה {name_he} הייתה שואלת כאן?\" לא לשים מילים בפה."},
+    "referral": {"en": "Refer the founder to actually talk to {name} at the program. Prep their question first.", "he_m": "להפנות את היזם לדבר בפועל עם {name_he} בתוכנית. קודם לחדד את השאלה שלו.", "he_f": "להפנות את היזם לדבר בפועל עם {name_he} בתוכנית. קודם לחדד את השאלה שלו."}
+  },
+  "budget_spent": {
+    "en": "Bench budget for this session is used up (max {max}). No more persona nudges.",
+    "he": "מכסת הספסל לסשן הזה נוצלה (מקסימום {max}). אין עוד נדנודי פרסונה."
+  }
+}
