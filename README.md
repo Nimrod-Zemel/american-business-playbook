@@ -556,9 +556,7 @@ The guide in [`docs/guide/`](docs/guide/) is not under that license. It keeps it
 
 כל קרדיט הוא על מה שבאמת הגיע מהמקור. הרשומה המלאה, עם commit וטקסט רישיון לכל מקור, נמצאת ב-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-- **[lool ventures](https://lool.vc), [founder-skills](https://github.com/lool-ventures/founder-skills)**: הדפוס שהבנייה הזו הולכת בו. המודל מספק עובדות, סקריפט מכריע, והפלט אומר מה לא נבדק. חותם השלמות מותאם מהקוד שלהם, והדף הזה בנוי לפי מבנה ה-README שלהם.
 - **[Yaniv Golan](https://github.com/yaniv-golan)** מ-lool ventures, שכותב את founder-skills. מבנה קובץ הציטוט מגיע מ-[proof-engine](https://github.com/yaniv-golan/proof-engine) שלו.
-- **[Anthropic](https://github.com/anthropics/skills)**: פורמט הסקיל, מוסכמת קובץ ה-`.skill` ומבנה מקרי הבדיקה.
 - **[Skills IL](https://github.com/skills-il)**: קובץ ההוראות בעברית, מבנה `metadata.json`, וכללי הולידציה שהבדיקות כותבות מחדש.
 - **[Garry Tan](https://github.com/garrytan/gstack), gstack**: פורמט קובץ הקרדיטים, והכלל ששכתוב אינו פטור מקרדיט.
 - **[Cisco AI Defense](https://github.com/cisco-ai-defense/skill-scanner)**: הסורק שבדק את הסקיל לפני הפרסום. התוצאה ב-[SECURITY.md](SECURITY.md).
